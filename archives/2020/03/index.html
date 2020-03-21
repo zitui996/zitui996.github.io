@@ -359,15 +359,15 @@
                 <span>代码审计 | 变量覆盖</span>
         </a>
         <div class="abstract-content">
-            #代码审计 | 变量覆盖##什么是变量覆盖漏洞？用户自定义传入的变量可以将代码中原有变量的数值进行覆盖修改##变量覆盖的常见情况
-
+            代码审计 | 变量覆盖什么是变量覆盖漏洞？用户自定义传入的变量可以将代码中原有变量的数值进行覆盖修改
+变量覆盖的常见情况
 $$/foreach()函数使用不当
 extract()函数使用不当
 parse_str()函数使用不当
 import_request_variables()使用不当，开启了全局变量注册
 
-###$$使用不当导致变量覆盖漏洞$$，这种写法称为可变变量，一个可变变量获取了一个普通变量的值作为这个可变变量的变量名。
-1234567&lt;?php$a = "hello";echo "$a";              //输出hello$a="world";ec...
+$$使用不当导致变量覆盖漏洞$$，这种写法称为可变变量，一个可变变量获取了一个普通变量的值作为这个可变变量的变量名。
+1234567&lt;?php$a = "hello";echo "$a";              //输出hello$a="world";echo "$a";...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -390,9 +390,8 @@ import_request_variables()使用不当，开启了全局变量注册
                 <span>代码审计 | 序列化与反序列化漏洞</span>
         </a>
         <div class="abstract-content">
-            #代码审计 | 序列化与反序列化漏洞
-什么是序列化？什么是反序列化？通俗的讲，序列化就是将变量转化为可以传输的字符串，反序列化就是将字符串转回变量的过程。一般都围绕着serialize()和unserialize()两个函数展开。
-1234567891011121314&lt;?php  class delete  &#123;  	public $filename = 'error';  &#125;   $test = new delete();  $test -&gt; filename = 'flag.txt';   echo serialize($test);?&gt; 输出结...
+            代码审计 | 序列化与反序列化漏洞什么是序列化？什么是反序列化？通俗的讲，序列化就是将变量转化为可以传输的字符串，反序列化就是将字符串转回变量的过程。一般都围绕着serialize()和unserialize()两个函数展开。
+1234567891011121314&lt;?php  class delete  &#123;  	public $filename = 'error';  &#125;   $test = new delete();  $test -&gt; filename = 'flag.txt';   echo serialize($test);?&gt; 输出结果：...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -415,7 +414,7 @@ import_request_variables()使用不当，开启了全局变量注册
                 <span>日语基础学习(一)</span>
         </a>
         <div class="abstract-content">
-            日语基础学习(一)##了解日语日语的组成可以分为三部分 
+            日语基础学习(一)了解日语日语的组成可以分为三部分 
 
 假名
 汉字
@@ -424,208 +423,11 @@ import_request_variables()使用不当，开启了全局变量注册
 例如
 1234567蜡笔小新クレヨン新ちゃんクレヨン(片假名)新(汉字)ちゃん(平假名)
 
-###1⃣️汉字中国的汉字经过朝鲜半岛,传入日本,有一部分被日语保留下来,我们学习起来也比较方便,但是需要注意的是,部分汉字在日语中的意思发生了变化.
+汉字中国的汉字经过朝鲜半岛,传入日本,有一部分被日语保留下来,我们学习起来也比较方便,但是需要注意的是,部分汉字在日语中的意思发生了变化.
 123&#x2F;&#x2F;日语丈夫 --&gt; 结实爱人 --&gt; 情人、第三者(贬义色彩)
-###2⃣️假名假名,也就是借来的,古文中有假借的词,日语同义.平假名和片假名,都来源于汉字.只是变化之后保留的部分不同.
+假名假名,也就是借来的,古文中有假借的词,日语同义.平假名和片假名,都来源于汉字.只是变化之后保留的部分不同.
 
-平假名平假名,将汉字进行平易化、简单化...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/21</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/03/21/15%E6%97%A5%E8%AE%AD%E7%BB%83%E8%AE%A1%E5%88%92(day11)/" >
-            
-                <span>15日训练计划(day11)</span>
-        </a>
-        <div class="abstract-content">
-            15日训练计划(day11)unsafe filedownload对输入的参数过滤不严谨就可能导致任意文件下载漏洞
-抓包传递了filename=…尝试夸目录读取passwd
-1filename&#x3D;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;etc&#x2F;passwd
-
-成功读取
-##任意文件读取先提交一个filename然后抓包传递的filename参数进行修改夸目录读取
-
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/21</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/03/21/15%E6%97%A5%E8%AE%AD%E7%BB%83%E8%AE%A1%E5%88%92(day12)/" >
-            
-                <span>15日训练计划(day12)</span>
-        </a>
-        <div class="abstract-content">
-            15日训练计划(day12)##任意文件上传没啥过滤,可随意上传##JS限制文件上传有上传文件类型的过滤
-抓包,修改文件名后缀成功上传##MIME限制文件上传MIME验证就是检测Content-type字段值的，直接更改上传数据包中的Content-type即可绕过
-扩展名限制文件上传不允许上传.php文件,考虑上传截断修改hex值,将2b -&gt; 00,进行截断
-成功上传##内容限制文件上传还是不允许上传.php文件,尝试上传图片.成功上传并返回图片信息
-1Array ( [0] &#x3D;&gt; 955 [1] &#x3D;&gt; 955 [2] &#x3D;&gt; 2 ...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/21</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/03/21/15%E6%97%A5%E8%AE%AD%E7%BB%83%E8%AE%A1%E5%88%92(day13)/" >
-            
-                <span>15日训练计划(day13)</span>
-        </a>
-        <div class="abstract-content">
-            15日训练计划(day13)##任意文件包含抓包发现传递了file参数,本地搭建的源码发现作者已经准备好了txt.txt文件.
-123&lt;?php      phpinfo();?&gt;
-直接修改file=txt.txt就行
-##目录限制文件包含加上路径即可,我们包含passwd文件
-
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/21</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/03/21/15%E6%97%A5%E8%AE%AD%E7%BB%83%E8%AE%A1%E5%88%92(day14)/" >
-            
-                <span>15日训练计划(day14)</span>
-        </a>
-        <div class="abstract-content">
-            15日训练计划(day14)##水平越权
-登陆进来发现URL的关键点
-1username&#x3D;xxx
-现在kobe账户是已登陆状态,lili是未登录,我们直接就该kobe为lili,成功读取到lili的信息,造成越权.
-##垂直越权先分别用普通账户和admin账户登陆,看看有什么不同普通
-admin
-可以看到admin账户新增对用户的修改,先创建个用户,截获数据包
-然后更换为普通用户,重新发包.将cookie更换为pikachu的cookie,发包可以看到我们添加的用户已经显示出来了##条件竞争到底还是没搞懂咋回事不过找到了作者的poc
-1234567891011121314151...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/21</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/03/21/15%E6%97%A5%E8%AE%AD%E7%BB%83%E8%AE%A1%E5%88%92(day15)/" >
-            
-                <span>15日训练计划(day15)</span>
-        </a>
-        <div class="abstract-content">
-            15日训练计划(day15)##敏感文件泄漏尝试登陆但是登陆失败直接访问上一个文件目录
-直接爆出文件,访问abc.php我们没有登录也获取到了abd.php的内容.
-##PHP反序列化存在接收序列化数据的api,我们输入普通的序列化数据没有用,考虑输入命令序列化之后的数据,看会不会被执行
-1O:1:"S":1:&#123;s:4:"test";s:33:"&lt;script&gt;alert(/pikachu/)&lt;/script&gt;";&#125;
-
-成功弹窗
-
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/21</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/03/21/15%E6%97%A5%E8%AE%AD%E7%BB%83%E8%AE%A1%E5%88%92%EF%BC%88day%209%EF%BC%89/" >
-            
-                <span>15日训练计划（day 9）</span>
-        </a>
-        <div class="abstract-content">
-            15日训练计划（day 9）##exec “ping”既然是命令执行，我们就可以在ping的地址后面用&amp;拼接上我们的命令。
-1www.baidu.com &amp; ls
-我们在试着读取rce.php的内容成功读取出来##exec“eval”eval()是将提交的字符串当成PHP代码来执行，但是我们提交的字符串必须合法。我们直接读取PHP信息
-1phpinfo();
-
-可以看到信息已经被读取出来了。
-
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/21</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/03/21/15%E6%97%A5%E8%AE%AD%E7%BB%83%E8%AE%A1%E5%88%92%EF%BC%88day10%EF%BC%89/" >
-            
-                <span>15日训练计划（day10）</span>
-        </a>
-        <div class="abstract-content">
-            15日训练计划（day10）##pikachu-xxe我们直接提交我们自定义的一个实体
-1234567&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;UTF-8&quot;?&gt;&lt;!DOCTYPE poem [ &lt;!ENTITY xxe SYSTEM &quot;file:&#x2F;&#x2F;&#x2F;etc&#x2F;passwd&quot;&gt; ]&gt;&lt;poem&gt;  &amp;xxe;&lt;&#x2F;poem&gt;
-有一点需要注意这里是经过URL编码的,因为burp会自...
+平假名平假名,将汉字进行平易化、简单化之后演变而来的假名.在书写中...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -638,10 +440,6 @@ admin
     </article>
     
     <!-- paginator  -->
-    
-    <nav class="page-nav">
-        <span class="page-number current">1</span><a class="page-number" href="/archives/2020/03/page/2/">2</a><a class="extend next" rel="next" href="/archives/2020/03/page/2/">NEXT &gt;</a>
-    </nav>
     
 </main>
             <!-- profile -->
@@ -764,114 +562,9 @@ admin
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 18
+        Total : 3
         </div>
         <!-- search  -->
         
@@ -881,90 +574,6 @@ admin
     
     
     
-    
-    <div class="archive-year"> 2020 </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">03/21</span><a class="archive-post-title" href= "/2020/03/21/15%E6%97%A5%E8%AE%AD%E7%BB%83%E8%AE%A1%E5%88%92(day11)/" >15日训练计划(day11)</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">03/21</span><a class="archive-post-title" href= "/2020/03/21/15%E6%97%A5%E8%AE%AD%E7%BB%83%E8%AE%A1%E5%88%92(day12)/" >15日训练计划(day12)</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">03/21</span><a class="archive-post-title" href= "/2020/03/21/15%E6%97%A5%E8%AE%AD%E7%BB%83%E8%AE%A1%E5%88%92(day13)/" >15日训练计划(day13)</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">03/21</span><a class="archive-post-title" href= "/2020/03/21/15%E6%97%A5%E8%AE%AD%E7%BB%83%E8%AE%A1%E5%88%92(day14)/" >15日训练计划(day14)</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">03/21</span><a class="archive-post-title" href= "/2020/03/21/15%E6%97%A5%E8%AE%AD%E7%BB%83%E8%AE%A1%E5%88%92(day15)/" >15日训练计划(day15)</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">03/21</span><a class="archive-post-title" href= "/2020/03/21/15%E6%97%A5%E8%AE%AD%E7%BB%83%E8%AE%A1%E5%88%92%EF%BC%88day%209%EF%BC%89/" >15日训练计划（day 9）</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">03/21</span><a class="archive-post-title" href= "/2020/03/21/15%E6%97%A5%E8%AE%AD%E7%BB%83%E8%AE%A1%E5%88%92%EF%BC%88day10%EF%BC%89/" >15日训练计划（day10）</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">03/21</span><a class="archive-post-title" href= "/2020/03/21/15%E6%97%A5%E8%AE%AD%E7%BB%83%E8%AE%A1%E5%88%92%EF%BC%88day1%EF%BC%89/" >15日训练计划（day1）</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">03/21</span><a class="archive-post-title" href= "/2020/03/21/15%E6%97%A5%E8%AE%AD%E7%BB%83%E8%AE%A1%E5%88%92%EF%BC%88day2%EF%BC%89/" >15日训练计划（day2）</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">03/21</span><a class="archive-post-title" href= "/2020/03/21/15%E6%97%A5%E8%AE%AD%E7%BB%83%E8%AE%A1%E5%88%92%EF%BC%88day3%EF%BC%89/" >15日训练计划（day3）</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">03/21</span><a class="archive-post-title" href= "/2020/03/21/15%E6%97%A5%E8%AE%AD%E7%BB%83%E8%AE%A1%E5%88%92%EF%BC%88day4%EF%BC%89/" >15日训练计划（day4）</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">03/21</span><a class="archive-post-title" href= "/2020/03/21/15%E6%97%A5%E8%AE%AD%E7%BB%83%E8%AE%A1%E5%88%92%EF%BC%88day5%EF%BC%89/" >15日训练计划（day5）</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">03/21</span><a class="archive-post-title" href= "/2020/03/21/15%E6%97%A5%E8%AE%AD%E7%BB%83%E8%AE%A1%E5%88%92%EF%BC%88day6%EF%BC%89-pikachu%20CSRF/" >15日训练计划（day6）-pikachu CSRF</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">03/21</span><a class="archive-post-title" href= "/2020/03/21/15%E6%97%A5%E8%AE%AD%E7%BB%83%E8%AE%A1%E5%88%92%EF%BC%88day7%EF%BC%89/" >15日训练计划（day7）</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">03/21</span><a class="archive-post-title" href= "/2020/03/21/15%E6%97%A5%E8%AE%AD%E7%BB%83%E8%AE%A1%E5%88%92%EF%BC%88day8-SSRF%EF%BC%89/" >15日训练计划（day8-SSRF）</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
     
     <div class="archive-year"> Invalid date </div>
     <ul class="year-list">
