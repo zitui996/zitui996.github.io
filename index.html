@@ -372,15 +372,15 @@ height:50vh;
                 <span>代码审计 | 变量覆盖</span>
         </a>
         <div class="abstract-content">
-            #代码审计 | 变量覆盖##什么是变量覆盖漏洞？用户自定义传入的变量可以将代码中原有变量的数值进行覆盖修改##变量覆盖的常见情况
-
+            代码审计 | 变量覆盖什么是变量覆盖漏洞？用户自定义传入的变量可以将代码中原有变量的数值进行覆盖修改
+变量覆盖的常见情况
 $$/foreach()函数使用不当
 extract()函数使用不当
 parse_str()函数使用不当
 import_request_variables()使用不当，开启了全局变量注册
 
-###$$使用不当导致变量覆盖漏洞$$，这种写法称为可变变量，一个可变变量获取了一个普通变量的值作为这个可变变量的变量名。
-1234567&lt;?php$a = "hello";echo "$a";              //输出hello$a="world";ec...
+$$使用不当导致变量覆盖漏洞$$，这种写法称为可变变量，一个可变变量获取了一个普通变量的值作为这个可变变量的变量名。
+1234567&lt;?php$a = "hello";echo "$a";              //输出hello$a="world";echo "$a";...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -403,9 +403,184 @@ import_request_variables()使用不当，开启了全局变量注册
                 <span>代码审计 | 序列化与反序列化漏洞</span>
         </a>
         <div class="abstract-content">
-            #代码审计 | 序列化与反序列化漏洞
-什么是序列化？什么是反序列化？通俗的讲，序列化就是将变量转化为可以传输的字符串，反序列化就是将字符串转回变量的过程。一般都围绕着serialize()和unserialize()两个函数展开。
-1234567891011121314&lt;?php  class delete  &#123;  	public $filename = 'error';  &#125;   $test = new delete();  $test -&gt; filename = 'flag.txt';   echo serialize($test);?&gt; 输出结...
+            代码审计 | 序列化与反序列化漏洞什么是序列化？什么是反序列化？通俗的讲，序列化就是将变量转化为可以传输的字符串，反序列化就是将字符串转回变量的过程。一般都围绕着serialize()和unserialize()两个函数展开。
+1234567891011121314&lt;?php  class delete  &#123;  	public $filename = 'error';  &#125;   $test = new delete();  $test -&gt; filename = 'flag.txt';   echo serialize($test);?&gt; 输出结果：...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/21</span>
+            </div>
+            <!-- tags  -->
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/article/326a896b.html" >
+            
+                <span>Pikachu-命令执行</span>
+        </a>
+        <div class="abstract-content">
+            Pikachu-命令执行exec “ping”既然是命令执行，我们就可以在ping的地址后面用&amp;拼接上我们的命令。
+1www.baidu.com &amp; ls
+我们在试着读取rce.php的内容成功读取出来
+exec“eval”eval()是将提交的字符串当成PHP代码来执行，但是我们提交的字符串必须合法。我们直接读取PHP信息
+1phpinfo();
+
+可以看到信息已经被读取出来了。
+
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/21</span>
+            </div>
+            <!-- tags  -->
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/article/cc9f6aef.html" >
+            
+                <span>Pikachu-文件包含</span>
+        </a>
+        <div class="abstract-content">
+            Pikachu-文件包含任意文件包含抓包发现传递了file参数,本地搭建的源码发现作者已经准备好了txt.txt文件.
+123&lt;?php      phpinfo();?&gt;
+直接修改file=txt.txt就行
+目录限制文件包含加上路径即可,我们包含passwd文件
+
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/21</span>
+            </div>
+            <!-- tags  -->
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/article/10024edb.html" >
+            
+                <span>Pikachu-文件泄露</span>
+        </a>
+        <div class="abstract-content">
+            Pikachu-文件泄露敏感文件泄漏尝试登陆但是登陆失败直接访问上一个文件目录
+直接爆出文件,访问abc.php我们没有登录也获取到了abd.php的内容.
+PHP反序列化存在接收序列化数据的api,我们输入普通的序列化数据没有用,考虑输入命令序列化之后的数据,看会不会被执行
+1O:1:"S":1:&#123;s:4:"test";s:33:"&lt;script&gt;alert(/pikachu/)&lt;/script&gt;";&#125;
+
+成功弹窗
+
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/21</span>
+            </div>
+            <!-- tags  -->
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/article/e8b040f8.html" >
+            
+                <span>Pikachu-读取</span>
+        </a>
+        <div class="abstract-content">
+            Pikachu-读取unsafe filedownload对输入的参数过滤不严谨就可能导致任意文件下载漏洞
+抓包传递了filename=…尝试夸目录读取passwd
+1filename&#x3D;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;etc&#x2F;passwd
+
+成功读取
+任意文件读取先提交一个filename然后抓包传递的filename参数进行修改夸目录读取
+
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/21</span>
+            </div>
+            <!-- tags  -->
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/article/dab800ae.html" >
+            
+                <span>Pikachu-越权</span>
+        </a>
+        <div class="abstract-content">
+            Pikachu-越权水平越权
+登陆进来发现URL的关键点
+1username&#x3D;xxx
+现在kobe账户是已登陆状态,lili是未登录,我们直接就该kobe为lili,成功读取到lili的信息,造成越权.
+垂直越权先分别用普通账户和admin账户登陆,看看有什么不同普通
+admin
+可以看到admin账户新增对用户的修改,先创建个用户,截获数据包
+然后更换为普通用户,重新发包.将cookie更换为pikachu的cookie,发包可以看到我们添加的用户已经显示出来了
+条件竞争到底还是没搞懂咋回事不过找到了作者的poc
+1234567891011121314151617181920...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/21</span>
+            </div>
+            <!-- tags  -->
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/article/a7b262c7.html" >
+            
+                <span>haozi XSS平台WriteUP</span>
+        </a>
+        <div class="abstract-content">
+            haozi XSS平台WriteUP0x00看源码，没有丝毫过滤
+123function render (input) &#123;  return '&lt;div&gt;' + input + '&lt;/div&gt;'&#125;
+所以直接用最简单的payload
+1&lt;script&gt;alert(1);&lt;/script&gt;
+
+0x01123function render (input) &#123;  return '&lt;textarea&gt;' + input + '&lt;/textarea&gt;'&#125;
+我们看到，相比上一关，闭合的标签改变...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -459,123 +634,6 @@ import_request_variables()使用不当，开启了全局变量注册
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/article/c0744eec.html" >
-            
-                <span>Pikachu-XSS</span>
-        </a>
-        <div class="abstract-content">
-            Pikachu-XSSXSS之盲打先提交我们的XSS留言进后台看一下看到我们的提交的XSS因为管理员查看留言板而被触发，我们就可以通过这样来获取管理员的cookie
-XSS之过滤测试过滤情况script被过滤，测试大小写混拼和双写成功出发XSSpayload
-1&lt;SCRIPT&gt;alert(/xss/)&lt;/sCRIpt&gt;
-
-XSS之htmlspecialchars从题目可以看出应该是htmlspecialchars($name)的形式这里我们来说一下htmlspecialchars这个函数
-1htmlspecialchars(string,flags,charact...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/21</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/article/8682ffc9.html" >
-            
-                <span>Pikachu-upload</span>
-        </a>
-        <div class="abstract-content">
-            Pikachu-upload任意文件上传没啥过滤,可随意上传
-JS限制文件上传有上传文件类型的过滤
-抓包,修改文件名后缀成功上传
-MIME限制文件上传MIME验证就是检测Content-type字段值的，直接更改上传数据包中的Content-type即可绕过
-扩展名限制文件上传不允许上传.php文件,考虑上传截断修改hex值,将2b -&gt; 00,进行截断
-成功上传
-内容限制文件上传还是不允许上传.php文件,尝试上传图片.成功上传并返回图片信息
-1Array ( [0] &#x3D;&gt; 955 [1] &#x3D;&gt; 955 [2] &#x3D;&gt; 2 [3] &...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/21</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/article/2adb6775.html" >
-            
-                <span>Pikachu-SSRF</span>
-        </a>
-        <div class="abstract-content">
-            Pikachu-SSRFcurl线上环境坏了，我们先通过file_get_content来把curl型的源码读取出来
-1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374&lt;?php/** * Created by runner.han * There is nothing new under the sun */$SELF_PAGE = substr($_SE...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/21</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/article/58c90f3a.html" >
-            
-                <span>Pikachu-SQL注入(二)</span>
-        </a>
-        <div class="abstract-content">
-            Pikachu-SQL注入(二)xx型注入先用1’进行测试，返回所以我们不难猜测，在和后台交互的SQL注入语句中，参数的闭合方式为(‘$id’)我们构造如下语句进行测试，发现返回正常
-11&#39;) or 1&#x3D;1#
-可以判断我们的猜想正确
-由之前的可知字段数为2
-11&#39;) order by 2#
-回显点
-11&#39;) union select 1,2#
-
-数据库名
-11&#39;) union select 1,database()#
-
-表名、列名
-11&#39;) union select 1,group_concat(table_name) from info...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/21</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
         <a class="abstract-title" href = "/article/7ac230ea.html" >
             
                 <span>Pikachu-CSRF</span>
@@ -584,61 +642,6 @@ MIME限制文件上传MIME验证就是检测Content-type字段值的，直接更
             Pikachu-CSRFget型CSRF先看提示，登陆上来看到可以修改个人信息，估计就是在这里存在CSRF。修改个人信息，然后抓取数包。
 我们对包内容进行修改，将地址改为真新镇看到地址已经被我们修改了所以我们只需要构造
 1222.186.175.249:10000&#x2F;pikachu&#x2F;vul&#x2F;csrf&#x2F;csrfget&#x2F;csrf_get_edit.php?sex&#x3D;test&amp;phonenum&#x3D;18888888888&amp;add&#x3D;zhenxinzhen&amp;email&#x3D;xiaobaicai%4...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/21</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/article/dfaf6dc5.html" >
-            
-                <span>Pikachu-jsonp</span>
-        </a>
-        <div class="abstract-content">
-            Pikachu-jsonpjsonp劫持进来就发现了我们的json信息参照昨天CSRF的经验，我们也可以构造恶意网页去获得受害者的json信息
-12345678910111213141516&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;meta charset="utf-8"&gt;&lt;title&gt;JSONP劫持测试&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;script type="text/javascript"&gt;function test(result)        &#...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/21</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/article/263a2f11.html" >
-            
-                <span>Pikachu-SQL注入(三)</span>
-        </a>
-        <div class="abstract-content">
-            Pikachu-SQL注入(三)http-header注入先抓包，测试是否存在注入点用给的账号密码进行登录我们用user-agent进行测试，将内容删去，用单引号进行测试。
-
-单引号测试报错，证明这里存在SQL注入漏洞后台应该是用insert语句进行的拼接，所以我们直接拿insert注入的payload进行测试
-1&#39; or updatexml(1,concat(0x7e,database()),0) or &#39;
-
-
-成功爆出数据库名，接下来就是表名
-payload：
-1&#39; or updatexml(1,concat(0x7e,(SELECT concat(table...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -1011,12 +1014,12 @@ payload：
     
         </ul>
     
-    <div class="archive-year"> 2020 </div>
+    <div class="archive-year"> Invalid date </div>
     <ul class="year-list">
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/21</span><a class="archive-post-title" href= "/article/263a2f11.html" >Pikachu-SQL注入(三)</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/article/263a2f11.html" >Pikachu-SQL注入(三)</a>
         </li>
     
     
@@ -1039,12 +1042,12 @@ payload：
     
         </ul>
     
-    <div class="archive-year"> 2020 </div>
+    <div class="archive-year"> Invalid date </div>
     <ul class="year-list">
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/21</span><a class="archive-post-title" href= "/article/4357daed.html" >Pikachu-SQL注入</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/article/4357daed.html" >Pikachu-SQL注入</a>
         </li>
     
     
@@ -1067,12 +1070,12 @@ payload：
     
         </ul>
     
-    <div class="archive-year"> 2020 </div>
+    <div class="archive-year"> Invalid date </div>
     <ul class="year-list">
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/21</span><a class="archive-post-title" href= "/article/c0744eec.html" >Pikachu-XSS</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/article/c0744eec.html" >Pikachu-XSS</a>
         </li>
     
     
@@ -1095,12 +1098,12 @@ payload：
     
         </ul>
     
-    <div class="archive-year"> 2020 </div>
+    <div class="archive-year"> Invalid date </div>
     <ul class="year-list">
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/21</span><a class="archive-post-title" href= "/article/8682ffc9.html" >Pikachu-upload</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/article/8682ffc9.html" >Pikachu-upload</a>
         </li>
     
     
@@ -1207,26 +1210,17 @@ payload：
     
         </ul>
     
-    <div class="archive-year"> Invalid date </div>
+    <div class="archive-year"> 2020 </div>
     <ul class="year-list">
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/article/197506f.html" >代码审计 | 变量覆盖</a>
+            <span class="archive-post-date">03/21</span><a class="archive-post-title" href= "/article/197506f.html" >代码审计 | 变量覆盖</a>
         </li>
     
     
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/article/d18324d7.html" >代码审计 | 序列化与反序列化漏洞</a>
+            <span class="archive-post-date">03/21</span><a class="archive-post-title" href= "/article/d18324d7.html" >代码审计 | 序列化与反序列化漏洞</a>
         </li>
     
     
