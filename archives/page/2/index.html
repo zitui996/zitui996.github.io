@@ -354,6 +354,71 @@
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/2020/03/21/Pikachu-SQL%E6%B3%A8%E5%85%A5/" >
+            
+                <span>Pikachu-SQL注入</span>
+        </a>
+        <div class="abstract-content">
+            Pikachu-SQL注入POST注入首先随便选，然后抓个包用order by 判断字段数
+我们得到字段数为2接着，我们爆出回显点
+payload:
+1id=1 and 1=2 union select 1,2 --+
+然后爆出数据库名和版本
+数据库名pikachu，版本为5.5.47payload:
+1id&#x3D;1 and 1&#x3D;2 union select database(),version() --+
+爆表名
+得到数据表httpinfomembermessageusersxssblind
+payload：
+1id&#x3D;1 and 1&#x3D;2 union ...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/21</span>
+            </div>
+            <!-- tags  -->
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/03/21/Pikachu-%E8%B6%8A%E6%9D%83/" >
+            
+                <span>Pikachu-越权</span>
+        </a>
+        <div class="abstract-content">
+            Pikachu-越权水平越权
+登陆进来发现URL的关键点
+1username&#x3D;xxx
+现在kobe账户是已登陆状态,lili是未登录,我们直接就该kobe为lili,成功读取到lili的信息,造成越权.
+垂直越权先分别用普通账户和admin账户登陆,看看有什么不同普通
+admin
+可以看到admin账户新增对用户的修改,先创建个用户,截获数据包
+然后更换为普通用户,重新发包.将cookie更换为pikachu的cookie,发包可以看到我们添加的用户已经显示出来了
+条件竞争到底还是没搞懂咋回事不过找到了作者的poc
+1234567891011121314151617181920...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/21</span>
+            </div>
+            <!-- tags  -->
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/2020/03/21/haozi%20XSS%E5%B9%B3%E5%8F%B0WriteUP/" >
             
                 <span>haozi XSS平台WriteUP</span>
@@ -735,9 +800,23 @@ PHP反序列化存在接收序列化数据的api,我们输入普通的序列化�
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 16
+        Total : 18
         </div>
         <!-- search  -->
         
@@ -964,6 +1043,34 @@ PHP反序列化存在接收序列化数据的api,我们输入普通的序列化�
     
         <li class="archive-post-item">
             <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/03/21/haozi%20XSS%E5%B9%B3%E5%8F%B0WriteUP/" >haozi XSS平台WriteUP</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/03/21/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%20%7C%20%E5%8F%98%E9%87%8F%E8%A6%86%E7%9B%96/" >代码审计 | 变量覆盖</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/03/21/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%20%7C%20%E5%BA%8F%E5%88%97%E5%8C%96%E4%B8%8E%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E/" >代码审计 | 序列化与反序列化漏洞</a>
         </li>
     
     </div>
