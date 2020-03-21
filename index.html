@@ -13,19 +13,19 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" >
-    <meta name="author" content="John Doe">
+    <meta name="author" content="子推">
     <meta name="renderer" content="webkit">
-    <meta name="copyright" content="John Doe">
+    <meta name="copyright" content="子推">
     
     <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
     
     <meta name="description" content="">
     <meta property="og:type" content="website">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:url" content="zitui.fun/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:locale" content="en_US">
-<meta property="article:author" content="John Doe">
+<meta property="article:author" content="子推">
 <meta name="twitter:card" content="summary">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
@@ -367,137 +367,25 @@ height:50vh;
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2020/03/21/Pikachu-xxe/" >
+        <a class="abstract-title" href = "/2020/03/21/%E6%97%A5%E8%AF%AD%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E4%B8%80)/" >
             
-                <span>Pikachu-xxe</span>
+                <span>日语基础学习(一)</span>
         </a>
         <div class="abstract-content">
-            Pikachu-xxe我们直接提交我们自定义的一个实体
-1234567&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;UTF-8&quot;?&gt;&lt;!DOCTYPE poem [ &lt;!ENTITY xxe SYSTEM &quot;file:&#x2F;&#x2F;&#x2F;etc&#x2F;passwd&quot;&gt; ]&gt;&lt;poem&gt;  &amp;xxe;&lt;&#x2F;poem&gt;
-有一点需要注意这里是经过URL编码的,因为burp会自动帮我们编码,如果使用其他代理软...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/21</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/03/21/Pikachu-SQL%E6%B3%A8%E5%85%A5(%E4%B8%89)/" >
-            
-                <span>Pikachu-SQL注入(三)</span>
-        </a>
-        <div class="abstract-content">
-            Pikachu-SQL注入(三)http-header注入先抓包，测试是否存在注入点用给的账号密码进行登录我们用user-agent进行测试，将内容删去，用单引号进行测试。
+            日语基础学习(一)了解日语日语的组成可以分为三部分 
 
-单引号测试报错，证明这里存在SQL注入漏洞后台应该是用insert语句进行的拼接，所以我们直接拿insert注入的payload进行测试
-1&#39; or updatexml(1,concat(0x7e,database()),0) or &#39;
+假名
+汉字
+罗马字
 
+例如
+1234567蜡笔小新クレヨン新ちゃんクレヨン(片假名)新(汉字)ちゃん(平假名)
 
-成功爆出数据库名，接下来就是表名
-payload：
-1&#39; or updatexml(1,concat(0x7e,(SELECT concat(table...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/21</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/03/21/Pikachu-SQL%E6%B3%A8%E5%85%A5(%E4%BA%8C)/" >
-            
-                <span>Pikachu-SQL注入(二)</span>
-        </a>
-        <div class="abstract-content">
-            Pikachu-SQL注入(二)xx型注入先用1’进行测试，返回所以我们不难猜测，在和后台交互的SQL注入语句中，参数的闭合方式为(‘$id’)我们构造如下语句进行测试，发现返回正常
-11&#39;) or 1&#x3D;1#
-可以判断我们的猜想正确
-由之前的可知字段数为2
-11&#39;) order by 2#
-回显点
-11&#39;) union select 1,2#
+汉字中国的汉字经过朝鲜半岛,传入日本,有一部分被日语保留下来,我们学习起来也比较方便,但是需要注意的是,部分汉字在日语中的意思发生了变化.
+123&#x2F;&#x2F;日语丈夫 --&gt; 结实爱人 --&gt; 情人、第三者(贬义色彩)
+假名假名,也就是借来的,古文中有假借的词,日语同义.平假名和片假名,都来源于汉字.只是变化之后保留的部分不同.
 
-数据库名
-11&#39;) union select 1,database()#
-
-表名、列名
-11&#39;) union select 1,group_concat(table_name) from info...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/21</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/03/21/Pikachu-SQL%E6%B3%A8%E5%85%A5/" >
-            
-                <span>Pikachu-SQL注入</span>
-        </a>
-        <div class="abstract-content">
-            Pikachu-SQL注入POST注入首先随便选，然后抓个包用order by 判断字段数
-我们得到字段数为2接着，我们爆出回显点
-payload:
-1id=1 and 1=2 union select 1,2 --+
-然后爆出数据库名和版本
-数据库名pikachu，版本为5.5.47payload:
-1id&#x3D;1 and 1&#x3D;2 union select database(),version() --+
-爆表名
-得到数据表httpinfomembermessageusersxssblind
-payload：
-1id&#x3D;1 and 1&#x3D;2 union ...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/21</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/03/21/Pikachu-jsonp/" >
-            
-                <span>Pikachu-jsonp</span>
-        </a>
-        <div class="abstract-content">
-            Pikachu-jsonpjsonp劫持进来就发现了我们的json信息参照昨天CSRF的经验，我们也可以构造恶意网页去获得受害者的json信息
-12345678910111213141516&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;meta charset="utf-8"&gt;&lt;title&gt;JSONP劫持测试&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;script type="text/javascript"&gt;function test(result)        &#...
+平假名平假名,将汉字进行平易化、简单化之后演变而来的假名.在书写中...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -597,6 +485,41 @@ MIME限制文件上传MIME验证就是检测Content-type字段值的，直接更
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/2020/03/21/Pikachu-SQL%E6%B3%A8%E5%85%A5(%E4%BA%8C)/" >
+            
+                <span>Pikachu-SQL注入(二)</span>
+        </a>
+        <div class="abstract-content">
+            Pikachu-SQL注入(二)xx型注入先用1’进行测试，返回所以我们不难猜测，在和后台交互的SQL注入语句中，参数的闭合方式为(‘$id’)我们构造如下语句进行测试，发现返回正常
+11&#39;) or 1&#x3D;1#
+可以判断我们的猜想正确
+由之前的可知字段数为2
+11&#39;) order by 2#
+回显点
+11&#39;) union select 1,2#
+
+数据库名
+11&#39;) union select 1,database()#
+
+表名、列名
+11&#39;) union select 1,group_concat(table_name) from info...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/21</span>
+            </div>
+            <!-- tags  -->
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/2020/03/21/Pikachu-CSRF/" >
             
                 <span>Pikachu-CSRF</span>
@@ -622,18 +545,109 @@ MIME限制文件上传MIME验证就是检测Content-type字段值的，直接更
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2020/03/21/haozi%20XSS%E5%B9%B3%E5%8F%B0WriteUP/" >
+        <a class="abstract-title" href = "/2020/03/21/Pikachu-jsonp/" >
             
-                <span>haozi XSS平台WriteUP</span>
+                <span>Pikachu-jsonp</span>
         </a>
         <div class="abstract-content">
-            haozi XSS平台WriteUP0x00看源码，没有丝毫过滤
-123function render (input) &#123;  return '&lt;div&gt;' + input + '&lt;/div&gt;'&#125;
-所以直接用最简单的payload
-1&lt;script&gt;alert(1);&lt;/script&gt;
+            Pikachu-jsonpjsonp劫持进来就发现了我们的json信息参照昨天CSRF的经验，我们也可以构造恶意网页去获得受害者的json信息
+12345678910111213141516&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;meta charset="utf-8"&gt;&lt;title&gt;JSONP劫持测试&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;script type="text/javascript"&gt;function test(result)        &#...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/21</span>
+            </div>
+            <!-- tags  -->
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/03/21/Pikachu-SQL%E6%B3%A8%E5%85%A5(%E4%B8%89)/" >
+            
+                <span>Pikachu-SQL注入(三)</span>
+        </a>
+        <div class="abstract-content">
+            Pikachu-SQL注入(三)http-header注入先抓包，测试是否存在注入点用给的账号密码进行登录我们用user-agent进行测试，将内容删去，用单引号进行测试。
 
-0x01123function render (input) &#123;  return '&lt;textarea&gt;' + input + '&lt;/textarea&gt;'&#125;
-我们看到，相比上一关，闭合的标签改变...
+单引号测试报错，证明这里存在SQL注入漏洞后台应该是用insert语句进行的拼接，所以我们直接拿insert注入的payload进行测试
+1&#39; or updatexml(1,concat(0x7e,database()),0) or &#39;
+
+
+成功爆出数据库名，接下来就是表名
+payload：
+1&#39; or updatexml(1,concat(0x7e,(SELECT concat(table...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/21</span>
+            </div>
+            <!-- tags  -->
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/03/21/Pikachu-SQL%E6%B3%A8%E5%85%A5/" >
+            
+                <span>Pikachu-SQL注入</span>
+        </a>
+        <div class="abstract-content">
+            Pikachu-SQL注入POST注入首先随便选，然后抓个包用order by 判断字段数
+我们得到字段数为2接着，我们爆出回显点
+payload:
+1id=1 and 1=2 union select 1,2 --+
+然后爆出数据库名和版本
+数据库名pikachu，版本为5.5.47payload:
+1id&#x3D;1 and 1&#x3D;2 union select database(),version() --+
+爆表名
+得到数据表httpinfomembermessageusersxssblind
+payload：
+1id&#x3D;1 and 1&#x3D;2 union ...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/21</span>
+            </div>
+            <!-- tags  -->
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/03/21/Pikachu-%E8%B6%8A%E6%9D%83/" >
+            
+                <span>Pikachu-越权</span>
+        </a>
+        <div class="abstract-content">
+            Pikachu-越权水平越权
+登陆进来发现URL的关键点
+1username&#x3D;xxx
+现在kobe账户是已登陆状态,lili是未登录,我们直接就该kobe为lili,成功读取到lili的信息,造成越权.
+垂直越权先分别用普通账户和admin账户登陆,看看有什么不同普通
+admin
+可以看到admin账户新增对用户的修改,先创建个用户,截获数据包
+然后更换为普通用户,重新发包.将cookie更换为pikachu的cookie,发包可以看到我们添加的用户已经显示出来了
+条件竞争到底还是没搞懂咋回事不过找到了作者的poc
+1234567891011121314151617181920...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -965,83 +979,9 @@ MIME限制文件上传MIME验证就是检测Content-type字段值的，直接更
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 18
+        Total : 16
         </div>
         <!-- search  -->
         
@@ -1057,35 +997,21 @@ MIME限制文件上传MIME验证就是检测Content-type字段值的，直接更
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/03/21/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%20%7C%20%E5%8F%98%E9%87%8F%E8%A6%86%E7%9B%96/" >代码审计 | 变量覆盖</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/03/21/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%20%7C%20%E5%BA%8F%E5%88%97%E5%8C%96%E4%B8%8E%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E/" >代码审计 | 序列化与反序列化漏洞</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/03/21/%E6%97%A5%E8%AF%AD%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0(%E4%B8%80)/" >日语基础学习(一)</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/03/21/Pikachu-CSRF/" >Pikachu-CSRF</a>
         </li>
     
     
@@ -1099,22 +1025,7 @@ MIME限制文件上传MIME验证就是检测Content-type字段值的，直接更
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/21</span><a class="archive-post-title" href= "/2020/03/21/Pikachu-upload/" >Pikachu-upload</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">03/21</span><a class="archive-post-title" href= "/2020/03/21/Pikachu-SSRF/" >Pikachu-SSRF</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">03/21</span><a class="archive-post-title" href= "/2020/03/21/Pikachu-SQL%E6%B3%A8%E5%85%A5(%E4%B8%89)/" >Pikachu-SQL注入(三)</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">03/21</span><a class="archive-post-title" href= "/2020/03/21/Pikachu-CSRF/" >Pikachu-CSRF</a>
         </li>
     
     
@@ -1137,12 +1048,12 @@ MIME限制文件上传MIME验证就是检测Content-type字段值的，直接更
     
         </ul>
     
-    <div class="archive-year"> Invalid date </div>
+    <div class="archive-year"> 2020 </div>
     <ul class="year-list">
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/03/21/Pikachu-SQL%E6%B3%A8%E5%85%A5/" >Pikachu-SQL注入</a>
+            <span class="archive-post-date">03/21</span><a class="archive-post-title" href= "/2020/03/21/Pikachu-SQL%E6%B3%A8%E5%85%A5/" >Pikachu-SQL注入</a>
         </li>
     
     
@@ -1156,7 +1067,21 @@ MIME限制文件上传MIME验证就是检测Content-type字段值的，直接更
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/03/21/Pikachu-XSS/" >Pikachu-XSS</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/03/21/Pikachu-SSRF/" >Pikachu-SSRF</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2020 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/21</span><a class="archive-post-title" href= "/2020/03/21/Pikachu-XSS/" >Pikachu-XSS</a>
         </li>
     
     
@@ -1171,6 +1096,20 @@ MIME限制文件上传MIME验证就是检测Content-type字段值的，直接更
     
         <li class="archive-post-item">
             <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/03/21/Pikachu-jsonp/" >Pikachu-jsonp</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2020 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/21</span><a class="archive-post-title" href= "/2020/03/21/Pikachu-upload/" >Pikachu-upload</a>
         </li>
     
     
@@ -1318,7 +1257,7 @@ jsonContent:
     <script>
     var siteMeta = {
         root: "/",
-        author: "John Doe"
+        author: "子推"
     }
 </script>
     <!-- CDN failover -->
