@@ -354,6 +354,33 @@
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/article/e4b595d3.html" >
+            
+                <span>XSS-labs</span>
+        </a>
+        <div class="abstract-content">
+            XSS-labs##less-1没任何过滤，直接弹窗。payload
+1?name&#x3D;test&lt;script&gt;alert(1);&lt;&#x2F;script&gt;
+##less-2源码
+12345&lt;form action=level2.php method=GET&gt;&lt;input name=keyword  value="'.$str.'"&gt;&lt;input type=submit name=submit value="搜索"/&gt;&lt;/form&gt;&lt;/center&gt;';
+看到存在标签value，所以我们构造闭合标...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/22</span>
+            </div>
+            <!-- tags  -->
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/article/197506f.html" >
             
                 <span>代码审计 | 变量覆盖</span>
@@ -615,31 +642,6 @@ admin
         </div>
     </article>
     
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/article/7ac230ea.html" >
-            
-                <span>Pikachu-CSRF</span>
-        </a>
-        <div class="abstract-content">
-            Pikachu-CSRFget型CSRF先看提示，登陆上来看到可以修改个人信息，估计就是在这里存在CSRF。修改个人信息，然后抓取数包。
-我们对包内容进行修改，将地址改为真新镇看到地址已经被我们修改了所以我们只需要构造
-1222.186.175.249:10000&#x2F;pikachu&#x2F;vul&#x2F;csrf&#x2F;csrfget&#x2F;csrf_get_edit.php?sex&#x3D;test&amp;phonenum&#x3D;18888888888&amp;add&#x3D;zhenxinzhen&amp;email&#x3D;xiaobaicai%4...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/21</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
     <!-- paginator  -->
     
     <nav class="page-nav">
@@ -872,9 +874,16 @@ admin
     
     
     
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 18
+        Total : 19
         </div>
         <!-- search  -->
         
@@ -1129,6 +1138,20 @@ admin
     
         <li class="archive-post-item">
             <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/article/1ad7163e.html" >日语基础学习(一)</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2020 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/22</span><a class="archive-post-title" href= "/article/e4b595d3.html" >XSS-labs</a>
         </li>
     
     </div>
