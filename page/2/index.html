@@ -367,6 +367,35 @@ height:50vh;
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/article/a7b262c7.html" >
+            
+                <span>haozi XSS平台WriteUP</span>
+        </a>
+        <div class="abstract-content">
+            haozi XSS平台WriteUP0x00看源码，没有丝毫过滤
+123function render (input) &#123;  return '&lt;div&gt;' + input + '&lt;/div&gt;'&#125;
+所以直接用最简单的payload
+1&lt;script&gt;alert(1);&lt;/script&gt;
+
+0x01123function render (input) &#123;  return '&lt;textarea&gt;' + input + '&lt;/textarea&gt;'&#125;
+我们看到，相比上一关，闭合的标签改变...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/21</span>
+            </div>
+            <!-- tags  -->
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/article/1ad7163e.html" >
             
                 <span>日语基础学习(一)</span>
@@ -627,35 +656,10 @@ MIME限制文件上传MIME验证就是检测Content-type字段值的，直接更
         </div>
     </article>
     
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/article/41f360fc.html" >
-            
-                <span>Pikachu-xxe</span>
-        </a>
-        <div class="abstract-content">
-            Pikachu-xxe我们直接提交我们自定义的一个实体
-1234567&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;UTF-8&quot;?&gt;&lt;!DOCTYPE poem [ &lt;!ENTITY xxe SYSTEM &quot;file:&#x2F;&#x2F;&#x2F;etc&#x2F;passwd&quot;&gt; ]&gt;&lt;poem&gt;  &amp;xxe;&lt;&#x2F;poem&gt;
-有一点需要注意这里是经过URL编码的,因为burp会自动帮我们编码,如果使用其他代理软...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/21</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
     <!-- paginator  -->
     
     <nav class="page-nav">
-        <a class="extend prev" rel="prev" href="/">&lt; PREV</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+        <a class="extend prev" rel="prev" href="/">&lt; PREV</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">NEXT &gt;</a>
     </nav>
     
 </main>
@@ -1012,9 +1016,16 @@ MIME限制文件上传MIME验证就是检测Content-type字段值的，直接更
     
     
     
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 20
+        Total : 21
         </div>
         <!-- search  -->
         
@@ -1291,12 +1302,26 @@ MIME限制文件上传MIME验证就是检测Content-type字段值的，直接更
     
         </ul>
     
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/article/b9232740.html" >随机游程测试</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/23</span><a class="archive-post-title" href= "/article/b9232740.html" >随机游程测试</a>
+            <span class="archive-post-date">03/23</span><a class="archive-post-title" href= "/article/a40c0fa6.html" >随机游程测试步骤</a>
         </li>
     
     </div>
