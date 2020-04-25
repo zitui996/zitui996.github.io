@@ -354,6 +354,39 @@
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/article/d6f547da.html" >
+            
+                <span>Power_mod快速幂取模运算</span>
+        </a>
+        <div class="abstract-content">
+            Power_mod快速幂取模运算简单的模幂运算12345#define ans=1  for(int i=1;i&lt;=b;i++)  &#123;      ans*=a;  &#125;
+根据我们上面说的，这种算法是非常的无法容忍的，我们在计算的过程中出现的两个缺点在这里都有体现。在这里我们如果要做优化的话，我肥就是每个过程中都加一次模运算，但是我们首先要记住模运算是非常的消耗内存资源的，在计算的次数非常的大的时候，我们是没有办法忍受这种时间耗费的。
+快速模幂运算这里需要借助一条离散数学推出的引理
+1(a\*b)%c=(a%c)*(b%c)%c
+在这里，我们对指数懂了一些手脚，核心...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/25</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "密码学">密码学</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/article/f63c4da7.html" >
             
                 <span>ひとり</span>
@@ -634,45 +667,6 @@ exec“eval”eval()是将提交的字符串当成PHP代码来执行，但是我
         <a class="post-tag" href="javascript:void(0);" data-tags = "CSRF">CSRF</a>
     
         <a class="post-tag" href="javascript:void(0);" data-tags = "Pikachu">Pikachu</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/article/263a2f11.html" >
-            
-                <span>Pikachu-SQL注入(三)</span>
-        </a>
-        <div class="abstract-content">
-            Pikachu-SQL注入(三)http-header注入先抓包，测试是否存在注入点用给的账号密码进行登录我们用user-agent进行测试，将内容删去，用单引号进行测试。
-
-单引号测试报错，证明这里存在SQL注入漏洞后台应该是用insert语句进行的拼接，所以我们直接拿insert注入的payload进行测试
-1&#39; or updatexml(1,concat(0x7e,database()),0) or &#39;
-
-
-成功爆出数据库名，接下来就是表名
-payload：
-1&#39; or updatexml(1,concat(0x7e,(SELECT concat(table...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/24</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Pikachu">Pikachu</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "SQL注入">SQL注入</a>
     
 </div>
             
@@ -1010,9 +1004,24 @@ payload：
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 26
+        Total : 27
         </div>
         <!-- search  -->
         
@@ -1025,6 +1034,11 @@ payload：
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/25</span><a class="archive-post-title" href= "/article/d6f547da.html" >Power_mod快速幂取模运算</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -1194,6 +1208,8 @@ payload：
         <span class="sidebar-tag-name" data-tags="日语"><span class="iconfont-archer">&#xe606;</span>日语</span>
     
         <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
+    
+        <span class="sidebar-tag-name" data-tags="密码学"><span class="iconfont-archer">&#xe606;</span>密码学</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>

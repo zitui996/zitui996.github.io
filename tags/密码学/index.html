@@ -22,7 +22,7 @@
     <meta name="description" content="">
     <meta property="og:type" content="website">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="zitui.fun/tags/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/index.html">
+<meta property="og:url" content="zitui.fun/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="子推">
@@ -354,32 +354,27 @@
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/article/326a896b.html" >
+        <a class="abstract-title" href = "/article/d6f547da.html" >
             
-                <span>Pikachu-命令执行</span>
+                <span>Power_mod快速幂取模运算</span>
         </a>
         <div class="abstract-content">
-            Pikachu-命令执行exec “ping”既然是命令执行，我们就可以在ping的地址后面用&amp;拼接上我们的命令。
-1www.baidu.com &amp; ls
-我们在试着读取rce.php的内容成功读取出来
-exec“eval”eval()是将提交的字符串当成PHP代码来执行，但是我们提交的字符串必须合法。我们直接读取PHP信息
-1phpinfo();
-
-可以看到信息已经被读取出来了。
-
+            Power_mod快速幂取模运算简单的模幂运算12345#define ans=1  for(int i=1;i&lt;=b;i++)  &#123;      ans*=a;  &#125;
+根据我们上面说的，这种算法是非常的无法容忍的，我们在计算的过程中出现的两个缺点在这里都有体现。在这里我们如果要做优化的话，我肥就是每个过程中都加一次模运算，但是我们首先要记住模运算是非常的消耗内存资源的，在计算的次数非常的大的时候，我们是没有办法忍受这种时间耗费的。
+快速模幂运算这里需要借助一条离散数学推出的引理
+1(a\*b)%c=(a%c)*(b%c)%c
+在这里，我们对指数懂了一些手脚，核心...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/24</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/25</span>
             </div>
             <!-- tags  -->
             
             <div class= abstract-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Pikachu">Pikachu</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "命令执行">命令执行</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "密码学">密码学</a>
     
 </div>
             
