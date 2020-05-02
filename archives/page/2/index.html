@@ -354,6 +354,36 @@
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/article/d18324d7.html" >
+            
+                <span>代码审计 | 序列化与反序列化漏洞</span>
+        </a>
+        <div class="abstract-content">
+            代码审计 | 序列化与反序列化漏洞什么是序列化？什么是反序列化？通俗的讲，序列化就是将变量转化为可以传输的字符串，反序列化就是将字符串转回变量的过程。一般都围绕着serialize()和unserialize()两个函数展开。
+1234567891011121314&lt;?php  class delete  &#123;  	public $filename = 'error';  &#125;   $test = new delete();  $test -&gt; filename = 'flag.txt';   echo serialize($test);?&gt; 输出结果：...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/24</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "代码审计">代码审计</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/article/7ac230ea.html" >
             
                 <span>Pikachu-CSRF</span>
@@ -669,41 +699,6 @@ MIME限制文件上传MIME验证就是检测Content-type字段值的，直接更
         <a class="post-tag" href="javascript:void(0);" data-tags = "Pikachu">Pikachu</a>
     
         <a class="post-tag" href="javascript:void(0);" data-tags = "xxe">xxe</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/article/cc9f6aef.html" >
-            
-                <span>Pikachu-文件包含</span>
-        </a>
-        <div class="abstract-content">
-            Pikachu-文件包含任意文件包含抓包发现传递了file参数,本地搭建的源码发现作者已经准备好了txt.txt文件.
-123&lt;?php      phpinfo();?&gt;
-直接修改file=txt.txt就行
-目录限制文件包含加上路径即可,我们包含passwd文件
-
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/24</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Pikachu">Pikachu</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "文件包含">文件包含</a>
     
 </div>
             
@@ -1071,9 +1066,24 @@ MIME限制文件上传MIME验证就是检测Content-type字段值的，直接更
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 28
+        Total : 29
         </div>
         <!-- search  -->
         
@@ -1086,6 +1096,11 @@ MIME限制文件上传MIME验证就是检测Content-type字段值的，直接更
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/02</span><a class="archive-post-title" href= "/article/62f91327.html" >数据结构实验一——顺序表的操作</a>
+        </li>
     
     
         <li class="archive-post-item">
