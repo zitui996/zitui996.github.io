@@ -367,6 +367,44 @@ height:50vh;
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/article/326a896b.html" >
+            
+                <span>Pikachu-命令执行</span>
+        </a>
+        <div class="abstract-content">
+            Pikachu-命令执行exec “ping”既然是命令执行，我们就可以在ping的地址后面用&amp;拼接上我们的命令。
+1www.baidu.com &amp; ls
+我们在试着读取rce.php的内容成功读取出来
+exec“eval”eval()是将提交的字符串当成PHP代码来执行，但是我们提交的字符串必须合法。我们直接读取PHP信息
+1phpinfo();
+
+可以看到信息已经被读取出来了。
+
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/24</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Pikachu">Pikachu</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "命令执行">命令执行</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/article/d18324d7.html" >
             
                 <span>代码审计 | 序列化与反序列化漏洞</span>
@@ -679,39 +717,6 @@ MIME限制文件上传MIME验证就是检测Content-type字段值的，直接更
         <a class="post-tag" href="javascript:void(0);" data-tags = "Pikachu">Pikachu</a>
     
         <a class="post-tag" href="javascript:void(0);" data-tags = "upload">upload</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/article/41f360fc.html" >
-            
-                <span>Pikachu-xxe</span>
-        </a>
-        <div class="abstract-content">
-            Pikachu-xxe我们直接提交我们自定义的一个实体
-1234567&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;UTF-8&quot;?&gt;&lt;!DOCTYPE poem [ &lt;!ENTITY xxe SYSTEM &quot;file:&#x2F;&#x2F;&#x2F;etc&#x2F;passwd&quot;&gt; ]&gt;&lt;poem&gt;  &amp;xxe;&lt;&#x2F;poem&gt;
-有一点需要注意这里是经过URL编码的,因为burp会自动帮我们编码,如果使用其他代理软...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/24</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Pikachu">Pikachu</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "xxe">xxe</a>
     
 </div>
             
@@ -1208,6 +1213,32 @@ MIME限制文件上传MIME验证就是检测Content-type字段值的，直接更
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
         Total : 29
@@ -1223,6 +1254,11 @@ MIME限制文件上传MIME验证就是检测Content-type字段值的，直接更
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/03</span><a class="archive-post-title" href= "/article/1ad7163e.html" >日语基础学习(一)</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -1342,11 +1378,6 @@ MIME限制文件上传MIME验证就是检测Content-type字段值的，直接更
     
         <li class="archive-post-item">
             <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/d18324d7.html" >代码审计 | 序列化与反序列化漏洞</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/1ad7163e.html" >日语基础学习(一)</a>
         </li>
     
     
