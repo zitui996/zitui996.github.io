@@ -11,6 +11,7 @@
 
 
 <head>
+    <link rel="stylesheet" href="https://api.bairuo.top/live2d/live2d/css/live2d-少女前线.css">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" >
     <meta name="author" content="子推">
@@ -1473,7 +1474,21 @@ jsonContent:
     
     </div>
     <!-- async load share.js -->
-     
+     <div id="landlord">
+<div class="message" style="opacity:0"></div>
+<canvas id="live2d" width="280" height="410" class="live2d"></canvas>
+<div class="hide-button">隐藏</div>
+</div>
+<script type="text/javascript" src="https://api.bairuo.top/live2d/jquery/jquery.min.js"></script>
+<script type="text/javascript">
+var message_Path = 'https://api.bairuo.top/live2d/live2d/'
+var home_Path = 'https://api.bairuo.top/live2d/'
+</script>
+<script type="text/javascript" src="https://api.bairuo.top/live2d/live2d/js/live2d.js"></script>
+<script type="text/javascript" src="https://api.bairuo.top/live2d/live2d/js/message.js"></script>
+<script type="text/javascript">
+loadlive2d("live2d", "https://api.bairuo.top/live2d/live2d/model/Snow_miko/model.json");
+</script>
     </body>
 </html>
 
