@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- title -->
+
+
+
+
+<!-- keywords -->
+
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" >
+    <meta name="author" content="子推">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="子推">
+    
+    <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
+    
+    <meta name="description" content="">
+    <meta name="description" content="C#大作业详解做完这个大作业之后，估计就要和C#这门语言说拜拜了，心中突然大喜。 作业详解一：服务协定1234567891011121314151617&#x2F;&#x2F;ICallBack.csusing System;using System.Collections.Generic;using System.Linq;using System.Text;using System.Servi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C#大作业的分析与实现">
+<meta property="og:url" content="zitui.fun/article/e1670c78.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="C#大作业详解做完这个大作业之后，估计就要和C#这门语言说拜拜了，心中突然大喜。 作业详解一：服务协定1234567891011121314151617&#x2F;&#x2F;ICallBack.csusing System;using System.Collections.Generic;using System.Linq;using System.Text;using System.Servi">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="/media/15920344164481/15920366871619.jpg">
+<meta property="og:image" content="/media/15920344164481/15920364767077.jpg">
+<meta property="og:image" content="/media/15920344164481/15920364920472.jpg">
+<meta property="og:image" content="/media/15920344164481/15920365086551.jpg">
+<meta property="og:image" content="/media/15920344164481/15920365407064.jpg">
+<meta property="og:image" content="/media/15920344164481/15920365777921.jpg">
+<meta property="og:image" content="/media/15920344164481/15920366713156.jpg">
+<meta property="article:published_time" content="2020-06-13T08:28:28.000Z">
+<meta property="article:modified_time" content="2020-06-13T08:28:28.000Z">
+<meta property="article:author" content="子推">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="/media/15920344164481/15920366871619.jpg">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    
+    <title>C#大作业的分析与实现 · Zitui&#39;s Blog</title>
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+</style>
+
+    <link rel="preload" href= "/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <link rel="stylesheet" href= "/css/mobile.css?v=20180824" media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+(function( w ){
+	"use strict";
+	// rel=preload support test
+	if( !w.loadCSS ){
+		w.loadCSS = function(){};
+	}
+	// define on the loadCSS obj
+	var rp = loadCSS.relpreload = {};
+	// rel=preload feature support test
+	// runs once and returns a function for compat purposes
+	rp.support = (function(){
+		var ret;
+		try {
+			ret = w.document.createElement( "link" ).relList.supports( "preload" );
+		} catch (e) {
+			ret = false;
+		}
+		return function(){
+			return ret;
+		};
+	})();
+
+	// if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+	// then change that media back to its intended value on load
+	rp.bindMediaToggle = function( link ){
+		// remember existing media attr for ultimate state, or default to 'all'
+		var finalMedia = link.media || "all";
+
+		function enableStylesheet(){
+			link.media = finalMedia;
+		}
+
+		// bind load handlers to enable media
+		if( link.addEventListener ){
+			link.addEventListener( "load", enableStylesheet );
+		} else if( link.attachEvent ){
+			link.attachEvent( "onload", enableStylesheet );
+		}
+
+		// Set rel and non-applicable media type to start an async request
+		// note: timeout allows this to happen async to let rendering continue in IE
+		setTimeout(function(){
+			link.rel = "stylesheet";
+			link.media = "only x";
+		});
+		// also enable media after 3 seconds,
+		// which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+		setTimeout( enableStylesheet, 3000 );
+	};
+
+	// loop through link elements in DOM
+	rp.poly = function(){
+		// double check this to prevent external calls from running
+		if( rp.support() ){
+			return;
+		}
+		var links = w.document.getElementsByTagName( "link" );
+		for( var i = 0; i < links.length; i++ ){
+			var link = links[ i ];
+			// qualify links to those with rel=preload and as=style attrs
+			if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+				// prevent rerunning on link
+				link.setAttribute( "data-loadcss", true );
+				// bind listeners to toggle media back
+				rp.bindMediaToggle( link );
+			}
+		}
+	};
+
+	// if unsupported, run the polyfill
+	if( !rp.support() ){
+		// run once at least
+		rp.poly();
+
+		// rerun poly on an interval until onload
+		var run = w.setInterval( rp.poly, 500 );
+		if( w.addEventListener ){
+			w.addEventListener( "load", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		} else if( w.attachEvent ){
+			w.attachEvent( "onload", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		}
+	}
+
+
+	// commonjs
+	if( typeof exports !== "undefined" ){
+		exports.loadCSS = loadCSS;
+	}
+	else {
+		w.loadCSS = loadCSS;
+	}
+}( typeof global !== "undefined" ? global : this ) );
+</script>
+
+    <link rel="icon" href= "/assets/favicon.ico" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js" as="script" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" as="script" />
+    <link rel="preload" href="/scripts/main.js" as="script" />
+    <link rel="preload" as="font" href="/font/Oswald-Regular.ttf" crossorigin>
+    <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin>
+    
+    <!-- fancybox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+    
+        <body class="post-body">
+    
+    
+<header class="header">
+
+    <div class="read-progress"></div>
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >Zitui&#39;s Blog.</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">C#大作业的分析与实现</a>
+            </div>
+    </div>
+    
+    <a class="home-link" href=/>Zitui's Blog.</a>
+</header>
+    <div class="wrapper">
+        <div class="site-intro" style="
+
+
+
+
+
+
+
+height:50vh;
+">
+    
+    <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
+            
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/image/sky.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+            C#大作业的分析与实现
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+            
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                
+                    <div class="post-intro-read">
+                        <span>Word count: <span class="post-count word-count">1.9k</span>Reading time: <span class="post-count reading-time">9 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2020/06/13</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+</div>
+        <script>
+ 
+  // get user agent
+  var browser = {
+    versions: function () {
+      var u = window.navigator.userAgent;
+      return {
+        userAgent: u,
+        trident: u.indexOf('Trident') > -1, //IE内核
+        presto: u.indexOf('Presto') > -1, //opera内核
+        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+        iPad: u.indexOf('iPad') > -1, //是否为iPad
+        webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+        weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+        uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
+      };
+    }()
+  }
+  console.log("userAgent:" + browser.versions.userAgent);
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded');
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
+      document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in');
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb(){
+    if (browser.versions.uc) {
+      console.log("UCBrowser");
+      fontLoaded();
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular']
+        },
+        loading: function () {  //所有字体开始加载
+          // console.log('loading');
+        },
+        active: function () {  //所有字体已渲染
+          fontLoaded();
+        },
+        inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout');
+          fontLoaded();
+        },
+        timeout: 5000 // Set the timeout to two seconds
+      });
+    }
+  }
+
+  function asyncErr(){
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (cb) { o.addEventListener('load', function (e) { cb(null, e); }, false); }
+    if (err) { o.addEventListener('error', function (e) { err(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  var asyncLoadWithFallBack = function(arr, success, reject) {
+      var currReject = function(){
+        reject()
+        arr.shift()
+        if(arr.length)
+          async(arr[0], success, currReject)
+        }
+
+      async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack([
+    "https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", 
+    "https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js",
+    "/lib/webfontloader.min.js"
+  ], asyncCb, asyncErr)
+</script>        
+        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+        <div class="container container-unloaded">
+            <main class="main post-page">
+    <article class="article-entry">
+        <h1 id="C-大作业详解"><a href="#C-大作业详解" class="headerlink" title="C#大作业详解"></a>C#大作业详解</h1><p>做完这个大作业之后，估计就要和C#这门语言说拜拜了，心中突然大喜。<br><img src="/media/15920344164481/15920366871619.jpg" alt=""></p>
+<h2 id="作业详解"><a href="#作业详解" class="headerlink" title="作业详解"></a>作业详解</h2><h3 id="一：服务协定"><a href="#一：服务协定" class="headerlink" title="一：服务协定"></a>一：服务协定</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;ICallBack.cs</span><br><span class="line">using System;</span><br><span class="line">using System.Collections.Generic;</span><br><span class="line">using System.Linq;</span><br><span class="line">using System.Text;</span><br><span class="line">using System.ServiceModel;</span><br><span class="line"></span><br><span class="line">namespace WcfChats</span><br><span class="line">&#123;</span><br><span class="line">    &#x2F;&#x2F;先建立回调接口</span><br><span class="line">    [ServiceContract]</span><br><span class="line">  public interface ICallBack</span><br><span class="line">    &#123;</span><br><span class="line">        [OperationContract(IsOneWay &#x3D; True)]</span><br><span class="line">        void SendMessage(string nick, string Onick, string content, DateTime sendTime);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="二：建立类"><a href="#二：建立类" class="headerlink" title="二：建立类"></a>二：建立类</h2><p>这里我们建立两个类，分别作为用户登陆的信息类，还有用户发送信息的类</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;SendInfo.cs</span><br><span class="line">using System;</span><br><span class="line">using System.Collections.Generic;</span><br><span class="line">using System.Linq;</span><br><span class="line">using System.Text;</span><br><span class="line"></span><br><span class="line">namespace WcfChats</span><br><span class="line">&#123;</span><br><span class="line">    &#x2F;&#x2F;创建用户发送信息的类</span><br><span class="line">   public class SendInfo</span><br><span class="line">    &#123;</span><br><span class="line">       &#x2F;&#x2F;&#x2F; &lt;summary&gt;</span><br><span class="line">       &#x2F;&#x2F;&#x2F; 发送者名字</span><br><span class="line">       &#x2F;&#x2F;&#x2F; &lt;&#x2F;summary&gt;</span><br><span class="line">       public string SendName &#123; get; set; &#125;</span><br><span class="line">       &#x2F;&#x2F;&#x2F; &lt;summary&gt;</span><br><span class="line">       &#x2F;&#x2F;&#x2F; 接受者名字</span><br><span class="line">       &#x2F;&#x2F;&#x2F; &lt;&#x2F;summary&gt;</span><br><span class="line">       public string RevName &#123; get; set; &#125;</span><br><span class="line">       &#x2F;&#x2F;&#x2F; &lt;summary&gt;</span><br><span class="line">       &#x2F;&#x2F;&#x2F;  发送内容</span><br><span class="line">       &#x2F;&#x2F;&#x2F; &lt;&#x2F;summary&gt;</span><br><span class="line">       public string SendContent &#123; get; set; &#125;</span><br><span class="line">       &#x2F;&#x2F;&#x2F; &lt;summary&gt;</span><br><span class="line">       &#x2F;&#x2F;&#x2F; 发送时间</span><br><span class="line">       &#x2F;&#x2F;&#x2F; &lt;&#x2F;summary&gt;</span><br><span class="line">       public DateTime SendTime &#123; get; set; &#125;</span><br><span class="line">       &#x2F;&#x2F;&#x2F; &lt;summary&gt;</span><br><span class="line">       &#x2F;&#x2F;&#x2F; 聊天模式（0表示群聊，1表示单聊）</span><br><span class="line">       &#x2F;&#x2F;&#x2F; &lt;&#x2F;summary&gt;</span><br><span class="line">       public int State &#123; get; set; &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;ResultMessage.cs</span><br><span class="line">using System;</span><br><span class="line">using System.Collections.Generic;</span><br><span class="line">using System.Linq;</span><br><span class="line">using System.Text;</span><br><span class="line">using System.Runtime.Serialization;</span><br><span class="line"></span><br><span class="line">namespace WcfChats</span><br><span class="line">&#123;</span><br><span class="line">    &#x2F;&#x2F;建立用户登录信息的类</span><br><span class="line">    [DataContract]</span><br><span class="line">   public class ResultMessage</span><br><span class="line">    &#123;</span><br><span class="line">        &#x2F;&#x2F;&#x2F; &lt;summary&gt;</span><br><span class="line">        &#x2F;&#x2F;&#x2F; 错误信息</span><br><span class="line">        &#x2F;&#x2F;&#x2F; &lt;&#x2F;summary&gt;</span><br><span class="line">        [DataMember]</span><br><span class="line">        public string ErrorMessage &#123; set; get; &#125;</span><br><span class="line">        &#x2F;&#x2F;&#x2F; &lt;summary&gt;</span><br><span class="line">        &#x2F;&#x2F;&#x2F; 是否登录成功</span><br><span class="line">        &#x2F;&#x2F;&#x2F; &lt;&#x2F;summary&gt;</span><br><span class="line">        [DataMember]</span><br><span class="line">        public bool IsTrue &#123; set; get; &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="三：建立服务协定"><a href="#三：建立服务协定" class="headerlink" title="三：建立服务协定"></a>三：建立服务协定</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;IChatService.cs</span><br><span class="line">using System;</span><br><span class="line">using System.Collections.Generic;</span><br><span class="line">using System.Linq;</span><br><span class="line">using System.Text;</span><br><span class="line">using System.ServiceModel;</span><br><span class="line">namespace WcfChats</span><br><span class="line">&#123;</span><br><span class="line">    [ServiceContract(CallbackContract &#x3D; typeof(ICallBack), SessionMode &#x3D; SessionMode.Required)]</span><br><span class="line">   public interface IChatService</span><br><span class="line">    &#123;</span><br><span class="line">        [OperationContract( IsInitiating &#x3D; True, IsTerminating &#x3D; false)]</span><br><span class="line">        ResultMessage Login(string UserName, string Pwd);</span><br><span class="line">        &#x2F;&#x2F;采用单向模式的服务调用</span><br><span class="line">        [OperationContract(IsOneWay &#x3D; True)]</span><br><span class="line">        void sendMessage(SendInfo sendInfo);</span><br><span class="line">        &#x2F;&#x2F;保证必须先调用ResultMessage Login来创建session</span><br><span class="line">        [OperationContract(IsInitiating &#x3D; false, IsTerminating &#x3D; True)]</span><br><span class="line">        ResultMessage End(string UserName);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Login方法和End方法分别是登录和登陆结果。这样，每接入一个客户端连接就会实例化一个服务类这样就可以确保每个客户端都与服务器维持一个会话。</p>
+<h2 id="四：实现服务类"><a href="#四：实现服务类" class="headerlink" title="四：实现服务类"></a>四：实现服务类</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br></pre></td><td class="code"><pre><span class="line">using System;</span><br><span class="line">using System.Collections.Generic;</span><br><span class="line">using System.Linq;</span><br><span class="line">using System.Text;</span><br><span class="line">using System.ServiceModel;</span><br><span class="line"></span><br><span class="line">namespace WcfChats</span><br><span class="line">&#123;</span><br><span class="line">    public class ChatService : IChatService</span><br><span class="line">    &#123;</span><br><span class="line">        private static Dictionary&lt;string, ICallBack&gt; Clients &#x3D; new Dictionary&lt;string, ICallBack&gt;();</span><br><span class="line">        private static Dictionary&lt;string, string&gt; Users &#x3D; null;</span><br><span class="line">        &#x2F;&#x2F;&#x2F; &lt;summary&gt;</span><br><span class="line">        &#x2F;&#x2F;&#x2F; 登录验证</span><br><span class="line">        &#x2F;&#x2F;&#x2F; &lt;&#x2F;summary&gt;</span><br><span class="line">        public ResultMessage Login(string UserName, string Pwd)</span><br><span class="line">        &#123;</span><br><span class="line">            ResultMessage rm &#x3D; new ResultMessage();</span><br><span class="line">            try</span><br><span class="line">            &#123;</span><br><span class="line">                if (Users &#x3D;&#x3D; null)</span><br><span class="line">                &#123;</span><br><span class="line">                    LoadUsers();</span><br><span class="line">                &#125;</span><br><span class="line">                if (Users.ContainsKey(UserName))</span><br><span class="line">                &#123;</span><br><span class="line">                    if (Users[UserName] &#x3D;&#x3D; Pwd)</span><br><span class="line">                    &#123;</span><br><span class="line">                        rm.IsTrue &#x3D; True;</span><br><span class="line">                        rm.ErrorMessage &#x3D; &quot;登录成功&quot;;</span><br><span class="line">                    &#125;</span><br><span class="line">                    else</span><br><span class="line">                    &#123;</span><br><span class="line">                        rm.IsTrue &#x3D; false;</span><br><span class="line">                        rm.ErrorMessage &#x3D; &quot;密码错误&quot;;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                else</span><br><span class="line">                &#123;</span><br><span class="line">                    rm.IsTrue &#x3D; false;</span><br><span class="line">                    rm.ErrorMessage &#x3D; &quot;不存在此用户&quot;;</span><br><span class="line">                &#125;</span><br><span class="line">                if (!Clients.ContainsKey(UserName))</span><br><span class="line">                &#123;</span><br><span class="line">                    ICallBack cb &#x3D; OperationContext.Current.GetCallbackChannel&lt;ICallBack&gt;();</span><br><span class="line">                    Clients.Add(UserName, cb);</span><br><span class="line">                    Console.WriteLine(&quot;&#123;0&#125;登录成功    &#123;1&#125;&quot;, UserName, DateTime.Now.ToString());</span><br><span class="line">                &#125;</span><br><span class="line">               </span><br><span class="line">            &#125;</span><br><span class="line">            catch(Exception ep) &#123;</span><br><span class="line">                rm.ErrorMessage &#x3D; ep.Message;</span><br><span class="line">                rm.IsTrue &#x3D; false;</span><br><span class="line">            &#125;</span><br><span class="line">            return rm;</span><br><span class="line">        &#125;</span><br><span class="line">        &#x2F;&#x2F;&#x2F; &lt;summary&gt;</span><br><span class="line">        &#x2F;&#x2F;&#x2F; 发送信息</span><br><span class="line">        &#x2F;&#x2F;&#x2F; &lt;&#x2F;summary&gt;</span><br><span class="line">        &#x2F;&#x2F;&#x2F; &lt;param name&#x3D;&quot;sendInfo&quot;&gt;信息详情&lt;&#x2F;param&gt;</span><br><span class="line">        public void sendMessage(SendInfo sendInfo)</span><br><span class="line">        &#123;</span><br><span class="line">            if (sendInfo.State &#x3D;&#x3D; 0)</span><br><span class="line">            &#123;</span><br><span class="line">                if (Clients !&#x3D; null)</span><br><span class="line">                &#123;</span><br><span class="line">                    &#x2F;&#x2F;Clients.Values.ToArray() 获取所有的用户信息，然后得到通道给每一个用户发送信息</span><br><span class="line">                    foreach (ICallBack cb in Clients.Values.ToArray())</span><br><span class="line">                    &#123;</span><br><span class="line">                        if (cb !&#x3D; null)</span><br><span class="line">                        &#123;</span><br><span class="line">                            cb.SendMessage(sendInfo.SendName, sendInfo.RevName, sendInfo.SendContent, sendInfo.SendTime);</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            else</span><br><span class="line">            &#123;</span><br><span class="line">                if (Clients.ContainsKey(sendInfo.RevName))</span><br><span class="line">                &#123;</span><br><span class="line">                    &#x2F;&#x2F;获取回调接口，然后通过接口来返回用户发送信息</span><br><span class="line">                    ICallBack cb1 &#x3D; Clients[sendInfo.RevName];</span><br><span class="line">                    cb1.SendMessage(sendInfo.SendName, sendInfo.RevName, sendInfo.SendContent, sendInfo.SendTime);</span><br><span class="line">                    ICallBack cb2 &#x3D; Clients[sendInfo.SendName];</span><br><span class="line">                    cb2.SendMessage(sendInfo.SendName, sendInfo.RevName, sendInfo.SendContent, sendInfo.SendTime);</span><br><span class="line">                &#125;</span><br><span class="line">                else</span><br><span class="line">                &#123;</span><br><span class="line">                    ICallBack cb &#x3D; Clients[sendInfo.SendName];</span><br><span class="line">                    cb.SendMessage(sendInfo.SendName, sendInfo.RevName, &quot;对方不在线&quot;, sendInfo.SendTime);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;     </span><br><span class="line">        &#125;</span><br><span class="line">        public ResultMessage End(string nick)</span><br><span class="line">        &#123;</span><br><span class="line">            if (Clients.ContainsKey(nick))</span><br><span class="line">            &#123;</span><br><span class="line">                Clients.Remove(nick);</span><br><span class="line">            &#125;</span><br><span class="line">            return new ResultMessage()</span><br><span class="line">            &#123;</span><br><span class="line">                ErrorMessage &#x3D; &quot;&quot;,</span><br><span class="line">                IsTrue &#x3D; True</span><br><span class="line">            &#125;;</span><br><span class="line">        &#125;</span><br><span class="line">        &#x2F;&#x2F;&#x2F; &lt;summary&gt;</span><br><span class="line">        &#x2F;&#x2F;&#x2F; 内置的用户信息</span><br><span class="line">        &#x2F;&#x2F;&#x2F; &lt;&#x2F;summary&gt;</span><br><span class="line">        public void LoadUsers()</span><br><span class="line">        &#123;</span><br><span class="line">            Users &#x3D; new Dictionary&lt;string, string&gt;();</span><br><span class="line">            Users.Add(&quot;张三&quot;, &quot;zhangsan&quot;);</span><br><span class="line">            Users.Add(&quot;李四&quot;, &quot;lisi&quot;);</span><br><span class="line">            Users.Add(&quot;王五&quot;, &quot;wangwu&quot;);</span><br><span class="line">            Users.Add(&quot;小明&quot;, &quot;xiaoming&quot;);</span><br><span class="line">            Users.Add(&quot;赵四&quot;, &quot;zhaosi&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在类中，声明了一个静态的Dictionary&lt;string, ICallBack&gt;，这是一个字典，静态变量是基于类的，与实例无关，我们可以把它当作全局数据，在字典集合中保存所有接入客户端的回调，由于每个会话的ID是唯一的，因此，用SessionID作为Key是比较好操作的。</p>
+<p>在Login类被调用时，我们把传入的客户端的会话ID和回调存进字典中<br>在SendMessage方法调用时，从字典中取出所有回调，并把接收的参数传给回调方法，在回调调用后，这些消息就会转发到所有连接的客户端。</p>
+<p>这样就能实现群聊了。</p>
+<h2 id="五：建立服务器"><a href="#五：建立服务器" class="headerlink" title="五：建立服务器"></a>五：建立服务器</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;program.cs</span><br><span class="line">using System;</span><br><span class="line">using System.Collections.Generic;</span><br><span class="line">using System.Linq;</span><br><span class="line">using System.Text;</span><br><span class="line">using System.ServiceModel;</span><br><span class="line">using System.ServiceModel.Description;</span><br><span class="line"></span><br><span class="line">namespace WcfChats</span><br><span class="line">&#123;</span><br><span class="line">    class Program</span><br><span class="line">    &#123;</span><br><span class="line">        static void Main(string[] args)</span><br><span class="line">        &#123;</span><br><span class="line">            &#x2F;&#x2F;建立服务器</span><br><span class="line">            Uri bassAdress &#x3D; new Uri(&quot;http:&#x2F;&#x2F;localhost:8090&quot;);</span><br><span class="line">            using (ServiceHost host &#x3D; new ServiceHost(typeof(ChatService), bassAdress))</span><br><span class="line">            &#123;</span><br><span class="line">                NetTcpBinding binding &#x3D; new NetTcpBinding();</span><br><span class="line">                &#x2F;&#x2F;不需要安全验证</span><br><span class="line">                binding.Security.Mode &#x3D; SecurityMode.None;</span><br><span class="line">                &#x2F;&#x2F;添加终结点</span><br><span class="line">                host.AddServiceEndpoint(typeof(IChatService), binding, &quot;net.tcp:&#x2F;&#x2F;127.0.0.1:1025&quot;);</span><br><span class="line">                &#x2F;&#x2F;元数据</span><br><span class="line">                ServiceMetadataBehavior behavior &#x3D; new ServiceMetadataBehavior()</span><br><span class="line">                &#123;</span><br><span class="line">                    HttpGetEnabled &#x3D; True</span><br><span class="line">                &#125;;</span><br><span class="line">                host.Description.Behaviors.Add(behavior);</span><br><span class="line">                host.Opened +&#x3D; delegate &#123;</span><br><span class="line">                    Console.Write(&quot;服务启动     &#123;0&#125;\n&quot;, DateTime.Now.ToString());</span><br><span class="line">                &#125;;</span><br><span class="line">                try</span><br><span class="line">                &#123;</span><br><span class="line">                    host.Open();</span><br><span class="line">                &#125;</span><br><span class="line">                catch (Exception ep)</span><br><span class="line">                &#123;</span><br><span class="line">                    Console.WriteLine(ep.Message);</span><br><span class="line">                    host.Close();</span><br><span class="line">                &#125;</span><br><span class="line">                Console.ReadKey();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="六：客户端的实现"><a href="#六：客户端的实现" class="headerlink" title="六：客户端的实现"></a>六：客户端的实现</h2><p>先定义事件参数类，确定我们需要传递的参数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;CallbackRecEventArgs.cs</span><br><span class="line">using System;</span><br><span class="line">using System.Collections.Generic;</span><br><span class="line">using System.Linq;</span><br><span class="line">using System.Text;</span><br><span class="line"></span><br><span class="line">namespace ConClient</span><br><span class="line">&#123;</span><br><span class="line">    &#x2F;&#x2F;定义我们的事件参数类</span><br><span class="line">   public class CallbackRecEventArgs:EventArgs</span><br><span class="line">    &#123;</span><br><span class="line">        public CallbackRecEventArgs(string NameOne,string NameTwo, string content, DateTime Time)</span><br><span class="line">        &#123;</span><br><span class="line">            &#x2F;&#x2F;定义传递的参数</span><br><span class="line">            SendName &#x3D; NameOne;</span><br><span class="line">            SendTime &#x3D; Time;</span><br><span class="line">            Content &#x3D; content;</span><br><span class="line">            RevName &#x3D; NameTwo;</span><br><span class="line">        &#125;</span><br><span class="line">       &#x2F;&#x2F;&#x2F; &lt;summary&gt;</span><br><span class="line">       &#x2F;&#x2F;&#x2F; 发送者姓名</span><br><span class="line">       &#x2F;&#x2F;&#x2F; &lt;&#x2F;summary&gt;</span><br><span class="line">        public string SendName &#123; get; set; &#125;</span><br><span class="line">       &#x2F;&#x2F;&#x2F; &lt;summary&gt;</span><br><span class="line">       &#x2F;&#x2F;&#x2F; 接受者姓名</span><br><span class="line">       &#x2F;&#x2F;&#x2F; &lt;&#x2F;summary&gt;</span><br><span class="line">        public string RevName &#123; get; set; &#125;</span><br><span class="line">       &#x2F;&#x2F;&#x2F; &lt;summary&gt;</span><br><span class="line">       &#x2F;&#x2F;&#x2F; 发送内容</span><br><span class="line">       &#x2F;&#x2F;&#x2F; &lt;&#x2F;summary&gt;</span><br><span class="line">        public string Content &#123; get; set; &#125;</span><br><span class="line">       &#x2F;&#x2F;&#x2F; &lt;summary&gt;</span><br><span class="line">       &#x2F;&#x2F;&#x2F; 发送时间</span><br><span class="line">       &#x2F;&#x2F;&#x2F; &lt;&#x2F;summary&gt;</span><br><span class="line">        public DateTime SendTime &#123; get; set; &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;CallBackHandler.cs</span><br><span class="line">using System;</span><br><span class="line">using System.Collections.Generic;</span><br><span class="line">using System.Linq;</span><br><span class="line">using System.Text;</span><br><span class="line">using ConClient;</span><br><span class="line"></span><br><span class="line">namespace WinClient</span><br><span class="line">&#123;</span><br><span class="line">    &#x2F;&#x2F;服务回调的实现 客户端实现回调接口</span><br><span class="line">   public class CallBackHandler:ChatClient.IChatServiceCallback</span><br><span class="line">    &#123;</span><br><span class="line">        public event EventHandler&lt;CallbackRecEventArgs&gt; ChatEvent;</span><br><span class="line">        public void SendMessage(string NickOne, string NickTwo, string Message, DateTime sendTime)</span><br><span class="line">        &#123;</span><br><span class="line">            CallbackRecEventArgs crg &#x3D; new CallbackRecEventArgs(NickOne, NickTwo, Message, sendTime);</span><br><span class="line">            ChatEvent(this, crg);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>基本到这里就完成了，客户端界面的设计有手就行<br>下面看看程序的运行截图</p>
+<h3 id="运行界面"><a href="#运行界面" class="headerlink" title="运行界面"></a>运行界面</h3><p><img src="/media/15920344164481/15920364767077.jpg" alt=""></p>
+<h3 id="登录测试"><a href="#登录测试" class="headerlink" title="登录测试"></a>登录测试</h3><p><img src="/media/15920344164481/15920364920472.jpg" alt=""></p>
+<h3 id="选择聊天模式"><a href="#选择聊天模式" class="headerlink" title="选择聊天模式"></a>选择聊天模式</h3><p><img src="/media/15920344164481/15920365086551.jpg" alt=""></p>
+<h3 id="两人单聊"><a href="#两人单聊" class="headerlink" title="两人单聊"></a>两人单聊</h3><p><img src="/media/15920344164481/15920365407064.jpg" alt=""></p>
+<h3 id="多人情况下群聊和单独聊天"><a href="#多人情况下群聊和单独聊天" class="headerlink" title="多人情况下群聊和单独聊天"></a>多人情况下群聊和单独聊天</h3><p><img src="/media/15920344164481/15920365777921.jpg" alt=""></p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>基本就是这些，但还有很明显的缺陷比如你不知道别人给你发的是单独还是群聊，后续会在改进。希望赶紧交了作业从此告别C#，开始Javaweb的新生活.jpg<br><img src="/media/15920344164481/15920366713156.jpg" alt=""></p>
+
+    </article>
+    <!-- license  -->
+    
+        <div class="license-wrapper">
+            <p>Author：<a href="zitui.fun">子推</a>
+            <p>原文链接：<a href="zitui.fun/article/e1670c78.html">zitui.fun/article/e1670c78.html</a>
+            <p>发表日期：<a href="zitui.fun/article/e1670c78.html">June 13th 2020, 4:28:28 pm</a>
+            <p>更新日期：<a href="zitui.fun/article/e1670c78.html">June 13th 2020, 4:28:28 pm</a>
+            <p>版权声明：本文采用<a rel="license noopener" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
+        </div>
+    
+    <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/article/a2098e58.html" title= "数据结构实验五-图的操作">
+                    <div class="prevTitle">数据结构实验五-图的操作</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
+    
+    
+    <!-- gitalk评论 -->
+
+    <!-- utteranc评论 -->
+
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+
+    <!-- 评论 -->
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="mailto:1257235873@qq.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/zitui996" class="iconfont-archer github" target="_blank" title=github></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                <a href="https://www.zhihu.com/people/phoenix-nirvana-97-43" class="iconfont-archer zhihu" target="_blank" title=zhihu></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                <a href="https://space.bilibili.com/283684259" class="iconfont-archer bilibili" target="_blank" title=bilibili></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+        <a target="_blank" href="http://www.miitbeian.gov.cn/" style="color:#f0d784"  rel="nofollow">豫ICP-备20007820号</a>
+        <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=豫ICP-备20007820号" style="color:#f0d784;text-decoration:none;padding-left:30px;background:url(https://s1.ax1x.com/2018/09/29/ilmwIH.png) no-repeat left center" rel="nofollow"></a>
+    </div>
+    <!-- 不蒜子  -->
+    
+    <div class="busuanzi-container">
+    
+     
+    <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+    
+    </div>
+    
+</footer>
+
+    </div>
+    <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#C-大作业详解"><span class="toc-number">1.</span> <span class="toc-text">C#大作业详解</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#作业详解"><span class="toc-number">1.1.</span> <span class="toc-text">作业详解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一：服务协定"><span class="toc-number">1.1.1.</span> <span class="toc-text">一：服务协定</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二：建立类"><span class="toc-number">1.2.</span> <span class="toc-text">二：建立类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三：建立服务协定"><span class="toc-number">1.3.</span> <span class="toc-text">三：建立服务协定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四：实现服务类"><span class="toc-number">1.4.</span> <span class="toc-text">四：实现服务类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五：建立服务器"><span class="toc-number">1.5.</span> <span class="toc-text">五：建立服务器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#六：客户端的实现"><span class="toc-number">1.6.</span> <span class="toc-text">六：客户端的实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#运行界面"><span class="toc-number">1.6.1.</span> <span class="toc-text">运行界面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#登录测试"><span class="toc-number">1.6.2.</span> <span class="toc-text">登录测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#选择聊天模式"><span class="toc-number">1.6.3.</span> <span class="toc-text">选择聊天模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#两人单聊"><span class="toc-number">1.6.4.</span> <span class="toc-text">两人单聊</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多人情况下群聊和单独聊天"><span class="toc-number">1.6.5.</span> <span class="toc-text">多人情况下群聊和单独聊天</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结语"><span class="toc-number">1.7.</span> <span class="toc-text">结语</span></a></li></ol></li></ol>
+    </div>
+    
+    <div class="back-top iconfont-archer">&#xe639;</div>
+    <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-panel-archives">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 32
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2020 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/13</span><a class="archive-post-title" href= "/article/e1670c78.html" >C#大作业的分析与实现</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/14</span><a class="archive-post-title" href= "/article/a2098e58.html" >数据结构实验五-图的操作</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/08</span><a class="archive-post-title" href= "/article/fb6888d8.html" >数据结构实验四-二叉树的操作</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/03</span><a class="archive-post-title" href= "/article/1ad7163e.html" >日语基础学习(一)</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/02</span><a class="archive-post-title" href= "/article/62f91327.html" >数据结构实验一——顺序表的操作</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/25</span><a class="archive-post-title" href= "/article/d6f547da.html" >Power_mod快速幂取模运算</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/25</span><a class="archive-post-title" href= "/article/3e1cac73.html" >Elgamal算法</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/21</span><a class="archive-post-title" href= "/article/f63c4da7.html" >ひとり</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/19</span><a class="archive-post-title" href= "/article/ad9921a9.html" >虹の彼方に</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/16</span><a class="archive-post-title" href= "/article/a192b7d9.html" >Unlasting</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/02</span><a class="archive-post-title" href= "/article/7a98010c.html" >数据结构-栈的基本操作</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/7ac230ea.html" >Pikachu-CSRF</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/263a2f11.html" >Pikachu-SQL注入(三)</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/58c90f3a.html" >Pikachu-SQL注入(二)</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/4357daed.html" >Pikachu-SQL注入</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/2adb6775.html" >Pikachu-SSRF</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/c0744eec.html" >Pikachu-XSS</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/dfaf6dc5.html" >Pikachu-jsonp</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/8682ffc9.html" >Pikachu-upload</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/41f360fc.html" >Pikachu-xxe</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/326a896b.html" >Pikachu-命令执行</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/cc9f6aef.html" >Pikachu-文件包含</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/10024edb.html" >Pikachu-文件泄露</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/e8b040f8.html" >Pikachu-读取</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/dab800ae.html" >Pikachu-越权</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/a7b262c7.html" >haozi XSS平台WriteUP</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/197506f.html" >代码审计 | 变量覆盖</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/d18324d7.html" >代码审计 | 序列化与反序列化漏洞</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/e4b595d3.html" >XSS-labs</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/23</span><a class="archive-post-title" href= "/article/b9232740.html" >随机游程测试</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/23</span><a class="archive-post-title" href= "/article/99fa412f.html" >BJDCTF2nd-Web Writeup</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/23</span><a class="archive-post-title" href= "/article/a40c0fa6.html" >随机游程测试步骤</a>
+        </li>
+    
+    </div>
+  </div>
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name" data-tags="代码审计"><span class="iconfont-archer">&#xe606;</span>代码审计</span>
+    
+        <span class="sidebar-tag-name" data-tags="WriteUP"><span class="iconfont-archer">&#xe606;</span>WriteUP</span>
+    
+        <span class="sidebar-tag-name" data-tags="CSRF"><span class="iconfont-archer">&#xe606;</span>CSRF</span>
+    
+        <span class="sidebar-tag-name" data-tags="Pikachu"><span class="iconfont-archer">&#xe606;</span>Pikachu</span>
+    
+        <span class="sidebar-tag-name" data-tags="SQL注入"><span class="iconfont-archer">&#xe606;</span>SQL注入</span>
+    
+        <span class="sidebar-tag-name" data-tags="SSRF"><span class="iconfont-archer">&#xe606;</span>SSRF</span>
+    
+        <span class="sidebar-tag-name" data-tags="XSS"><span class="iconfont-archer">&#xe606;</span>XSS</span>
+    
+        <span class="sidebar-tag-name" data-tags="JSONP"><span class="iconfont-archer">&#xe606;</span>JSONP</span>
+    
+        <span class="sidebar-tag-name" data-tags="upload"><span class="iconfont-archer">&#xe606;</span>upload</span>
+    
+        <span class="sidebar-tag-name" data-tags="xxe"><span class="iconfont-archer">&#xe606;</span>xxe</span>
+    
+        <span class="sidebar-tag-name" data-tags="命令执行"><span class="iconfont-archer">&#xe606;</span>命令执行</span>
+    
+        <span class="sidebar-tag-name" data-tags="文件包含"><span class="iconfont-archer">&#xe606;</span>文件包含</span>
+    
+        <span class="sidebar-tag-name" data-tags="文件泄露"><span class="iconfont-archer">&#xe606;</span>文件泄露</span>
+    
+        <span class="sidebar-tag-name" data-tags="文件读取"><span class="iconfont-archer">&#xe606;</span>文件读取</span>
+    
+        <span class="sidebar-tag-name" data-tags="越权"><span class="iconfont-archer">&#xe606;</span>越权</span>
+    
+        <span class="sidebar-tag-name" data-tags="日语"><span class="iconfont-archer">&#xe606;</span>日语</span>
+    
+        <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
+    
+        <span class="sidebar-tag-name" data-tags="密码学"><span class="iconfont-archer">&#xe606;</span>密码学</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br/>
+    1、请确保node版本大于6.2<br/>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br/>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br/>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #787878; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: true
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var siteMeta = {
+        root: "/",
+        author: "子推"
+    }
+</script>
+    <!-- CDN failover -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ === 'undefined')
+        {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js">\x3C/script>')
+        }
+    </script>
+    <script src="/scripts/main.js"></script>
+    <!-- algolia -->
+    
+    <!-- busuanzi  -->
+    
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    <!-- CNZZ  -->
+    
+    </div>
+    <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
+     
+    </body>
+</html>
+
+

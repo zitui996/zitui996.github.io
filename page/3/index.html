@@ -367,6 +367,42 @@ height:50vh;
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/article/c0744eec.html" >
+            
+                <span>Pikachu-XSS</span>
+        </a>
+        <div class="abstract-content">
+            Pikachu-XSSXSS之盲打先提交我们的XSS留言进后台看一下看到我们的提交的XSS因为管理员查看留言板而被触发，我们就可以通过这样来获取管理员的cookie
+XSS之过滤测试过滤情况script被过滤，测试大小写混拼和双写成功出发XSSpayload
+1&lt;SCRIPT&gt;alert(/xss/)&lt;/sCRIpt&gt;
+
+XSS之htmlspecialchars从题目可以看出应该是htmlspecialchars($name)的形式这里我们来说一下htmlspecialchars这个函数
+1htmlspecialchars(string,flags,charact...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/24</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Pikachu">Pikachu</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "XSS">XSS</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/article/dfaf6dc5.html" >
             
                 <span>Pikachu-jsonp</span>
@@ -664,40 +700,6 @@ less-2源码
                 <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/23</span>
             </div>
             <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/article/99fa412f.html" >
-            
-                <span>BJDCTF2nd-Web Writeup</span>
-        </a>
-        <div class="abstract-content">
-            BJDCTF2nd-Web WriteupFake Google
-注释里提示是SSTI,稍微查一下就能理解.直接上payload
-1?name&#x3D;&#123;&#123;[].__class__.__base__.__subclasses__()[64].__init__.__globals__[&#39;__import__&#39;](&#39;os&#39;).popen(&#39;cat &#x2F;flag&#39;).read()&#125;&#125;
-
-Old-HackThinkPHP的洞稍微测试一下,连版本号都出来了
-5.0.23是有命令执行的漏洞套网上的pay...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/23</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "WriteUP">WriteUP</a>
-    
-</div>
             
         </div>
     </article>
@@ -1248,9 +1250,24 @@ Old-HackThinkPHP的洞稍微测试一下,连版本号都出来了
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 31
+        Total : 32
         </div>
         <!-- search  -->
         
@@ -1263,6 +1280,11 @@ Old-HackThinkPHP的洞稍微测试一下,连版本号都出来了
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/13</span><a class="archive-post-title" href= "/article/e1670c78.html" >C#大作业的分析与实现</a>
+        </li>
     
     
         <li class="archive-post-item">
