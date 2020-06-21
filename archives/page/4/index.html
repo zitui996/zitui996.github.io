@@ -354,6 +354,39 @@
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/article/e4b595d3.html" >
+            
+                <span>XSS-labs</span>
+        </a>
+        <div class="abstract-content">
+            XSS-labsless-1没任何过滤，直接弹窗。payload
+1?name&#x3D;test&lt;script&gt;alert(1);&lt;&#x2F;script&gt;
+less-2源码
+12345&lt;form action=level2.php method=GET&gt;&lt;input name=keyword  value="'.$str.'"&gt;&lt;input type=submit name=submit value="搜索"/&gt;&lt;/form&gt;&lt;/center&gt;';
+看到存在标签value，所以我们构造闭合标签pay...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/24</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "XSS">XSS</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/article/b9232740.html" >
             
                 <span>随机游程测试</span>
@@ -894,9 +927,26 @@ Old-HackThinkPHP的洞稍微测试一下,连版本号都出来了
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 33
+        Total : 34
         </div>
         <!-- search  -->
         
@@ -909,6 +959,11 @@ Old-HackThinkPHP的洞稍微测试一下,连版本号都出来了
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/21</span><a class="archive-post-title" href= "/article/c6db02ca.html" >JB哥の密码学期末复习2.0</a>
+        </li>
     
     
         <li class="archive-post-item">
