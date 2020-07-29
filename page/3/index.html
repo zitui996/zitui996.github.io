@@ -367,6 +367,45 @@ height:50vh;
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/article/263a2f11.html" >
+            
+                <span>Pikachu-SQL注入(三)</span>
+        </a>
+        <div class="abstract-content">
+            Pikachu-SQL注入(三)http-header注入先抓包，测试是否存在注入点用给的账号密码进行登录我们用user-agent进行测试，将内容删去，用单引号进行测试。
+
+单引号测试报错，证明这里存在SQL注入漏洞后台应该是用insert语句进行的拼接，所以我们直接拿insert注入的payload进行测试
+1&#39; or updatexml(1,concat(0x7e,database()),0) or &#39;
+
+
+成功爆出数据库名，接下来就是表名
+payload：
+1&#39; or updatexml(1,concat(0x7e,(SELECT concat(table...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/24</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Pikachu">Pikachu</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "SQL注入">SQL注入</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/article/58c90f3a.html" >
             
                 <span>Pikachu-SQL注入(二)</span>
@@ -680,46 +719,6 @@ PHP反序列化存在接收序列化数据的api,我们输入普通的序列化�
             <div class= abstract-tags >
     
         <a class="post-tag" href="javascript:void(0);" data-tags = "文件泄露">文件泄露</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/article/dab800ae.html" >
-            
-                <span>Pikachu-越权</span>
-        </a>
-        <div class="abstract-content">
-            Pikachu-越权水平越权
-登陆进来发现URL的关键点
-1username&#x3D;xxx
-现在kobe账户是已登陆状态,lili是未登录,我们直接就该kobe为lili,成功读取到lili的信息,造成越权.
-垂直越权先分别用普通账户和admin账户登陆,看看有什么不同普通
-admin
-可以看到admin账户新增对用户的修改,先创建个用户,截获数据包
-然后更换为普通用户,重新发包.将cookie更换为pikachu的cookie,发包可以看到我们添加的用户已经显示出来了
-条件竞争到底还是没搞懂咋回事不过找到了作者的poc
-1234567891011121314151617181920...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/24</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Pikachu">Pikachu</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "越权">越权</a>
     
 </div>
             
@@ -1338,9 +1337,26 @@ admin
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 35
+        Total : 36
         </div>
         <!-- search  -->
         
@@ -1353,6 +1369,11 @@ admin
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/30</span><a class="archive-post-title" href= "/article/ddc46606.html" >报考必看｜带你探究信安</a>
+        </li>
     
     
         <li class="archive-post-item">
