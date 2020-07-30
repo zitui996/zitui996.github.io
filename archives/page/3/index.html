@@ -354,39 +354,6 @@
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/article/7ac230ea.html" >
-            
-                <span>Pikachu-CSRF</span>
-        </a>
-        <div class="abstract-content">
-            Pikachu-CSRFget型CSRF先看提示，登陆上来看到可以修改个人信息，估计就是在这里存在CSRF。修改个人信息，然后抓取数包。
-我们对包内容进行修改，将地址改为真新镇看到地址已经被我们修改了所以我们只需要构造
-1222.186.175.249:10000&#x2F;pikachu&#x2F;vul&#x2F;csrf&#x2F;csrfget&#x2F;csrf_get_edit.php?sex&#x3D;test&amp;phonenum&#x3D;18888888888&amp;add&#x3D;zhenxinzhen&amp;email&#x3D;xiaobaicai%4...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/24</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "CSRF">CSRF</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Pikachu">Pikachu</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
         <a class="abstract-title" href = "/article/263a2f11.html" >
             
                 <span>Pikachu-SQL注入(三)</span>
@@ -704,6 +671,41 @@ MIME限制文件上传MIME验证就是检测Content-type字段值的，直接更
         <a class="post-tag" href="javascript:void(0);" data-tags = "Pikachu">Pikachu</a>
     
         <a class="post-tag" href="javascript:void(0);" data-tags = "文件包含">文件包含</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/article/10024edb.html" >
+            
+                <span>Pikachu-文件泄露</span>
+        </a>
+        <div class="abstract-content">
+            Pikachu-文件泄露敏感文件泄漏尝试登陆但是登陆失败直接访问上一个文件目录
+直接爆出文件,访问abc.php我们没有登录也获取到了abd.php的内容.
+PHP反序列化存在接收序列化数据的api,我们输入普通的序列化数据没有用,考虑输入命令序列化之后的数据,看会不会被执行
+1O:1:"S":1:&#123;s:4:"test";s:33:"&lt;script&gt;alert(/pikachu/)&lt;/script&gt;";&#125;
+
+成功弹窗
+
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/24</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "文件泄露">文件泄露</a>
     
 </div>
             
@@ -1225,24 +1227,9 @@ MIME限制文件上传MIME验证就是检测Content-type字段值的，直接更
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 37
+        Total : 36
         </div>
         <!-- search  -->
         
@@ -1434,20 +1421,6 @@ MIME限制文件上传MIME验证就是检测Content-type字段值的，直接更
     
         <li class="archive-post-item">
             <span class="archive-post-date">03/23</span><a class="archive-post-title" href= "/article/a40c0fa6.html" >随机游程测试步骤</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/article/ddc46606.html" >报考必看｜带你探究信安</a>
         </li>
     
     </div>
