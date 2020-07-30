@@ -20,22 +20,32 @@
     <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
     
     <meta name="description" content="">
-    <meta name="description" content="Power_mod快速幂取模运算简单的模幂运算12345#define ans&#x3D;1  for(int i&#x3D;1;i&lt;&#x3D;b;i++)  &amp;#123;      ans*&#x3D;a;  &amp;#125; 根据我们上面说的，这种算法是非常的无法容忍的，我们在计算的过程中出现的两个缺点在这里都有体现。在这里我们如果要做优化的话，我肥就是每个过程中都加一次模运算，但是我们首先要记住模运算是非常的消耗内存资源的，在">
+    <meta name="description" content="前言本篇博客仅用于解答计算机类中信息安全专业的相关问题，持续更新，欢迎提问和补充。想了解更多有关信息安全学习的资料可以关注我后续的博客。 什么是信息安全专业？信息安全专业是管理网络安全的一个专业。根据教育部《普通高等学校本科专业目录（2012年）》，专业代码为080904K，属于计算机类（0809）。具有全面的信息安全专业知识，使得学生有较宽的知识面和进一步发展的基本能力。本专业是计算机、通信、数">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Power_mod快速幂取模运算">
-<meta property="og:url" content="zitui.fun/article/d6f547da.html">
+<meta property="og:title" content="虽迟但到｜带你探究信息安全">
+<meta property="og:url" content="zitui.fun/article/7455f0e2.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Power_mod快速幂取模运算简单的模幂运算12345#define ans&#x3D;1  for(int i&#x3D;1;i&lt;&#x3D;b;i++)  &amp;#123;      ans*&#x3D;a;  &amp;#125; 根据我们上面说的，这种算法是非常的无法容忍的，我们在计算的过程中出现的两个缺点在这里都有体现。在这里我们如果要做优化的话，我肥就是每个过程中都加一次模运算，但是我们首先要记住模运算是非常的消耗内存资源的，在">
+<meta property="og:description" content="前言本篇博客仅用于解答计算机类中信息安全专业的相关问题，持续更新，欢迎提问和补充。想了解更多有关信息安全学习的资料可以关注我后续的博客。 什么是信息安全专业？信息安全专业是管理网络安全的一个专业。根据教育部《普通高等学校本科专业目录（2012年）》，专业代码为080904K，属于计算机类（0809）。具有全面的信息安全专业知识，使得学生有较宽的知识面和进一步发展的基本能力。本专业是计算机、通信、数">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-04-25T03:20:25.000Z">
-<meta property="article:modified_time" content="2020-04-25T03:20:25.000Z">
+<meta property="og:image" content="/media/15960355253056/15960381335948.jpg">
+<meta property="og:image" content="/media/15960355253056/15960381981437.jpg">
+<meta property="og:image" content="/media/15960355253056/15960376093686.jpg">
+<meta property="og:image" content="/media/15960355253056/15960366125900.jpg">
+<meta property="og:image" content="/media/15960355253056/15960366270304.jpg">
+<meta property="og:image" content="/media/15960355253056/15960367302115.jpg">
+<meta property="og:image" content="/media/15960355253056/15960367410745.jpg">
+<meta property="og:image" content="/media/15960355253056/15960686408377.jpg">
+<meta property="og:image" content="/media/15960355253056/15960401085541.jpg">
+<meta property="og:image" content="/media/15960355253056/15960392517145.jpg">
+<meta property="article:published_time" content="2020-07-30T00:30:30.000Z">
+<meta property="article:modified_time" content="2020-07-30T00:30:30.000Z">
 <meta property="article:author" content="子推">
-<meta property="article:tag" content="密码学">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="/media/15960355253056/15960381335948.jpg">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     
-    <title>Power_mod快速幂取模运算 · Zitui&#39;s Blog</title>
+    <title>虽迟但到｜带你探究信息安全 · Zitui&#39;s Blog</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -230,7 +240,7 @@
                 <a href="/" >Zitui&#39;s Blog.</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">Power_mod快速幂取模运算</a>
+                <a href="#" class="post-name">虽迟但到｜带你探究信息安全</a>
             </div>
     </div>
     
@@ -260,7 +270,7 @@ height:50vh;
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            Power_mod快速幂取模运算
+            虽迟但到｜带你探究信息安全
             <!-- 404 -->
             
         </h1>
@@ -277,20 +287,14 @@ height:50vh;
             <div class="post-intros">
                 <!-- 文章页标签  -->
                 
-                    <div class= post-intro-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "密码学">密码学</a>
-    
-</div>
-                
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">926</span>Reading time: <span class="post-count reading-time">3 min</span></span>
+                        <span>Word count: <span class="post-count word-count">4.5k</span>Reading time: <span class="post-count reading-time">15 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
                     <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                    <span class="post-intro-time">2020/04/25</span>
+                    <span class="post-intro-time">2020/07/30</span>
                     
                     <span id="busuanzi_container_page_pv" class="busuanzi-pv">
                         <span class="iconfont-archer">&#xe602;</span>
@@ -414,24 +418,235 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <h1 id="Power-mod快速幂取模运算"><a href="#Power-mod快速幂取模运算" class="headerlink" title="Power_mod快速幂取模运算"></a>Power_mod快速幂取模运算</h1><h2 id="简单的模幂运算"><a href="#简单的模幂运算" class="headerlink" title="简单的模幂运算"></a>简单的模幂运算</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ans=1  </span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=b;i++)  </span><br><span class="line">&#123;  </span><br><span class="line">    ans*=a;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>根据我们上面说的，这种算法是非常的无法容忍的，我们在计算的过程中出现的两个缺点在这里都有体现。在这里我们如果要做优化的话，我肥就是每个过程中都加一次模运算，但是我们首先要记住模运算是非常的消耗内存资源的，在计算的次数非常的大的时候，我们是没有办法忍受这种时间耗费的。</p>
-<h2 id="快速模幂运算"><a href="#快速模幂运算" class="headerlink" title="快速模幂运算"></a>快速模幂运算</h2><p>这里需要借助一条离散数学推出的引理</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(a*b)%c=(a%c)*(b%c)%c</span><br></pre></td></tr></table></figure>
-<p>在这里，我们对指数懂了一些手脚，核心思想在于将大数的幂运算拆解成了相对应的乘法运算，利用上面的式子，始终将我们的运算的数据量控制在c的范围以下，这样我们可以客服朴素的算法的缺点二，我们将计算的数据量压缩了很大一部分，当指数非常大的时候这个优化是更加显著的，我们用Python来做一个实验来看看就知道我们优化的效率有多高了。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> time <span class="keyword">import</span> *  </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">orginal_algorithm</span><span class="params">(a,b,c)</span>:</span>  <span class="comment">#a^b%c  </span></span><br><span class="line">    ans=<span class="number">1</span>  </span><br><span class="line">    a=a%c  <span class="comment">#预处理，防止出现a比c大的情况  </span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(b):  </span><br><span class="line">        ans=(ans*a)%c  </span><br><span class="line">    <span class="keyword">return</span> ans  </span><br><span class="line">  </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">quick_algorithm</span><span class="params">(a,b,c)</span>:</span>  </span><br><span class="line">    a=a%c  </span><br><span class="line">    ans=<span class="number">1</span>  </span><br><span class="line">    <span class="comment">#这里我们不需要考虑b&lt;0，因为分数没有取模运算  </span></span><br><span class="line">    <span class="keyword">while</span> b!=<span class="number">0</span>:  </span><br><span class="line">        <span class="keyword">if</span> b&amp;<span class="number">1</span>:  </span><br><span class="line">            ans=(ans*a)%c  </span><br><span class="line">        b&gt;&gt;=<span class="number">1</span>  </span><br><span class="line">        a=(a*a)%c  </span><br><span class="line">    <span class="keyword">return</span> ans  </span><br><span class="line">  </span><br><span class="line">time=clock()  </span><br><span class="line">a=eval(input(<span class="string">"底数:"</span>))  </span><br><span class="line">b=eval(input(<span class="string">"指数:"</span>))  </span><br><span class="line">c=eval(input(<span class="string">"模:"</span>))  </span><br><span class="line">print(<span class="string">"朴素算法结果%d"</span>%(orginal_algorithm(a,b,c)))  </span><br><span class="line">print(<span class="string">"朴素算法耗时:%f"</span>%(clock()-time))  </span><br><span class="line">time=clock()  </span><br><span class="line">print(<span class="string">"快速幂算法结果%d"</span>%(quick_algorithm(a,b,c)))  </span><br><span class="line">print(<span class="string">"快速幂算法耗时:%f"</span>%(clock()-time))</span><br></pre></td></tr></table></figure>
-<p>我们现在知道了快速幂取模算法的强大了，我们现在来看核心原理：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">对于任何一个整数的模幂运算  </span><br><span class="line">a^b%c  </span><br><span class="line">对于b我们可以拆成二进制的形式  </span><br><span class="line">b=b0+b1*2+b2*2^2+...+bn*2^n  </span><br><span class="line">这里我们的b0对应的是b二进制的第一位  </span><br><span class="line">那么我们的a^b运算就可以拆解成  </span><br><span class="line">a^b0*a^b1*2*...*a^(bn*2^n)  </span><br><span class="line">对于b来说，二进制位不是0就是1，那么对于bx为0的项我们的计算结果是1就不用考虑了，我们真正想要的其实是b的非0二进制位  </span><br><span class="line">  </span><br><span class="line">那么假设除去了b的0的二进制位之后我们得到的式子是  </span><br><span class="line">a^(bx*2^x)*...*a(bn*2^n)  </span><br><span class="line">这里我们再应用我们一开始提到的公式，那么我们的a^b%c运算就可以转化为  </span><br><span class="line">(a^(bx*2^x)%c）*...*(a^(bn*2^n)%c)  </span><br><span class="line">这样的话，我们就很接近快速幂的本质了  </span><br><span class="line"> </span><br><span class="line">(a^(bx*2^x)%c)*...*(a^(bn*2^n)%c)  </span><br><span class="line">我们会发现令  </span><br><span class="line">A1=(a^(bx*2^x)%c)  </span><br><span class="line">...  </span><br><span class="line">An=(a^(bn*2^n)%c)  </span><br><span class="line">这样的话，An始终是A(n-1)的平方倍，依次递推</span><br></pre></td></tr></table></figure>
-<p>接下来我们将算法实现</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">power_mod</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b,<span class="keyword">int</span> c)</span>  </span></span><br><span class="line"><span class="function"></span>&#123;  </span><br><span class="line">    <span class="keyword">int</span> ans=<span class="number">1</span>;   <span class="comment">//记录结果  </span></span><br><span class="line">    a=a%c;   <span class="comment">//预处理，使得a处于c的数据范围之下  </span></span><br><span class="line">    <span class="keyword">while</span>(b!=<span class="number">0</span>)  </span><br><span class="line">    &#123;  </span><br><span class="line">        <span class="keyword">if</span>(b&amp;<span class="number">1</span>) ans=(ans*a)%c;   <span class="comment">//如果b的二进制位不是0，那么我们的结果是要参与运算的  </span></span><br><span class="line">        b&gt;&gt;=<span class="number">1</span>;    <span class="comment">//二进制的移位操作，相当于每次除以2，用二进制看，就是我们不断的遍历b的二进制位  </span></span><br><span class="line">        a=(a*a)%c;   <span class="comment">//不断的加倍  </span></span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">return</span> ans;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本篇博客仅用于解答计算机类中信息安全专业的相关问题，持续更新，欢迎提问和补充。<br>想了解更多有关信息安全学习的资料可以关注我后续的博客。</p>
+<h2 id="什么是信息安全专业？"><a href="#什么是信息安全专业？" class="headerlink" title="什么是信息安全专业？"></a>什么是信息安全专业？</h2><p>信息安全专业是管理网络安全的一个专业。根据教育部《普通高等学校本科专业目录（2012年）》，专业代码为080904K，属于计算机类（0809）。具有全面的信息安全专业知识，使得学生有较宽的知识面和进一步发展的基本能力。本专业是计算机、通信、数学、物理、法律、管理等学科的交叉学科，主要研究确保信息安全的科学与技术。培养能够从事计算机、通信、电子商务、电子政务、电子金融等领域的信息安全高级专门人才。</p>
+<p>通俗点说，大家印象中的黑客，也是属于网络安全（信息安全的范畴）</p>
+<p>信息安全职业方向<br><img src="/media/15960355253056/15960381335948.jpg" alt=""><br>信息安全职业规划<br><img src="/media/15960355253056/15960381981437.jpg" alt=""></p>
+<h2 id="信息安全专业学什么，怎么学？"><a href="#信息安全专业学什么，怎么学？" class="headerlink" title="信息安全专业学什么，怎么学？"></a>信息安全专业学什么，怎么学？</h2><p>课程：先讲讲课程，因每年培养方案略有不同，此处以2018级信息安全专业培养方案为例（大一的课程都差不多，就不介绍了，仅介绍大二专业分流以后的专业课课程）</p>
+<p>大二第一学期：</p>
+<table>
+<thead>
+<tr>
+<th>课程名</th>
+<th>课程类别</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>逻辑设计实验</td>
+<td>必修课</td>
+</tr>
+<tr>
+<td>逻辑设计</td>
+<td>必修课</td>
+</tr>
+<tr>
+<td>离散数学</td>
+<td>专业选修</td>
+</tr>
+<tr>
+<td>汇编语言与接口技术</td>
+<td>专业选修</td>
+</tr>
+<tr>
+<td>Java程序设计</td>
+<td>专业选修</td>
+</tr>
+<tr>
+<td>C#程序设计</td>
+<td>专业选修</td>
+</tr>
+<tr>
+<td>信息安全数学基础</td>
+<td>必修课</td>
+</tr>
+<tr>
+<td>python编程基础</td>
+<td>专业选修</td>
+</tr>
+<tr>
+<td>网络与信息安全法规</td>
+<td>专业选修</td>
+</tr>
+</tbody></table>
+<p>大二第二学期：</p>
+<table>
+<thead>
+<tr>
+<th>课程名</th>
+<th>课程类别</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>数据结构</td>
+<td>必修课</td>
+</tr>
+<tr>
+<td>计算机组成原理</td>
+<td>必修课</td>
+</tr>
+<tr>
+<td>网络应用编程</td>
+<td>选修课</td>
+</tr>
+<tr>
+<td>移动应用技术开发</td>
+<td>选修课</td>
+</tr>
+<tr>
+<td>密码学</td>
+<td>必修课</td>
+</tr>
+</tbody></table>
+<p>大三第一学期：</p>
+<table>
+<thead>
+<tr>
+<th>课程名</th>
+<th>课程类别</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>计算机网络</td>
+<td>必修课</td>
+</tr>
+<tr>
+<td>Javaweb程序设计</td>
+<td>专业选修</td>
+</tr>
+<tr>
+<td>ASP .NET程序设计</td>
+<td>专业选修</td>
+</tr>
+<tr>
+<td>创新项目实践</td>
+<td>专业选修</td>
+</tr>
+<tr>
+<td>通信原理</td>
+<td>专业选修</td>
+</tr>
+<tr>
+<td>网络安全</td>
+<td>必修课</td>
+</tr>
+<tr>
+<td>操作系统及安全</td>
+<td>必修课</td>
+</tr>
+<tr>
+<td>数据库及安全</td>
+<td>必修课</td>
+</tr>
+<tr>
+<td>电子商务与电子政务安全</td>
+<td>专业选修</td>
+</tr>
+<tr>
+<td>云计算及安全</td>
+<td>专业选修</td>
+</tr>
+<tr>
+<td>软件工程</td>
+<td>专业选修</td>
+</tr>
+</tbody></table>
+<p>大三第二学期：</p>
+<table>
+<thead>
+<tr>
+<th>课程名</th>
+<th>课程类别</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>创新项目实践</td>
+<td>专业选修</td>
+</tr>
+<tr>
+<td>信息系统安全</td>
+<td>专业选修</td>
+</tr>
+<tr>
+<td>信息内容安全</td>
+<td>专业选修</td>
+</tr>
+<tr>
+<td>无线网络与物联网技术</td>
+<td>专业选修</td>
+</tr>
+<tr>
+<td>软件安全</td>
+<td>专业选修</td>
+</tr>
+</tbody></table>
+<p>当然当然，要想成为大佬，仅仅学习这些是远远不够的。</p>
+<h2 id="知识体系"><a href="#知识体系" class="headerlink" title="知识体系"></a>知识体系</h2><h3 id="CTF竞赛"><a href="#CTF竞赛" class="headerlink" title="CTF竞赛"></a>CTF竞赛</h3><p>CTF本来是西方的一种传统运动。在比赛上两军会互相争夺旗帜，当有一方的旗帜已被敌军夺取，就代表了那一方的战败。</p>
+<p>信息安全领域的 CTF 是说，通过各种攻击手法，获取服务器后寻找指定的字段，或者文件中某一个固定格式的字段，这个字段叫做 flag，其形式一般为 flag{xxxxxxxx}，提交到裁判机就可以得分。<br><img src="/media/15960355253056/15960376093686.jpg" alt=""></p>
+<p><strong>为啥要CTF</strong><br>入门渗透，那肯定得各种练手对不对？但因为由于 「网络安全法」的颁布，随意扫描他人网站，或非授权渗透测试都有一定的风险。<br><img src="/media/15960355253056/15960366125900.jpg" alt=""><br>说实话，这小伙只是在扫描，攻击都被防火墙拦下了，啥都没弄到，结果还是一样被判刑，可谓是偷鸡不成蚀把米了……<br><img src="/media/15960355253056/15960366270304.jpg" alt=""></p>
+<p>所以记住千万不要乱扫国内的网站，尤其是教育、政府类网站。但初入门的同学学习渗透测试没有一个对应的环境也是不行的，而常见的靶机对于小白来说太过复杂，很容易不知如何下手。</p>
+<p>这个时候 CTF 就非常适合了，CTF 一般是一个题目有一个或几个知识点相互糅合，相对来说目标性比较强。如果想要体会到安全的成就感和趣味性，促进自己边练边学，CTF 就是一个很好的选择。</p>
+<p>CTF竞赛模式具体分为以下三类：<br>（官方术语）</p>
+<p><strong>解题模式（Jeopardy）</strong><br>在解题模式CTF赛制中，参赛队伍可以通过互联网或者现场网络参与，这种模式的CTF竞赛与ACM编程竞赛、信息学奥赛比较类似，以解决网络安全技术挑战题目的分值和时间来排名，通常用于在线选拔赛。题目主要包含逆向、漏洞挖掘与利用、Web渗透、密码、取证、隐写、安全编程等类别。</p>
+<p><strong>攻防模式（Attack-Defense）</strong><br>攻防模式CTF赛制中，参赛队伍在网络空间互相进行攻击和防守，挖掘网络服务漏洞并攻击对手服务来得分，修补自身服务漏洞进行防御来避免丢分。攻防模式CTF赛制可以实时通过得分反映出比赛情况，最终也以得分直接分出胜负，是一种竞争激烈，具有很强观赏性和高度透明性的网络安全赛制。在这种赛制中，不仅仅是比参赛队员的智力和技术，也比体力（因为比赛一般都会持续48小时及以上），同时也比团队之间的分工配合与合作。</p>
+<p><strong>混合模式（Mix）</strong><br>结合了解题模式与攻防模式的CTF赛制，比如参赛队伍通过解题可以获取一些初始分数，然后通过攻防对抗进行得分增减的零和游戏，最终以得分高低分出胜负。采用混合模式CTF赛制的典型代表如iCTF国际CTF竞赛。</p>
+<hr>
+<p>比赛题型</p>
+<p>由于 CTF 的考题范围其实比较宽广，目前也没有太明确的规定界限说会考哪些内容。但是就目前的比赛题型而言的话，主要还是依据常见的 Web 网络攻防、RE 逆向工程、Pwn 二进制漏洞利用、Crypto 密码攻击、Mobile 移动安全 以及 Misc 安全杂项 来进行分类。</p>
+<p><strong>Web - 网络攻防</strong><br>Web 是 CTF 的主要题型，题目涉及到许多常见的 Web 漏洞，如 XSS、文件包含、代码执行、上传漏洞、SQL注入 注入等。也有一些简单的关于网络基础知识的考察，如返回包、TCP/IP、数据包内容和构造。可以说题目环境比较接近真实环境。且Web题目是国内比较多也是大家比较喜欢的题目。因为大多数人开始安全都是从web渗透测试开始的。</p>
+<p><strong>Reverse Engineering - 逆向工程</strong><br>主要包括了逆向工程中的常见题型、工具平台、解题思路，进阶部分包含了逆向工程中常见的软件保护、反编译、反调试、加壳脱壳技术。</p>
+<p><strong>Pwn - 二进制漏洞利用</strong><br>Pwn 题目主要考察二进制漏洞的发掘和利用，需要对计算机操作系统底层有一定的了解。在 CTF 比赛中它代表着溢出类的题目，其中常见类型溢出漏洞有整数溢出、栈溢出、堆溢出等。主要考查参赛选手对漏洞的利用能力。PWN 题目主要出现在 Linux 平台上。</p>
+<p><strong>Crypto - 密码攻击</strong><br>题目考察各种加解密技术，包括古典加密技术、现代加密技术甚至出题者自创加密技术，以及一些常见编码解码，主要考查参赛选手密码学相关知识点。通常也会和其他题目相结合。</p>
+<p><strong>Mobile - 移动安全</strong><br>主要介绍了安卓逆向中的常用工具和主要问题类型，安卓逆向常常需要一定的安卓开发知识，iOS 逆向题目在 CTF 竞赛中较少出现。</p>
+<p><strong>Misc - 安全杂项</strong><br>Misc 即安全杂项，题目涉及隐写术、流量分析、电子取证、人肉搜索、数据分析、大数据统计等，覆盖面比较广，主要考查参赛选手的各种基础综合知识。</p>
+<hr>
+<p>接下来是大白话解释</p>
+<p>CTF 题目类型一般分为 Web 渗透、RE 逆向、Misc 杂项、PWN 二进制漏洞利用、Crypto 密码破译，有志于渗透测试的同学一开始建议从 Web 渗透的题目开始，辅以 Misc 杂项和 Crypto 密码学。</p>
+<p>CTF 主要分为两种模式，一是解题模式。对于 Web 安全来说，会要求你入侵网站或者靶机，攻击成功后系统会显示flag或者在某个目录 文件 数据库寻找 Flag，提交到答题系统得分。逆向工程题目一般形式是破解注册机、动态调试、dump 内存等等。这些题目可以百度或谷歌别人的解题报告（ 关键字：CTF writeup）来认识一下。</p>
+<p>这种模式的缺点是类似于“应试教育”，当前的趋势是注重出题难、出题偏，没有考虑实际，就跟奥数似的。而且这种模式只有攻击，却没有防守，而在企业中工作更多的还是考虑如何防护的问题，这个时候 AWD 攻防赛模式就应运而生了。<br><img src="/media/15960355253056/15960367302115.jpg" alt=""><br>二是攻防赛，也叫 AWD(Attack With Defense，攻防兼备)模式。你需要在一场比赛里要扮演攻击方和防守方，攻者得分，失守者会被扣分。也就是说，攻击别人的靶机可以获取 Flag 分数时，别人会被扣分，同时你也要保护自己的主机不被别人得分，以防扣分。</p>
+<p>这种模式非常激烈，准备要非常充分，手上要有充足的防守方案和 EXP 攻击脚本。我第一次参加这种比赛的时候就被人打惨了QWQ，不过后面参赛越多，积累的经验就会越多。所以说，这种比赛不用慌，多打多学多积累就好了。</p>
+<p>CTF 里面也有一血之说，谁第一个交 Flag 能获得分数加成，所以说手快也很重要。不过一般来说是没有别的大佬手快的。</p>
+<p><img src="/media/15960355253056/15960367410745.jpg" alt=""></p>
+<h2 id="如何学好信安？"><a href="#如何学好信安？" class="headerlink" title="如何学好信安？"></a>如何学好信安？</h2><h3 id="师资力量"><a href="#师资力量" class="headerlink" title="师资力量"></a>师资力量</h3><p>河大的老师还是很🉑️的，信安系有磊哥这样的哈工大信安博士，还有专门研究密码学的袁科老师这样的密码学博士，专业课8用担心。</p>
+<h3 id="硬件设备"><a href="#硬件设备" class="headerlink" title="硬件设备"></a>硬件设备</h3><p>今年新给信安系添置了200w的训练设备（有钱嗷）<br>现在系里面靶场资源丰富，你学了没地方动手？8可能嗷，让你整天在靶场里游泳嗷。</p>
+<h3 id="实验室"><a href="#实验室" class="headerlink" title="实验室"></a>实验室</h3><p>选信安不来信安实验室快活？<br>信安系硬件资源集中之地，先不说学习，你期末考试来实验室吹个空调喝个水，还不用去图书馆人挤人，它不香嘛。<br>还给分配电脑，专属座位，想用Mac就去另外一个分部，满足你的一切需求。<br>再说回来信安，学校不教的（毕竟国家管控专业，都懂8），实验室里可以提供给你大量的资源学习。<br>来了实验室你不想入门，也会有人拉着你入门。桌子上的证书可不是摆着看的嗷，每个实验室都是为了让志同道合的人能够共同成长，所以在这里，你们能收获到更多，成为独当一面的大佬。当别人毕业之后靠着编程当程序员的时候，你可能就是一个赫赫有名的安全工程师或者渗透测试工程师了。另外有工作的实验室前辈，内推的机会，都懂8.<br>无论是渗透、密码还是pwn，都有和蔼可亲的学长手把手（背后藏个锤子）带你入门，互相督促促进共同进步。平时接点小项目，有比赛了大家组队参加，能学到很多课堂上别人学不到的知识。<br><img src="/media/15960355253056/15960686408377.jpg" alt=""></p>
+<p>拉来一个python学的好的，你让他写个SQL注入脚本，他还真不一定能写出来。<br>没事拿学会的知识点出点题，一个月挣个几千块钱，还能享受当大赛出题人的乐趣</p>
+<p>上图<br><img src="/media/15960355253056/15960401085541.jpg" alt=""></p>
+<p>另外没事去护个网，恰点💰也是很舒服的，感受下<br><img src="/media/15960355253056/15960392517145.jpg" alt="-w382"></p>
+<p>这里有丰富的资源，舒适的环境（指的是冻死人的空调）、热情的前辈（头给你捶烂）、实战靶场、个人设备、Wi-Fi零食矿泉水，你想要的这里<del>啥都没有</del>应有尽有，欢迎来信安实验室快活。</p>
+<h2 id="工作or考研"><a href="#工作or考研" class="headerlink" title="工作or考研"></a>工作or考研</h2><p>本科毕业后是工作还是考研？这个问题相信很多人大一都有明确的答案：考研，到了大二大三就会比较迷茫。这是因为刚刚大一的时候什么也不懂，只知道学习这一条路可走。其实安全的实践性是非常强的，从安全技术的成长来看，业界三年经验&gt;研究生三年学习的作用，所以不是必须考研的，但也不意味着不应该考研，因为有些方向在本科阶段的确是难以触及的。总体来说，安全学术界和工业界差别还是不小的。</p>
+<p>其实我一直主张做一件事前先要弄明白它的收益在哪里，考研尤其如此。<br>不考研的好处如下：  </p>
+<ul>
+<li>多三年业界实战经验，实战对于安全来说至关重要，在学校中鲜有实战机会。 </li>
+<li>三年工作经验，对于同一个人，工作三年比读研三年安全技术的成长性更高。 </li>
+<li>学历对于起薪、晋升的影响不大，因此工作三年薪资更高，几年后这个差距将缩小。 </li>
+<li>信息安全现在越来越热，入行越早其实红利越高。 </li>
+<li>对于实力不错的师傅，本科出来可以去顶级大厂，读三年出来后还是去顶级大厂，性价比太低（并且本科时去的已经可以做读研时去的leader或者导师了，从晋升体系来看，一般是无法逾越的） </li>
+</ul>
+<p>考研的好处如下：  </p>
+<ul>
+<li>本科学校不好可以换学校，比如双非-&gt;985，对名校十分憧憬 </li>
+<li>提升学历，很多优惠政策只给研究生，有些国家单位只招研究生 </li>
+<li>本科过的浑浑噩噩（或者实力不强），读研三年获得一个改过自新的机会，校招进大厂（校招比社招更容易进大厂） </li>
+<li>不想一辈子掉头发，研究生退路更多 </li>
+<li>就是不想工作 </li>
+<li>憧憬学术圈，舍不得校园生活，觉得没有研究生生活体验是一种遗憾 </li>
+<li>研究的方向决定了需要读研究生 </li>
+</ul>
+<p>在上面列出的好处对比中，大家可以自由寻找符合自己利益的来决定。另外，就我个人观点来说，如果你是个搞渗透攻防，纯Web侧安全的，不是很建议读研，本科出来去大厂是比较好的选择；搞二进制漏洞、病毒、数据安全&amp;AI安全，可以继续深造。当然这是个人观点，大家还是根据自身情况决定。</p>
+<p>这个主要看个人喜好和目标，利弊需要了解以后自己权衡，如果你想学习实战技能或者尽早进入安全行业，那么就业是不错的选择;如果你对科研有着浓厚的兴趣，那么读硕、读博就是不错的选择。在这方面想了解更多的可以自行上网查阅相关资料，不过有已经进入安全企业实习的大佬，对就业感兴趣的同学可以去咨询一下。</p>
+<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p>信息安全这个行业急需人才，不是普通的码农。凭心而论，大学里的信息安全专业培养出来的人才，是很难适应这个行业需求的。某985信息安全专业50人的班级，能上场打CTF的不超过5个人。而CTF和真正的现实中的攻防对抗还有一段不小的差距。</p>
+<p>同时这个行业急需人才，某省公安厅直接到学校抢人，直接给编制，薪资待遇都好说。各大厂开出的薪资基本都是15K起步。网安这个行业，薪资，岗位都不是问题，问题在于你自己能不能胜任。现在国内各种CTF竞赛很火，冠军奖金已经达到10万的级别。国内还没有那个学科竞赛能有这么高的奖金，这么高频次的竞赛。信安是学习难度非常高的学科，因为信安既需要学科知识的深度，也需要广度。同时知识的更新，淘汰非常快，这就需要你不断的更新知识，而这一切都需要你自己来完成，学校、老师是不可能培养出合格的信安人才的。信安是人与人对抗的专业，想要打着狐狸，就需要比狐狸更狡猾，这就注定</p>
+<p>信安是少数人的游戏。</p>
+<p>欢迎各位对信息安全有着浓厚兴趣的同学选择计算机类，期待你们的到来。</p>
+
     </article>
     <!-- license  -->
     
         <div class="license-wrapper">
             <p>Author：<a href="zitui.fun">子推</a>
-            <p>原文链接：<a href="zitui.fun/article/d6f547da.html">zitui.fun/article/d6f547da.html</a>
-            <p>发表日期：<a href="zitui.fun/article/d6f547da.html">April 25th 2020, 11:20:25 am</a>
-            <p>更新日期：<a href="zitui.fun/article/d6f547da.html">April 25th 2020, 11:20:25 am</a>
+            <p>原文链接：<a href="zitui.fun/article/7455f0e2.html">zitui.fun/article/7455f0e2.html</a>
+            <p>发表日期：<a href="zitui.fun/article/7455f0e2.html">July 30th 2020, 8:30:30 am</a>
+            <p>更新日期：<a href="zitui.fun/article/7455f0e2.html">July 30th 2020, 8:30:30 am</a>
             <p>版权声明：本文采用<a rel="license noopener" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     
@@ -439,17 +654,12 @@ height:50vh;
     <ul class="post-paginator">
         <li class="next">
             
-                <div class="nextSlogan">Next Post</div>
-                <a href= "/article/62f91327.html" title= "数据结构实验一——顺序表的操作">
-                    <div class="nextTitle">数据结构实验一——顺序表的操作</div>
-                </a>
-            
         </li>
         <li class="previous">
             
                 <div class="prevSlogan">Previous Post</div>
-                <a href= "/article/3e1cac73.html" title= "Elgamal算法">
-                    <div class="prevTitle">Elgamal算法</div>
+                <a href= "/article/ddc46606.html" title= "报考必看｜带你探究信安">
+                    <div class="prevTitle">报考必看｜带你探究信安</div>
                 </a>
             
         </li>
@@ -576,7 +786,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Power-mod快速幂取模运算"><span class="toc-number">1.</span> <span class="toc-text">Power_mod快速幂取模运算</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#简单的模幂运算"><span class="toc-number">1.1.</span> <span class="toc-text">简单的模幂运算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#快速模幂运算"><span class="toc-number">1.2.</span> <span class="toc-text">快速模幂运算</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是信息安全专业？"><span class="toc-number">2.</span> <span class="toc-text">什么是信息安全专业？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#信息安全专业学什么，怎么学？"><span class="toc-number">3.</span> <span class="toc-text">信息安全专业学什么，怎么学？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#知识体系"><span class="toc-number">4.</span> <span class="toc-text">知识体系</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CTF竞赛"><span class="toc-number">4.1.</span> <span class="toc-text">CTF竞赛</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何学好信安？"><span class="toc-number">5.</span> <span class="toc-text">如何学好信安？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#师资力量"><span class="toc-number">5.1.</span> <span class="toc-text">师资力量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#硬件设备"><span class="toc-number">5.2.</span> <span class="toc-text">硬件设备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实验室"><span class="toc-number">5.3.</span> <span class="toc-text">实验室</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#工作or考研"><span class="toc-number">6.</span> <span class="toc-text">工作or考研</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#写在最后"><span class="toc-number">7.</span> <span class="toc-text">写在最后</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
