@@ -367,6 +367,41 @@ height:50vh;
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/article/10024edb.html" >
+            
+                <span>Pikachu-文件泄露</span>
+        </a>
+        <div class="abstract-content">
+            Pikachu-文件泄露敏感文件泄漏尝试登陆但是登陆失败直接访问上一个文件目录
+直接爆出文件,访问abc.php我们没有登录也获取到了abd.php的内容.
+PHP反序列化存在接收序列化数据的api,我们输入普通的序列化数据没有用,考虑输入命令序列化之后的数据,看会不会被执行
+1O:1:"S":1:&#123;s:4:"test";s:33:"&lt;script&gt;alert(/pikachu/)&lt;/script&gt;";&#125;
+
+成功弹窗
+
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/24</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "文件泄露">文件泄露</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/article/dab800ae.html" >
             
                 <span>Pikachu-越权</span>
@@ -1182,9 +1217,26 @@ Old-HackThinkPHP的洞稍微测试一下,连版本号都出来了
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 36
+        Total : 37
         </div>
         <!-- search  -->
         
@@ -1197,6 +1249,11 @@ Old-HackThinkPHP的洞稍微测试一下,连版本号都出来了
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/31</span><a class="archive-post-title" href= "/article/c8bf16b4.html" >大学生机械键盘选购指南</a>
+        </li>
     
     
         <li class="archive-post-item">
