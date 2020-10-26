@@ -1,0 +1,1536 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- title -->
+
+
+
+
+<!-- keywords -->
+
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" >
+    <meta name="author" content="子推">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="子推">
+    
+    <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
+    
+    <meta name="description" content="">
+    <meta name="description" content="微信小程序开发阶段性总结（一）数据绑定WXML 中的动态数据均来自对应 Page 的 data。数据绑定使用 Mustache 语法（双大括号）将变量包起来，例如 1&lt;view&gt; &amp;#123;&amp;#123; message &amp;#125;&amp;#125; &lt;&#x2F;view&gt; 12345Page(&amp;#123;  data: &amp;#123;    message: &#39;Hello M">
+<meta property="og:type" content="article">
+<meta property="og:title" content="微信小程序开发阶段行总结（基础）">
+<meta property="og:url" content="zitui.fun/article/90dd4f07.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="微信小程序开发阶段性总结（一）数据绑定WXML 中的动态数据均来自对应 Page 的 data。数据绑定使用 Mustache 语法（双大括号）将变量包起来，例如 1&lt;view&gt; &amp;#123;&amp;#123; message &amp;#125;&amp;#125; &lt;&#x2F;view&gt; 12345Page(&amp;#123;  data: &amp;#123;    message: &#39;Hello M">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="/media/16036784802878/16036807059225.jpg">
+<meta property="og:image" content="/media/16036784802878/16036808069968.jpg">
+<meta property="og:image" content="/media/16036784802878/16036821066192.jpg">
+<meta property="og:image" content="/media/16036784802878/16036825131351.jpg">
+<meta property="og:image" content="/media/16036784802878/16036826179142.jpg">
+<meta property="og:image" content="/media/16036784802878/16036826623404.jpg">
+<meta property="og:image" content="/media/16036784802878/16036827791221.jpg">
+<meta property="og:image" content="/media/16036784802878/16036828328703.jpg">
+<meta property="og:image" content="/media/16036784802878/16036831632725.jpg">
+<meta property="og:image" content="/media/16036784802878/16036833543946.jpg">
+<meta property="og:image" content="/media/16036784802878/16036837430144.jpg">
+<meta property="og:image" content="/media/16036784802878/16037027827033.jpg">
+<meta property="og:image" content="/media/16036784802878/16037038389236.jpg">
+<meta property="og:image" content="/media/16036784802878/16037044148869.jpg">
+<meta property="og:image" content="/media/16036784802878/16037044421227.jpg">
+<meta property="og:image" content="/media/16036784802878/16037071568779.jpg">
+<meta property="og:image" content="/media/16036784802878/16037073500469.jpg">
+<meta property="og:image" content="/media/16036784802878/16037074139409.jpg">
+<meta property="og:image" content="/media/16036784802878/16037075836779.jpg">
+<meta property="og:image" content="/media/16036784802878/16037076019985.jpg">
+<meta property="og:image" content="/media/16036784802878/16037077177933.jpg">
+<meta property="article:published_time" content="2020-10-26T10:26:00.000Z">
+<meta property="article:modified_time" content="2020-10-26T10:26:00.000Z">
+<meta property="article:author" content="子推">
+<meta property="article:tag" content="微信小程序">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="/media/16036784802878/16036807059225.jpg">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    
+    <title>微信小程序开发阶段行总结（基础） · Zitui&#39;s Blog</title>
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+</style>
+
+    <link rel="preload" href= "/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <link rel="stylesheet" href= "/css/mobile.css?v=20180824" media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+(function( w ){
+	"use strict";
+	// rel=preload support test
+	if( !w.loadCSS ){
+		w.loadCSS = function(){};
+	}
+	// define on the loadCSS obj
+	var rp = loadCSS.relpreload = {};
+	// rel=preload feature support test
+	// runs once and returns a function for compat purposes
+	rp.support = (function(){
+		var ret;
+		try {
+			ret = w.document.createElement( "link" ).relList.supports( "preload" );
+		} catch (e) {
+			ret = false;
+		}
+		return function(){
+			return ret;
+		};
+	})();
+
+	// if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+	// then change that media back to its intended value on load
+	rp.bindMediaToggle = function( link ){
+		// remember existing media attr for ultimate state, or default to 'all'
+		var finalMedia = link.media || "all";
+
+		function enableStylesheet(){
+			link.media = finalMedia;
+		}
+
+		// bind load handlers to enable media
+		if( link.addEventListener ){
+			link.addEventListener( "load", enableStylesheet );
+		} else if( link.attachEvent ){
+			link.attachEvent( "onload", enableStylesheet );
+		}
+
+		// Set rel and non-applicable media type to start an async request
+		// note: timeout allows this to happen async to let rendering continue in IE
+		setTimeout(function(){
+			link.rel = "stylesheet";
+			link.media = "only x";
+		});
+		// also enable media after 3 seconds,
+		// which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+		setTimeout( enableStylesheet, 3000 );
+	};
+
+	// loop through link elements in DOM
+	rp.poly = function(){
+		// double check this to prevent external calls from running
+		if( rp.support() ){
+			return;
+		}
+		var links = w.document.getElementsByTagName( "link" );
+		for( var i = 0; i < links.length; i++ ){
+			var link = links[ i ];
+			// qualify links to those with rel=preload and as=style attrs
+			if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+				// prevent rerunning on link
+				link.setAttribute( "data-loadcss", true );
+				// bind listeners to toggle media back
+				rp.bindMediaToggle( link );
+			}
+		}
+	};
+
+	// if unsupported, run the polyfill
+	if( !rp.support() ){
+		// run once at least
+		rp.poly();
+
+		// rerun poly on an interval until onload
+		var run = w.setInterval( rp.poly, 500 );
+		if( w.addEventListener ){
+			w.addEventListener( "load", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		} else if( w.attachEvent ){
+			w.attachEvent( "onload", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		}
+	}
+
+
+	// commonjs
+	if( typeof exports !== "undefined" ){
+		exports.loadCSS = loadCSS;
+	}
+	else {
+		w.loadCSS = loadCSS;
+	}
+}( typeof global !== "undefined" ? global : this ) );
+</script>
+
+    <link rel="icon" href= "/assets/favicon.ico" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js" as="script" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" as="script" />
+    <link rel="preload" href="/scripts/main.js" as="script" />
+    <link rel="preload" as="font" href="/font/Oswald-Regular.ttf" crossorigin>
+    <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin>
+    
+    <!-- fancybox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+    
+        <body class="post-body">
+    
+    
+<header class="header">
+
+    <div class="read-progress"></div>
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >Zitui&#39;s Blog.</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">微信小程序开发阶段行总结（基础）</a>
+            </div>
+    </div>
+    
+    <a class="home-link" href=/>Zitui's Blog.</a>
+</header>
+    <div class="wrapper">
+        <div class="site-intro" style="
+
+
+
+
+
+
+
+height:50vh;
+">
+    
+    <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
+            
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/image/sky.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+            微信小程序开发阶段行总结（基础）
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+            
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "微信小程序">微信小程序</a>
+    
+</div>
+                
+                
+                    <div class="post-intro-read">
+                        <span>Word count: <span class="post-count word-count">2.8k</span>Reading time: <span class="post-count reading-time">12 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2020/10/26</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+</div>
+        <script>
+ 
+  // get user agent
+  var browser = {
+    versions: function () {
+      var u = window.navigator.userAgent;
+      return {
+        userAgent: u,
+        trident: u.indexOf('Trident') > -1, //IE内核
+        presto: u.indexOf('Presto') > -1, //opera内核
+        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+        iPad: u.indexOf('iPad') > -1, //是否为iPad
+        webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+        weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+        uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
+      };
+    }()
+  }
+  console.log("userAgent:" + browser.versions.userAgent);
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded');
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
+      document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in');
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb(){
+    if (browser.versions.uc) {
+      console.log("UCBrowser");
+      fontLoaded();
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular']
+        },
+        loading: function () {  //所有字体开始加载
+          // console.log('loading');
+        },
+        active: function () {  //所有字体已渲染
+          fontLoaded();
+        },
+        inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout');
+          fontLoaded();
+        },
+        timeout: 5000 // Set the timeout to two seconds
+      });
+    }
+  }
+
+  function asyncErr(){
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (cb) { o.addEventListener('load', function (e) { cb(null, e); }, false); }
+    if (err) { o.addEventListener('error', function (e) { err(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  var asyncLoadWithFallBack = function(arr, success, reject) {
+      var currReject = function(){
+        reject()
+        arr.shift()
+        if(arr.length)
+          async(arr[0], success, currReject)
+        }
+
+      async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack([
+    "https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", 
+    "https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js",
+    "/lib/webfontloader.min.js"
+  ], asyncCb, asyncErr)
+</script>        
+        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+        <div class="container container-unloaded">
+            <main class="main post-page">
+    <article class="article-entry">
+        <h1 id="微信小程序开发阶段性总结（一）"><a href="#微信小程序开发阶段性总结（一）" class="headerlink" title="微信小程序开发阶段性总结（一）"></a>微信小程序开发阶段性总结（一）</h1><h2 id="数据绑定"><a href="#数据绑定" class="headerlink" title="数据绑定"></a>数据绑定</h2><p>WXML 中的动态数据均来自对应 Page 的 data。<br>数据绑定使用 Mustache 语法（双大括号）将变量包起来，例如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;view&gt; &#123;&#123; message &#125;&#125; &lt;&#x2F;view&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Page(&#123;</span><br><span class="line">  data: &#123;</span><br><span class="line">    message: <span class="string">'Hello MINA!'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>当在组件和控件中使用数据时，需要使用双引号将变量连同双大括号包起来，例如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;view id&#x3D;&quot;item-&#123;&#123;id&#125;&#125;&quot;&gt; &lt;&#x2F;view&gt;</span><br><span class="line"></span><br><span class="line">&lt;view wx:if&#x3D;&quot;&#123;&#123;condition&#125;&#125;&quot;&gt; &lt;&#x2F;view&gt;</span><br></pre></td></tr></table></figure>
+<p>连关键字True和false也要在双引号之间，不然可能会触发报错。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;checkbox checked&#x3D;&quot;&#123;&#123;false&#125;&#125;&quot;&gt; &lt;&#x2F;checkbox&gt;</span><br></pre></td></tr></table></figure>
+<p>如果直接写checked=”false”,其计算结果是一个字符串，转化成bool类型之后代表真值。</p>
+<h2 id="运算"><a href="#运算" class="headerlink" title="运算"></a>运算</h2><p>在双括号中可以进行简单的运算，例如</p>
+<h3 id="三元运算"><a href="#三元运算" class="headerlink" title="三元运算"></a>三元运算</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;view hidden&#x3D;&quot;&#123;&#123;flag ? exp1 : exp2&#125;&#125;&quot;&gt; Hidden &lt;&#x2F;view&gt;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;判断flag的真值，当值为True，执行exp1,当值为False，执行exp2.</span><br></pre></td></tr></table></figure>
+<h3 id="算术运算"><a href="#算术运算" class="headerlink" title="算术运算"></a>算术运算</h3><p>可以进行简单的算术运算，例如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;view&gt; &#123;&#123;a + b&#125;&#125; + &#123;&#123;c&#125;&#125; + d &lt;&#x2F;view&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//data中的变量配置</span></span><br><span class="line"></span><br><span class="line">Page(&#123;</span><br><span class="line">  data: &#123;</span><br><span class="line">    a: <span class="number">1</span>,</span><br><span class="line">    b: <span class="number">2</span>,</span><br><span class="line">    c: <span class="number">3</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>所以view标签会显示”<font color=red>3 + 3 + d</font>“</p>
+<h3 id="逻辑判断"><a href="#逻辑判断" class="headerlink" title="逻辑判断"></a>逻辑判断</h3><p>在标签内可以使用wx:if等逻辑判断语句进行逻辑判断来设置属性值，例如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;block wx:if&#x3D;&quot;&#123;&#123;tabs[0].isActive&#125;&#125;&quot;&gt;0&lt;&#x2F;block&gt;</span><br><span class="line">&lt;block wx:elif&#x3D;&quot;&#123;&#123;tabs[1].isActive&#125;&#125;&quot;&gt;1&lt;&#x2F;block&gt;</span><br><span class="line">&lt;block wx:elif&#x3D;&quot;&#123;&#123;tabs[2].isActive&#125;&#125;&quot;&gt;2&lt;&#x2F;block&gt;</span><br><span class="line">&lt;block wx:else&gt;3&lt;&#x2F;block&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="字符串运算"><a href="#字符串运算" class="headerlink" title="字符串运算"></a>字符串运算</h3><p>简单的字符串拼接</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;view&gt;&#123;&#123;&quot;hello&quot; + name&#125;&#125;&lt;&#x2F;view&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Page(&#123;</span><br><span class="line">  data:&#123;</span><br><span class="line">    name: <span class="string">'MINA'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p><view>标签会显示”hello MINA”</p>
+<h3 id="数据路径运算"><a href="#数据路径运算" class="headerlink" title="数据路径运算"></a>数据路径运算</h3><p>通过访问data中的路径来获取数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;view&gt;&#123;&#123;object.key&#125;&#125; &#123;&#123;array[0]&#125;&#125;&lt;&#x2F;view&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Page(&#123;</span><br><span class="line">  data: &#123;</span><br><span class="line">    object: &#123;</span><br><span class="line">      key: <span class="string">'Hello '</span></span><br><span class="line">    &#125;,</span><br><span class="line">    array: [<span class="string">'MINA'</span>]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="列表渲染"><a href="#列表渲染" class="headerlink" title="列表渲染"></a>列表渲染</h2><h3 id="wx-for"><a href="#wx-for" class="headerlink" title="wx:for"></a>wx:for</h3><p>相当于一个for循环，绑定一个数组，可以在标签中使用,默认数组的当前项的下标变量名默认为 index，数组当前项的变量名默认为 item.<br>例如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;view wx:for&#x3D;&quot;&#123;&#123;array&#125;&#125;&quot;&gt;</span><br><span class="line">  &#123;&#123;index&#125;&#125;: &#123;&#123;item.message&#125;&#125;</span><br><span class="line">&lt;&#x2F;view&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Page(&#123;</span><br><span class="line">  data: &#123;</span><br><span class="line">    array: [&#123;</span><br><span class="line">      message: <span class="string">'foo'</span>,</span><br><span class="line">    &#125;, &#123;</span><br><span class="line">      message: <span class="string">'bar'</span></span><br><span class="line">    &#125;]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>结果如图<br><img src="/media/16036784802878/16036807059225.jpg" alt="-w1680"></p>
+<p>我们也可以使用 wx:for-item 可以指定数组当前元素的变量名，使用 wx:for-index 可以指定数组当前下标的变量名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;view wx:for&#x3D;&quot;&#123;&#123;array&#125;&#125;&quot; wx:for-index&#x3D;&quot;idx&quot; wx:for-item&#x3D;&quot;itemName&quot;&gt;</span><br><span class="line">  &#123;&#123;idx&#125;&#125;: &#123;&#123;itemName.message&#125;&#125;</span><br><span class="line">&lt;&#x2F;view&gt;</span><br></pre></td></tr></table></figure>
+<p>wx:for也可以嵌套，我们可以用来打印最基本的九九乘法表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;view wx:for&#x3D;&quot;&#123;&#123;[1, 2, 3, 4, 5, 6, 7, 8, 9]&#125;&#125;&quot; wx:for-item&#x3D;&quot;i&quot;&gt;</span><br><span class="line">  &lt;view wx:for&#x3D;&quot;&#123;&#123;[1, 2, 3, 4, 5, 6, 7, 8, 9]&#125;&#125;&quot; wx:for-item&#x3D;&quot;j&quot;&gt;</span><br><span class="line">    &lt;view wx:if&#x3D;&quot;&#123;&#123;i &lt;&#x3D; j&#125;&#125;&quot;&gt;</span><br><span class="line">      &#123;&#123;i&#125;&#125; * &#123;&#123;j&#125;&#125; &#x3D; &#123;&#123;i * j&#125;&#125;</span><br><span class="line">    &lt;&#x2F;view&gt;</span><br><span class="line">  &lt;&#x2F;view&gt;</span><br><span class="line">&lt;&#x2F;view&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="/media/16036784802878/16036808069968.jpg" alt="-w1680"></p>
+<p><font color=red>注意</font><br>当 wx:for 的值为字符串时，会将字符串解析成字符串数组</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;view wx:for&#x3D;&quot;array&quot;&gt;</span><br><span class="line">  &#123;&#123;item&#125;&#125;</span><br><span class="line">&lt;&#x2F;view&gt;</span><br><span class="line"></span><br><span class="line">等同于</span><br><span class="line"></span><br><span class="line">&lt;view wx:for&#x3D;&quot;&#123;&#123;[&#39;a&#39;,&#39;r&#39;,&#39;r&#39;,&#39;a&#39;,&#39;y&#39;]&#125;&#125;&quot;&gt;</span><br><span class="line">  &#123;&#123;item&#125;&#125;</span><br><span class="line">&lt;&#x2F;view&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="/media/16036784802878/16036821066192.jpg" alt="-w1680"></p>
+<p>花括号和引号之间如果有空格，将最终被解析成为字符串</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;view wx:for&#x3D;&quot;&#123;&#123;[1,2,3]&#125;&#125; &quot;&gt;</span><br><span class="line">  &#123;&#123;item&#125;&#125;</span><br><span class="line">&lt;&#x2F;view&gt;</span><br><span class="line"></span><br><span class="line">等同于</span><br><span class="line"></span><br><span class="line">&lt;view wx:for&#x3D;&quot;&#123;&#123;[1,2,3] + &#39; &#39;&#125;&#125;&quot; &gt;</span><br><span class="line">  &#123;&#123;item&#125;&#125;</span><br><span class="line">&lt;&#x2F;view&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="标签、控件"><a href="#标签、控件" class="headerlink" title="标签、控件"></a>标签、控件</h2><h3 id="view"><a href="#view" class="headerlink" title="view"></a><font color=red>view</font></h3><p>可以将东西输出出来，是最基本最常用的标签</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;view class&#x3D;&quot;container&quot;&gt;</span><br><span class="line">  &lt;view class&#x3D;&quot;page-body&quot;&gt;</span><br><span class="line">    &lt;view class&#x3D;&quot;page-section&quot;&gt;</span><br><span class="line">      &lt;view class&#x3D;&quot;page-section-title&quot;&gt;</span><br><span class="line">        &lt;text&gt;横向布局&lt;&#x2F;text&gt;</span><br><span class="line">      &lt;&#x2F;view&gt;</span><br><span class="line">      &lt;view class&#x3D;&quot;page-section-spacing&quot;&gt;</span><br><span class="line">        &lt;view class&#x3D;&quot;flex-wrp&quot; style&#x3D;&quot;flex-direction:row;&quot;&gt;</span><br><span class="line">          &lt;view class&#x3D;&quot;flex-item demo-text-1&quot;&gt;A&lt;&#x2F;view&gt;</span><br><span class="line">          &lt;view class&#x3D;&quot;flex-item demo-text-2&quot;&gt;B&lt;&#x2F;view&gt;</span><br><span class="line">          &lt;view class&#x3D;&quot;flex-item demo-text-3&quot;&gt;C&lt;&#x2F;view&gt;</span><br><span class="line">        &lt;&#x2F;view&gt;</span><br><span class="line">      &lt;&#x2F;view&gt;</span><br><span class="line">    &lt;&#x2F;view&gt;</span><br><span class="line">    &lt;view class&#x3D;&quot;page-section&quot;&gt;</span><br><span class="line">      &lt;view class&#x3D;&quot;page-section-title&quot;&gt;</span><br><span class="line">        &lt;text&gt;纵向布局&lt;&#x2F;text&gt;</span><br><span class="line">      &lt;&#x2F;view&gt;</span><br><span class="line">      &lt;view class&#x3D;&quot;flex-wrp&quot; style&#x3D;&quot;flex-direction:column;&quot;&gt;</span><br><span class="line">        &lt;view class&#x3D;&quot;flex-item flex-item-V demo-text-1&quot;&gt;A&lt;&#x2F;view&gt;</span><br><span class="line">        &lt;view class&#x3D;&quot;flex-item flex-item-V demo-text-2&quot;&gt;B&lt;&#x2F;view&gt;</span><br><span class="line">        &lt;view class&#x3D;&quot;flex-item flex-item-V demo-text-3&quot;&gt;C&lt;&#x2F;view&gt;</span><br><span class="line">      &lt;&#x2F;view&gt;</span><br><span class="line">    &lt;&#x2F;view&gt;</span><br><span class="line">  &lt;&#x2F;view&gt;</span><br><span class="line">&lt;&#x2F;view&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="/media/16036784802878/16036825131351.jpg" alt="-w1680"></p>
+<hr>
+<h3 id="image"><a href="#image" class="headerlink" title="image"></a><font color=red>image</font></h3><p>image标签用来链接图片，但是这里要对其属性做说明<br><img src="/media/16036784802878/16036826179142.jpg" alt="-w830"><br><img src="/media/16036784802878/16036826623404.jpg" alt="-w921"></p>
+<p>为了更好的说明，我们通过一张图片来进行直观的感觉<br>原图：<br><img src="/media/16036784802878/16036827791221.jpg" alt=""></p>
+<p>当我们不使用任何的属性约束，单纯的使用image标签引入时</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;image src&#x3D;&quot;http:&#x2F;&#x2F;zitui.fun&#x2F;image&#x2F;touxiang.jpg&quot; &#x2F;&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="/media/16036784802878/16036828328703.jpg" alt="-w1680"><br>可以从预览器中看到，图片比例很怪。这是因为在微信小程序开发中，image组件默认的宽高为320 px * 240 px,所以我们只能通过属性来更改图片显示。</p>
+<h4 id="mode-scaleToFill"><a href="#mode-scaleToFill" class="headerlink" title="mode-scaleToFill"></a>mode-scaleToFill</h4><p>scaleToFill<br>缩放模式，不保持纵横比缩放图片，使图片的宽高完全拉伸至填满 image 元素</p>
+<p>拉伸图片至填满组件</p>
+<h4 id="mode-aspectFit"><a href="#mode-aspectFit" class="headerlink" title="mode-aspectFit"></a>mode-aspectFit</h4><p>缩放模式，保持纵横比缩放图片，使图片的长边能完全显示出来。也就是说，可以完整地将图片显示出来。</p>
+<p><img src="/media/16036784802878/16036831632725.jpg" alt="-w1680"><br>我们可以看到，图片被完整的显示出来了，但是左边却空出来了一部分，这是因为该属性以长边(宽)为先，保持原图比例，导致该图片为240px * 240px，没有填满左边的组件。</p>
+<h4 id="mode-aspectFill"><a href="#mode-aspectFill" class="headerlink" title="mode-aspectFill"></a>mode-aspectFill</h4><p>缩放模式，保持纵横比缩放图片，只保证图片的短边能完全显示出来。也就是说，图片通常只在水平或垂直方向是完整的，另一个方向将会发生截取。<br>从图上结果我们可以理解为原图放大之后被下边界进行了裁剪<br><img src="/media/16036784802878/16036833543946.jpg" alt="-w1680"></p>
+<h4 id="mode-widthFix"><a href="#mode-widthFix" class="headerlink" title="mode-widthFix"></a>mode-widthFix</h4><p>缩放模式，宽度不变，高度自动变化，保持原图宽高比不变<br>这是最常用的属性<br><img src="/media/16036784802878/16036837430144.jpg" alt="-w1680"></p>
+<h4 id="mode-left、top等"><a href="#mode-left、top等" class="headerlink" title="mode-left、top等"></a>mode-left、top等</h4><p>裁剪模式，不缩放图片，只显示图片的对应区域</p>
+<h4 id="mode-top-left等"><a href="#mode-top-left等" class="headerlink" title="mode-top left等"></a>mode-top left等</h4><p>裁剪模式，不缩放图片，只显示图片的左上边（对应斜方向）区域</p>
+<hr>
+<h3 id="swiper"><a href="#swiper" class="headerlink" title="swiper"></a><font color=red>swiper</font></h3><p>swiper组件通常用来构建轮播图，通过内置组件<swiper-item>来实现轮播图效果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;swiper autoplay&#x3D;&quot;&#123;&#123;True&#125;&#125;&quot; interval&#x3D;&quot;3000&quot; circular&#x3D;&quot;&#123;&#123;True&#125;&#125;&quot;&gt;</span><br><span class="line">    &lt;!-- 2289 * 1526 --&gt;</span><br><span class="line">    &lt;swiper-item &gt;&lt;image  mode&#x3D;&quot;widthFix&quot; src&#x3D;&quot;http:&#x2F;&#x2F;zitui.fun&#x2F;image&#x2F;1.jpg&quot; &#x2F;&gt;&lt;&#x2F;swiper-item&gt;</span><br><span class="line">    &lt;swiper-item &gt;&lt;image  mode&#x3D;&quot;widthFix&quot; src&#x3D;&quot;http:&#x2F;&#x2F;zitui.fun&#x2F;image&#x2F;2.jpg&quot; &#x2F;&gt;&lt;&#x2F;swiper-item&gt;</span><br><span class="line">    &lt;swiper-item &gt;&lt;image  mode&#x3D;&quot;widthFix&quot; src&#x3D;&quot;http:&#x2F;&#x2F;zitui.fun&#x2F;image&#x2F;3.jpg&quot; &#x2F;&gt;&lt;&#x2F;swiper-item&gt;</span><br><span class="line">    &lt;swiper-item &gt;&lt;image  mode&#x3D;&quot;widthFix&quot; src&#x3D;&quot;http:&#x2F;&#x2F;zitui.fun&#x2F;image&#x2F;4.jpg&quot; &#x2F;&gt;&lt;&#x2F;swiper-item&gt;</span><br><span class="line">&lt;&#x2F;swiper&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="/media/16036784802878/16037027827033.jpg" alt="-w1680"></p>
+<p>swiper的常用属性如下</p>
+<h4 id="swiper-autoplay"><a href="#swiper-autoplay" class="headerlink" title="swiper-autoplay"></a>swiper-autoplay</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">autoplay&#x3D;&quot;&#123;&#123;True&#125;&#125;&quot;</span><br></pre></td></tr></table></figure>
+<p>开启之后会实现动态轮播,同时也会激活interval，默认值为5000</p>
+<h4 id="swiper-interval"><a href="#swiper-interval" class="headerlink" title="swiper-interval"></a>swiper-interval</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">interval&#x3D;&quot;3000&quot;</span><br></pre></td></tr></table></figure>
+<p>页面之间进行切换的时间间隔，默认单位为ms，默认值为5000ms，也就是5秒钟。</p>
+<h4 id="swiper-circular"><a href="#swiper-circular" class="headerlink" title="swiper-circular"></a>swiper-circular</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">circular&#x3D;&quot;&#123;&#123;True&#125;&#125;&quot;</span><br></pre></td></tr></table></figure>
+<p>开启之后，当播放到最后一张图片时，会继续往下从第一张循环，而不是每次到了最后一张然后又倒着快速回到第一张开始。</p>
+<p><font color=red>注意</font></p>
+<ul>
+<li>如果在 bindchange 的事件回调函数中使用 setData 改变 current 值，则有可能导致 setData 被不停地调用，因而通常情况下请在改变 current 值前检测 source 字段来判断是否是由于用户触摸引起。</li>
+</ul>
+<ul>
+<li>swiper组件存在默认样式，宽度为100%，高度为150px,但是图片也存在宽度和高度。但是swiper标签无法由内容撑开，所以我们链接的图片要进行换算来保证它的正常显示。换算方法：<br> swiper宽度 / swiper高度 = 原图宽度 / 原图高度<br> 所以我们只需要计算出swiper的高度就可，可以使用快捷计算函数calc</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">swiper</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="built_in">calc</span>(<span class="number">100vw</span> * <span class="number">1526</span> / <span class="number">2289</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">image</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="navigator"><a href="#navigator" class="headerlink" title="navigator"></a>navigator</h3><p>导航组件，类似于html中的a标签<br><img src="/media/16036784802878/16037038389236.jpg" alt="-w1680"></p>
+<p>但是需要对其属性值进行设置，不加属性下，无法跳转至tabber页面，具体属性如下</p>
+<h4 id="navigator-target"><a href="#navigator-target" class="headerlink" title="navigator-target"></a>navigator-target</h4><p>定义跳转目标，可选值为self和miniprogram，默认值为self<br>当target为self，指的是跳转到小程序内部的某地<br>当target为miniprogram时，跳转到其他小程序</p>
+<h4 id="navigator-url"><a href="#navigator-url" class="headerlink" title="navigator-url"></a>navigator-url</h4><p>当前小程序内部跳转的链接，就是pages页面中的那个路径，注意修改../</p>
+<h4 id="navigator-open-type"><a href="#navigator-open-type" class="headerlink" title="navigator open-type"></a>navigator open-type</h4><p>跳转方式，具体如下</p>
+<table>
+<thead>
+<tr>
+<th>navigate</th>
+<th>保留当前页面，跳转到应用内的某个页面，但是不能跳转到tabbar页面</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>redirect</td>
+<td>关闭当前页面，跳转到应用内的某个页面，但是不能跳转到tabbar页面</td>
+</tr>
+<tr>
+<td>switchTab</td>
+<td>跳转到tabbar页面，并关闭其他所有非tabbar页面</td>
+</tr>
+<tr>
+<td>reLaunch<span class="Apple-tab-span" style="white-space:pre"></span></td>
+<td>关闭所有页面，打开到应用内的某个页面</td>
+</tr>
+<tr>
+<td>navigateBack</td>
+<td>关闭当前页面，返回上一级或多级，默认值为1</td>
+</tr>
+<tr>
+<td>exit</td>
+<td>退出跳转到的小程序</td>
+</tr>
+</tbody></table>
+<p>保留页面和关闭页面，就是在左上角有没有返回按键</p>
+<p>保留页面<br><img src="/media/16036784802878/16037044148869.jpg" alt="-w1680"></p>
+<p>关闭页面<br><img src="/media/16036784802878/16037044421227.jpg" alt="-w1680"></p>
+<hr>
+<h3 id="button"><a href="#button" class="headerlink" title="button"></a>button</h3><p>按钮标签，可以在页面中提供一个按钮</p>
+<h4 id="button-type"><a href="#button-type" class="headerlink" title="button-type"></a>button-type</h4><p>当type值为空，为默认样式，<br>当type值为primary，为绿色样式，<br>当type值为warn，为红色样式。<br><img src="/media/16036784802878/16037071568779.jpg" alt="-w1680"></p>
+<h4 id="button-plain"><a href="#button-plain" class="headerlink" title="button-plain"></a>button-plain</h4><p>按钮是否镂空、按键是否透明<br><img src="/media/16036784802878/16037073500469.jpg" alt="-w1680"></p>
+<h4 id="button-loading"><a href="#button-loading" class="headerlink" title="button-loading"></a>button-loading</h4><p>前置加载图标<br><img src="/media/16036784802878/16037074139409.jpg" alt="-w1680"></p>
+<hr>
+<h3 id="icon"><a href="#icon" class="headerlink" title="icon"></a>icon</h3><p>图标。组件属性的长度单位默认为px，2.4.0起支持传入单位(rpx/px)。<br><img src="/media/16036784802878/16037075836779.jpg" alt="-w1680"><br><img src="/media/16036784802878/16037076019985.jpg" alt="-w1680"></p>
+<p>不同图标对应了type属性的值，分别为success, success_no_circle, info, warn, waiting, cancel, download, search, clear</p>
+<hr>
+<h3 id="radio-checkbox"><a href="#radio-checkbox" class="headerlink" title="radio/checkbox"></a>radio/checkbox</h3><p>单选框/复选框<br><img src="/media/16036784802878/16037077177933.jpg" alt="-w1680"></p>
+<hr>
+<p>基本的标签、控件到这里就结束了，自定义控件的开发会再开一片新的博客。</p>
+
+    </article>
+    <!-- license  -->
+    
+        <div class="license-wrapper">
+            <p>Author：<a href="zitui.fun">子推</a>
+            <p>原文链接：<a href="zitui.fun/article/90dd4f07.html">zitui.fun/article/90dd4f07.html</a>
+            <p>发表日期：<a href="zitui.fun/article/90dd4f07.html">October 26th 2020, 6:26:00 pm</a>
+            <p>更新日期：<a href="zitui.fun/article/90dd4f07.html">October 26th 2020, 6:26:00 pm</a>
+            <p>版权声明：本文采用<a rel="license noopener" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
+        </div>
+    
+    <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/article/93f7b44e.html" title= "渗透实战记录">
+                    <div class="prevTitle">渗透实战记录</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
+    
+    
+    <!-- gitalk评论 -->
+
+    <!-- utteranc评论 -->
+
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+
+    <!-- 评论 -->
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="mailto:1257235873@qq.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/zitui996" class="iconfont-archer github" target="_blank" title=github></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                <a href="https://www.zhihu.com/people/phoenix-nirvana-97-43" class="iconfont-archer zhihu" target="_blank" title=zhihu></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                <a href="https://space.bilibili.com/283684259" class="iconfont-archer bilibili" target="_blank" title=bilibili></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+        <a target="_blank" href="http://www.miitbeian.gov.cn/" style="color:#f0d784"  rel="nofollow">豫ICP-备20007820号</a>
+        <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=豫ICP-备20007820号" style="color:#f0d784;text-decoration:none;padding-left:30px;background:url(https://s1.ax1x.com/2018/09/29/ilmwIH.png) no-repeat left center" rel="nofollow"></a>
+    </div>
+    <!-- 不蒜子  -->
+    
+    <div class="busuanzi-container">
+    
+     
+    <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+    
+    </div>
+    
+</footer>
+
+    </div>
+    <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#微信小程序开发阶段性总结（一）"><span class="toc-number">1.</span> <span class="toc-text">微信小程序开发阶段性总结（一）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#数据绑定"><span class="toc-number">1.1.</span> <span class="toc-text">数据绑定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#运算"><span class="toc-number">1.2.</span> <span class="toc-text">运算</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#三元运算"><span class="toc-number">1.2.1.</span> <span class="toc-text">三元运算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#算术运算"><span class="toc-number">1.2.2.</span> <span class="toc-text">算术运算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#逻辑判断"><span class="toc-number">1.2.3.</span> <span class="toc-text">逻辑判断</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字符串运算"><span class="toc-number">1.2.4.</span> <span class="toc-text">字符串运算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据路径运算"><span class="toc-number">1.2.5.</span> <span class="toc-text">数据路径运算</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#列表渲染"><span class="toc-number">1.3.</span> <span class="toc-text">列表渲染</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#wx-for"><span class="toc-number">1.3.1.</span> <span class="toc-text">wx:for</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#标签、控件"><span class="toc-number">1.4.</span> <span class="toc-text">标签、控件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#view"><span class="toc-number">1.4.1.</span> <span class="toc-text">view</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#image"><span class="toc-number">1.4.2.</span> <span class="toc-text">image</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#mode-scaleToFill"><span class="toc-number">1.4.2.1.</span> <span class="toc-text">mode-scaleToFill</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#mode-aspectFit"><span class="toc-number">1.4.2.2.</span> <span class="toc-text">mode-aspectFit</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#mode-aspectFill"><span class="toc-number">1.4.2.3.</span> <span class="toc-text">mode-aspectFill</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#mode-widthFix"><span class="toc-number">1.4.2.4.</span> <span class="toc-text">mode-widthFix</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#mode-left、top等"><span class="toc-number">1.4.2.5.</span> <span class="toc-text">mode-left、top等</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#mode-top-left等"><span class="toc-number">1.4.2.6.</span> <span class="toc-text">mode-top left等</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#swiper"><span class="toc-number">1.4.3.</span> <span class="toc-text">swiper</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#swiper-autoplay"><span class="toc-number">1.4.3.1.</span> <span class="toc-text">swiper-autoplay</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#swiper-interval"><span class="toc-number">1.4.3.2.</span> <span class="toc-text">swiper-interval</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#swiper-circular"><span class="toc-number">1.4.3.3.</span> <span class="toc-text">swiper-circular</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#navigator"><span class="toc-number">1.4.4.</span> <span class="toc-text">navigator</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#navigator-target"><span class="toc-number">1.4.4.1.</span> <span class="toc-text">navigator-target</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#navigator-url"><span class="toc-number">1.4.4.2.</span> <span class="toc-text">navigator-url</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#navigator-open-type"><span class="toc-number">1.4.4.3.</span> <span class="toc-text">navigator open-type</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#button"><span class="toc-number">1.4.5.</span> <span class="toc-text">button</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#button-type"><span class="toc-number">1.4.5.1.</span> <span class="toc-text">button-type</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#button-plain"><span class="toc-number">1.4.5.2.</span> <span class="toc-text">button-plain</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#button-loading"><span class="toc-number">1.4.5.3.</span> <span class="toc-text">button-loading</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#icon"><span class="toc-number">1.4.6.</span> <span class="toc-text">icon</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#radio-checkbox"><span class="toc-number">1.4.7.</span> <span class="toc-text">radio&#x2F;checkbox</span></a></li></ol></li></ol></li></ol>
+    </div>
+    
+    <div class="back-top iconfont-archer">&#xe639;</div>
+    <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-panel-archives">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 40
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2020 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/26</span><a class="archive-post-title" href= "/article/90dd4f07.html" >微信小程序开发阶段行总结（基础）</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/06</span><a class="archive-post-title" href= "/article/93f7b44e.html" >渗透实战记录</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/06</span><a class="archive-post-title" href= "/article/c69d2bb.html" >微信小程序开发记录</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/31</span><a class="archive-post-title" href= "/article/c8bf16b4.html" >大学生机械键盘选购指南</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/30</span><a class="archive-post-title" href= "/article/7455f0e2.html" >虽迟但到｜带你探究信息安全</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/03</span><a class="archive-post-title" href= "/article/ff7f1c5f.html" >グランドエスケープ</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/21</span><a class="archive-post-title" href= "/article/c6db02ca.html" >JB哥の密码学期末复习2.0</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/18</span><a class="archive-post-title" href= "/article/a605b633.html" >数据结构复习指南</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/16</span><a class="archive-post-title" href= "/article/ffe1d669.html" >数据结构实验六-查找与排序</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/14</span><a class="archive-post-title" href= "/article/a2098e58.html" >数据结构实验五-图的操作</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/08</span><a class="archive-post-title" href= "/article/fb6888d8.html" >数据结构实验四-二叉树的操作</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/03</span><a class="archive-post-title" href= "/article/1ad7163e.html" >日语基础学习(一)</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/02</span><a class="archive-post-title" href= "/article/62f91327.html" >数据结构实验一——顺序表的操作</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/25</span><a class="archive-post-title" href= "/article/d6f547da.html" >Power_mod快速幂取模运算</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/25</span><a class="archive-post-title" href= "/article/3e1cac73.html" >Elgamal算法</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/21</span><a class="archive-post-title" href= "/article/f63c4da7.html" >ひとり</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/19</span><a class="archive-post-title" href= "/article/ad9921a9.html" >虹の彼方に</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/16</span><a class="archive-post-title" href= "/article/a192b7d9.html" >Unlasting</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/02</span><a class="archive-post-title" href= "/article/7a98010c.html" >数据结构-栈的基本操作</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/7ac230ea.html" >Pikachu-CSRF</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/263a2f11.html" >Pikachu-SQL注入(三)</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/58c90f3a.html" >Pikachu-SQL注入(二)</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/4357daed.html" >Pikachu-SQL注入</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/2adb6775.html" >Pikachu-SSRF</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/c0744eec.html" >Pikachu-XSS</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/dfaf6dc5.html" >Pikachu-jsonp</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/8682ffc9.html" >Pikachu-upload</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/41f360fc.html" >Pikachu-xxe</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/326a896b.html" >Pikachu-命令执行</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/cc9f6aef.html" >Pikachu-文件包含</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/10024edb.html" >Pikachu-文件泄露</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/e8b040f8.html" >Pikachu-读取</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/dab800ae.html" >Pikachu-越权</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/a7b262c7.html" >haozi XSS平台WriteUP</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/197506f.html" >代码审计 | 变量覆盖</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/d18324d7.html" >代码审计 | 序列化与反序列化漏洞</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/e4b595d3.html" >XSS-labs</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/23</span><a class="archive-post-title" href= "/article/b9232740.html" >随机游程测试</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/23</span><a class="archive-post-title" href= "/article/99fa412f.html" >BJDCTF2nd-Web Writeup</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/23</span><a class="archive-post-title" href= "/article/a40c0fa6.html" >随机游程测试步骤</a>
+        </li>
+    
+    </div>
+  </div>
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name" data-tags="代码审计"><span class="iconfont-archer">&#xe606;</span>代码审计</span>
+    
+        <span class="sidebar-tag-name" data-tags="WriteUP"><span class="iconfont-archer">&#xe606;</span>WriteUP</span>
+    
+        <span class="sidebar-tag-name" data-tags="CSRF"><span class="iconfont-archer">&#xe606;</span>CSRF</span>
+    
+        <span class="sidebar-tag-name" data-tags="Pikachu"><span class="iconfont-archer">&#xe606;</span>Pikachu</span>
+    
+        <span class="sidebar-tag-name" data-tags="SQL注入"><span class="iconfont-archer">&#xe606;</span>SQL注入</span>
+    
+        <span class="sidebar-tag-name" data-tags="SSRF"><span class="iconfont-archer">&#xe606;</span>SSRF</span>
+    
+        <span class="sidebar-tag-name" data-tags="XSS"><span class="iconfont-archer">&#xe606;</span>XSS</span>
+    
+        <span class="sidebar-tag-name" data-tags="JSONP"><span class="iconfont-archer">&#xe606;</span>JSONP</span>
+    
+        <span class="sidebar-tag-name" data-tags="upload"><span class="iconfont-archer">&#xe606;</span>upload</span>
+    
+        <span class="sidebar-tag-name" data-tags="xxe"><span class="iconfont-archer">&#xe606;</span>xxe</span>
+    
+        <span class="sidebar-tag-name" data-tags="命令执行"><span class="iconfont-archer">&#xe606;</span>命令执行</span>
+    
+        <span class="sidebar-tag-name" data-tags="文件包含"><span class="iconfont-archer">&#xe606;</span>文件包含</span>
+    
+        <span class="sidebar-tag-name" data-tags="文件泄露"><span class="iconfont-archer">&#xe606;</span>文件泄露</span>
+    
+        <span class="sidebar-tag-name" data-tags="文件读取"><span class="iconfont-archer">&#xe606;</span>文件读取</span>
+    
+        <span class="sidebar-tag-name" data-tags="越权"><span class="iconfont-archer">&#xe606;</span>越权</span>
+    
+        <span class="sidebar-tag-name" data-tags="日语"><span class="iconfont-archer">&#xe606;</span>日语</span>
+    
+        <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
+    
+        <span class="sidebar-tag-name" data-tags="密码学"><span class="iconfont-archer">&#xe606;</span>密码学</span>
+    
+        <span class="sidebar-tag-name" data-tags="渗透测试"><span class="iconfont-archer">&#xe606;</span>渗透测试</span>
+    
+        <span class="sidebar-tag-name" data-tags="微信小程序"><span class="iconfont-archer">&#xe606;</span>微信小程序</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br/>
+    1、请确保node版本大于6.2<br/>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br/>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br/>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #787878; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: true
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var siteMeta = {
+        root: "/",
+        author: "子推"
+    }
+</script>
+    <!-- CDN failover -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ === 'undefined')
+        {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js">\x3C/script>')
+        }
+    </script>
+    <script src="/scripts/main.js"></script>
+    <!-- algolia -->
+    
+    <!-- busuanzi  -->
+    
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    <!-- CNZZ  -->
+    
+    </div>
+    <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
+     
+    </body>
+</html>
+
+
