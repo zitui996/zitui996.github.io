@@ -354,41 +354,6 @@
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/article/a7b262c7.html" >
-            
-                <span>haozi XSS平台WriteUP</span>
-        </a>
-        <div class="abstract-content">
-            haozi XSS平台WriteUP0x00看源码，没有丝毫过滤
-123function render (input) &#123;  return '&lt;div&gt;' + input + '&lt;/div&gt;'&#125;
-所以直接用最简单的payload
-1&lt;script&gt;alert(1);&lt;/script&gt;
-
-0x01123function render (input) &#123;  return '&lt;textarea&gt;' + input + '&lt;/textarea&gt;'&#125;
-我们看到，相比上一关，闭合的标签改变...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/24</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "WriteUP">WriteUP</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
         <a class="abstract-title" href = "/article/326a896b.html" >
             
                 <span>Pikachu-命令执行</span>
@@ -701,6 +666,44 @@ XSS之htmlspecialchars从题目可以看出应该是htmlspecialchars($name)的�
         <a class="post-tag" href="javascript:void(0);" data-tags = "Pikachu">Pikachu</a>
     
         <a class="post-tag" href="javascript:void(0);" data-tags = "JSONP">JSONP</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/article/8682ffc9.html" >
+            
+                <span>Pikachu-upload</span>
+        </a>
+        <div class="abstract-content">
+            Pikachu-upload任意文件上传没啥过滤,可随意上传
+JS限制文件上传有上传文件类型的过滤
+抓包,修改文件名后缀成功上传
+MIME限制文件上传MIME验证就是检测Content-type字段值的，直接更改上传数据包中的Content-type即可绕过
+扩展名限制文件上传不允许上传.php文件,考虑上传截断修改hex值,将2b -&gt; 00,进行截断
+成功上传
+内容限制文件上传还是不允许上传.php文件,尝试上传图片.成功上传并返回图片信息
+1Array ( [0] &#x3D;&gt; 955 [1] &#x3D;&gt; 955 [2] &#x3D;&gt; 2 [3] &...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/24</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Pikachu">Pikachu</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "upload">upload</a>
     
 </div>
             
@@ -1327,24 +1330,9 @@ XSS之htmlspecialchars从题目可以看出应该是htmlspecialchars($name)的�
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 40
+        Total : 39
         </div>
         <!-- search  -->
         
@@ -1357,11 +1345,6 @@ XSS之htmlspecialchars从题目可以看出应该是htmlspecialchars($name)的�
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">10/26</span><a class="archive-post-title" href= "/article/90dd4f07.html" >微信小程序开发阶段行总结（基础）</a>
-        </li>
     
     
         <li class="archive-post-item">
