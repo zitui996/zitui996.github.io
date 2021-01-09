@@ -27,10 +27,12 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="操作系统简答题猜想一、简述操作系统的四个基本特征 并发 共享 虚拟 异步  二、微内核OS的优缺点优点：  提高了系统的可扩展性 增强了系统的可靠性 可移植性强 提供了对分布式系统的支持 融入了面向对象技术  缺点  接收到服务请求后上下文切换次数多，系统运行效率降低  三、多级反馈队列调度算法的调度机制 设置多个就绪队列，每个队列赋予不同的优先级。队列1优先级最高，其余队列逐个降低。 每个队列中">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="/media/16101692745324/16101753025190.jpg">
 <meta property="article:published_time" content="2021-01-09T07:21:32.000Z">
 <meta property="article:modified_time" content="2021-01-09T07:21:32.000Z">
 <meta property="article:author" content="子推">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="/media/16101692745324/16101753025190.jpg">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     
@@ -438,7 +440,8 @@ height:50vh;
 <li>环路等待条件</li>
 </ul>
 <h2 id="五、块表技术如何实现"><a href="#五、块表技术如何实现" class="headerlink" title="五、块表技术如何实现"></a>五、块表技术如何实现</h2><p>在CPU给出有效地址后，由地址变换机构自动地将页号P送入高速缓冲存储器，并将此页号与高速缓存中的所有页号进行比较，若其中有与此相匹配地页号，便表示所要访问地页表项在快表里。于是可以直接从快表中读出该页所对应的物理块号，并送到物理地址存储器中，如果没有找到则还需要访问内存中的页表，找到后把页表项中读出的物理块号送往地址寄存器，同时将此页表项存入快表中。</p>
-<h2 id="六、分页存储管理和分段存储管理区别"><a href="#六、分页存储管理和分段存储管理区别" class="headerlink" title="六、分页存储管理和分段存储管理区别"></a>六、分页存储管理和分段存储管理区别</h2><h2 id="七、设备管理目标和功能"><a href="#七、设备管理目标和功能" class="headerlink" title="七、设备管理目标和功能"></a>七、设备管理目标和功能</h2><p>目标：</p>
+<h2 id="六、分页存储管理和分段存储管理区别"><a href="#六、分页存储管理和分段存储管理区别" class="headerlink" title="六、分页存储管理和分段存储管理区别"></a>六、分页存储管理和分段存储管理区别</h2><p><img src="/media/16101692745324/16101753025190.jpg" alt=""></p>
+<h2 id="七、设备管理目标和功能"><a href="#七、设备管理目标和功能" class="headerlink" title="七、设备管理目标和功能"></a>七、设备管理目标和功能</h2><p>目标：</p>
 <ul>
 <li>对I/O设备进行控制，完成用户提出的输入/输出要求</li>
 <li>根据设备请求的情况，按照一定的算法实现对I/O设备的合理分配</li>
