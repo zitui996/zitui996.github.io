@@ -367,6 +367,45 @@ height:50vh;
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/article/263a2f11.html" >
+            
+                <span>Pikachu-SQL注入(三)</span>
+        </a>
+        <div class="abstract-content">
+            Pikachu-SQL注入(三)http-header注入先抓包，测试是否存在注入点用给的账号密码进行登录我们用user-agent进行测试，将内容删去，用单引号进行测试。
+
+单引号测试报错，证明这里存在SQL注入漏洞后台应该是用insert语句进行的拼接，所以我们直接拿insert注入的payload进行测试
+1&#39; or updatexml(1,concat(0x7e,database()),0) or &#39;
+
+
+成功爆出数据库名，接下来就是表名
+payload：
+1&#39; or updatexml(1,concat(0x7e,(SELECT concat(table...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/24</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Pikachu">Pikachu</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "SQL注入">SQL注入</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/article/4357daed.html" >
             
                 <span>Pikachu-SQL注入</span>
@@ -677,39 +716,6 @@ admin
         <a class="post-tag" href="javascript:void(0);" data-tags = "Pikachu">Pikachu</a>
     
         <a class="post-tag" href="javascript:void(0);" data-tags = "越权">越权</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/article/e4b595d3.html" >
-            
-                <span>XSS-labs</span>
-        </a>
-        <div class="abstract-content">
-            XSS-labsless-1没任何过滤，直接弹窗。payload
-1?name&#x3D;test&lt;script&gt;alert(1);&lt;&#x2F;script&gt;
-less-2源码
-12345&lt;form action=level2.php method=GET&gt;&lt;input name=keyword  value="'.$str.'"&gt;&lt;input type=submit name=submit value="搜索"/&gt;&lt;/form&gt;&lt;/center&gt;';
-看到存在标签value，所以我们构造闭合标签pay...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/24</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "XSS">XSS</a>
     
 </div>
             
@@ -1535,9 +1541,26 @@ less-2源码
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 44
+        Total : 45
         </div>
         <!-- search  -->
         
@@ -1550,6 +1573,11 @@ less-2源码
     
     <div class="archive-year"> 2021 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/14</span><a class="archive-post-title" href= "/article/5558f50d.html" >备选学校信息汇总</a>
+        </li>
     
     
         <li class="archive-post-item">
