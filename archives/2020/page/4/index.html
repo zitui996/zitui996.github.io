@@ -354,13 +354,17 @@
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/article/2adb6775.html" >
+        <a class="abstract-title" href = "/article/c0744eec.html" >
             
-                <span>Pikachu-SSRF</span>
+                <span>Pikachu-XSS</span>
         </a>
         <div class="abstract-content">
-            Pikachu-SSRFcurl线上环境坏了，我们先通过file_get_content来把curl型的源码读取出来
-1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374&lt;?php/** * Created by runner.han * There is nothing new under the sun */$SELF_PAGE = substr($_SE...
+            Pikachu-XSSXSS之盲打先提交我们的XSS留言进后台看一下看到我们的提交的XSS因为管理员查看留言板而被触发，我们就可以通过这样来获取管理员的cookie
+XSS之过滤测试过滤情况script被过滤，测试大小写混拼和双写成功出发XSSpayload
+1&lt;SCRIPT&gt;alert(/xss/)&lt;/sCRIpt&gt;
+
+XSS之htmlspecialchars从题目可以看出应该是htmlspecialchars($name)的形式这里我们来说一下htmlspecialchars这个函数
+1htmlspecialchars(string,flags,charact...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -373,7 +377,7 @@
     
         <a class="post-tag" href="javascript:void(0);" data-tags = "Pikachu">Pikachu</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "SSRF">SSRF</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "XSS">XSS</a>
     
 </div>
             
@@ -1409,9 +1413,12 @@ $$使用不当导致变量覆盖漏洞$$，这种写法称为可变变量，一�
     
     
     
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 45
+        Total : 46
         </div>
         <!-- search  -->
         
@@ -1424,6 +1431,11 @@ $$使用不当导致变量覆盖漏洞$$，这种写法称为可变变量，一�
     
     <div class="archive-year"> 2021 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/49c0dda3.html" >Google Hacking简单总结</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -1561,12 +1573,12 @@ $$使用不当导致变量覆盖漏洞$$，这种写法称为可变变量，一�
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/58c90f3a.html" >Pikachu-SQL注入(二)</a>
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/263a2f11.html" >Pikachu-SQL注入(三)</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/263a2f11.html" >Pikachu-SQL注入(三)</a>
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/58c90f3a.html" >Pikachu-SQL注入(二)</a>
         </li>
     
     
@@ -1576,12 +1588,12 @@ $$使用不当导致变量覆盖漏洞$$，这种写法称为可变变量，一�
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/c0744eec.html" >Pikachu-XSS</a>
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/2adb6775.html" >Pikachu-SSRF</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/2adb6775.html" >Pikachu-SSRF</a>
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/c0744eec.html" >Pikachu-XSS</a>
         </li>
     
     
@@ -1601,12 +1613,12 @@ $$使用不当导致变量覆盖漏洞$$，这种写法称为可变变量，一�
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/cc9f6aef.html" >Pikachu-文件包含</a>
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/326a896b.html" >Pikachu-命令执行</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/326a896b.html" >Pikachu-命令执行</a>
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/cc9f6aef.html" >Pikachu-文件包含</a>
         </li>
     
     
@@ -1674,9 +1686,9 @@ $$使用不当导致变量覆盖漏洞$$，这种写法称为可变变量，一�
     
         <span class="sidebar-tag-name" data-tags="SQL注入"><span class="iconfont-archer">&#xe606;</span>SQL注入</span>
     
-        <span class="sidebar-tag-name" data-tags="XSS"><span class="iconfont-archer">&#xe606;</span>XSS</span>
-    
         <span class="sidebar-tag-name" data-tags="SSRF"><span class="iconfont-archer">&#xe606;</span>SSRF</span>
+    
+        <span class="sidebar-tag-name" data-tags="XSS"><span class="iconfont-archer">&#xe606;</span>XSS</span>
     
         <span class="sidebar-tag-name" data-tags="JSONP"><span class="iconfont-archer">&#xe606;</span>JSONP</span>
     
@@ -1684,9 +1696,9 @@ $$使用不当导致变量覆盖漏洞$$，这种写法称为可变变量，一�
     
         <span class="sidebar-tag-name" data-tags="xxe"><span class="iconfont-archer">&#xe606;</span>xxe</span>
     
-        <span class="sidebar-tag-name" data-tags="文件包含"><span class="iconfont-archer">&#xe606;</span>文件包含</span>
-    
         <span class="sidebar-tag-name" data-tags="命令执行"><span class="iconfont-archer">&#xe606;</span>命令执行</span>
+    
+        <span class="sidebar-tag-name" data-tags="文件包含"><span class="iconfont-archer">&#xe606;</span>文件包含</span>
     
         <span class="sidebar-tag-name" data-tags="文件泄露"><span class="iconfont-archer">&#xe606;</span>文件泄露</span>
     
@@ -1696,6 +1708,8 @@ $$使用不当导致变量覆盖漏洞$$，这种写法称为可变变量，一�
     
         <span class="sidebar-tag-name" data-tags="日语"><span class="iconfont-archer">&#xe606;</span>日语</span>
     
+        <span class="sidebar-tag-name" data-tags="日语学习"><span class="iconfont-archer">&#xe606;</span>日语学习</span>
+    
         <span class="sidebar-tag-name" data-tags="代码审计"><span class="iconfont-archer">&#xe606;</span>代码审计</span>
     
         <span class="sidebar-tag-name" data-tags="渗透测试"><span class="iconfont-archer">&#xe606;</span>渗透测试</span>
@@ -1704,7 +1718,7 @@ $$使用不当导致变量覆盖漏洞$$，这种写法称为可变变量，一�
     
         <span class="sidebar-tag-name" data-tags="微信小程序"><span class="iconfont-archer">&#xe606;</span>微信小程序</span>
     
-        <span class="sidebar-tag-name" data-tags="日语学习"><span class="iconfont-archer">&#xe606;</span>日语学习</span>
+        <span class="sidebar-tag-name" data-tags="课程总结"><span class="iconfont-archer">&#xe606;</span>课程总结</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>

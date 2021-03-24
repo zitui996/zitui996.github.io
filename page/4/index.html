@@ -406,6 +406,49 @@ payload：
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/article/58c90f3a.html" >
+            
+                <span>Pikachu-SQL注入(二)</span>
+        </a>
+        <div class="abstract-content">
+            Pikachu-SQL注入(二)xx型注入先用1’进行测试，返回所以我们不难猜测，在和后台交互的SQL注入语句中，参数的闭合方式为(‘$id’)我们构造如下语句进行测试，发现返回正常
+11&#39;) or 1&#x3D;1#
+可以判断我们的猜想正确
+由之前的可知字段数为2
+11&#39;) order by 2#
+回显点
+11&#39;) union select 1,2#
+
+数据库名
+11&#39;) union select 1,database()#
+
+表名、列名
+11&#39;) union select 1,group_concat(table_name) from info...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/24</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Pikachu">Pikachu</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "SQL注入">SQL注入</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/article/4357daed.html" >
             
                 <span>Pikachu-SQL注入</span>
@@ -447,6 +490,38 @@ payload：
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/article/2adb6775.html" >
+            
+                <span>Pikachu-SSRF</span>
+        </a>
+        <div class="abstract-content">
+            Pikachu-SSRFcurl线上环境坏了，我们先通过file_get_content来把curl型的源码读取出来
+1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374&lt;?php/** * Created by runner.han * There is nothing new under the sun */$SELF_PAGE = substr($_SE...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/24</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Pikachu">Pikachu</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "SSRF">SSRF</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/article/c0744eec.html" >
             
                 <span>Pikachu-XSS</span>
@@ -471,38 +546,6 @@ XSS之htmlspecialchars从题目可以看出应该是htmlspecialchars($name)的�
         <a class="post-tag" href="javascript:void(0);" data-tags = "Pikachu">Pikachu</a>
     
         <a class="post-tag" href="javascript:void(0);" data-tags = "XSS">XSS</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/article/2adb6775.html" >
-            
-                <span>Pikachu-SSRF</span>
-        </a>
-        <div class="abstract-content">
-            Pikachu-SSRFcurl线上环境坏了，我们先通过file_get_content来把curl型的源码读取出来
-1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374&lt;?php/** * Created by runner.han * There is nothing new under the sun */$SELF_PAGE = substr($_SE...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/24</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Pikachu">Pikachu</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "SSRF">SSRF</a>
     
 </div>
             
@@ -676,46 +719,6 @@ PHP反序列化存在接收序列化数据的api,我们输入普通的序列化�
             <div class= abstract-tags >
     
         <a class="post-tag" href="javascript:void(0);" data-tags = "文件泄露">文件泄露</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/article/dab800ae.html" >
-            
-                <span>Pikachu-越权</span>
-        </a>
-        <div class="abstract-content">
-            Pikachu-越权水平越权
-登陆进来发现URL的关键点
-1username&#x3D;xxx
-现在kobe账户是已登陆状态,lili是未登录,我们直接就该kobe为lili,成功读取到lili的信息,造成越权.
-垂直越权先分别用普通账户和admin账户登陆,看看有什么不同普通
-admin
-可以看到admin账户新增对用户的修改,先创建个用户,截获数据包
-然后更换为普通用户,重新发包.将cookie更换为pikachu的cookie,发包可以看到我们添加的用户已经显示出来了
-条件竞争到底还是没搞懂咋回事不过找到了作者的poc
-1234567891011121314151617181920...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/24</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Pikachu">Pikachu</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "越权">越权</a>
     
 </div>
             
@@ -1558,9 +1561,12 @@ admin
     
     
     
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 45
+        Total : 46
         </div>
         <!-- search  -->
         
@@ -1573,6 +1579,11 @@ admin
     
     <div class="archive-year"> 2021 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/49c0dda3.html" >Google Hacking简单总结</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -1710,12 +1721,12 @@ admin
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/58c90f3a.html" >Pikachu-SQL注入(二)</a>
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/263a2f11.html" >Pikachu-SQL注入(三)</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/263a2f11.html" >Pikachu-SQL注入(三)</a>
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/58c90f3a.html" >Pikachu-SQL注入(二)</a>
         </li>
     
     
@@ -1725,12 +1736,12 @@ admin
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/c0744eec.html" >Pikachu-XSS</a>
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/2adb6775.html" >Pikachu-SSRF</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/2adb6775.html" >Pikachu-SSRF</a>
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/c0744eec.html" >Pikachu-XSS</a>
         </li>
     
     
@@ -1750,12 +1761,12 @@ admin
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/cc9f6aef.html" >Pikachu-文件包含</a>
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/326a896b.html" >Pikachu-命令执行</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/326a896b.html" >Pikachu-命令执行</a>
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/cc9f6aef.html" >Pikachu-文件包含</a>
         </li>
     
     
@@ -1823,9 +1834,9 @@ admin
     
         <span class="sidebar-tag-name" data-tags="SQL注入"><span class="iconfont-archer">&#xe606;</span>SQL注入</span>
     
-        <span class="sidebar-tag-name" data-tags="XSS"><span class="iconfont-archer">&#xe606;</span>XSS</span>
-    
         <span class="sidebar-tag-name" data-tags="SSRF"><span class="iconfont-archer">&#xe606;</span>SSRF</span>
+    
+        <span class="sidebar-tag-name" data-tags="XSS"><span class="iconfont-archer">&#xe606;</span>XSS</span>
     
         <span class="sidebar-tag-name" data-tags="JSONP"><span class="iconfont-archer">&#xe606;</span>JSONP</span>
     
@@ -1833,9 +1844,9 @@ admin
     
         <span class="sidebar-tag-name" data-tags="xxe"><span class="iconfont-archer">&#xe606;</span>xxe</span>
     
-        <span class="sidebar-tag-name" data-tags="文件包含"><span class="iconfont-archer">&#xe606;</span>文件包含</span>
-    
         <span class="sidebar-tag-name" data-tags="命令执行"><span class="iconfont-archer">&#xe606;</span>命令执行</span>
+    
+        <span class="sidebar-tag-name" data-tags="文件包含"><span class="iconfont-archer">&#xe606;</span>文件包含</span>
     
         <span class="sidebar-tag-name" data-tags="文件泄露"><span class="iconfont-archer">&#xe606;</span>文件泄露</span>
     
@@ -1845,6 +1856,8 @@ admin
     
         <span class="sidebar-tag-name" data-tags="日语"><span class="iconfont-archer">&#xe606;</span>日语</span>
     
+        <span class="sidebar-tag-name" data-tags="日语学习"><span class="iconfont-archer">&#xe606;</span>日语学习</span>
+    
         <span class="sidebar-tag-name" data-tags="代码审计"><span class="iconfont-archer">&#xe606;</span>代码审计</span>
     
         <span class="sidebar-tag-name" data-tags="渗透测试"><span class="iconfont-archer">&#xe606;</span>渗透测试</span>
@@ -1853,7 +1866,7 @@ admin
     
         <span class="sidebar-tag-name" data-tags="微信小程序"><span class="iconfont-archer">&#xe606;</span>微信小程序</span>
     
-        <span class="sidebar-tag-name" data-tags="日语学习"><span class="iconfont-archer">&#xe606;</span>日语学习</span>
+        <span class="sidebar-tag-name" data-tags="课程总结"><span class="iconfont-archer">&#xe606;</span>课程总结</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
