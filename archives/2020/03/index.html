@@ -527,45 +527,6 @@ exec“eval”eval()是将提交的字符串当成PHP代码来执行，但是我
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/article/263a2f11.html" >
-            
-                <span>Pikachu-SQL注入(三)</span>
-        </a>
-        <div class="abstract-content">
-            Pikachu-SQL注入(三)http-header注入先抓包，测试是否存在注入点用给的账号密码进行登录我们用user-agent进行测试，将内容删去，用单引号进行测试。
-
-单引号测试报错，证明这里存在SQL注入漏洞后台应该是用insert语句进行的拼接，所以我们直接拿insert注入的payload进行测试
-1&#39; or updatexml(1,concat(0x7e,database()),0) or &#39;
-
-
-成功爆出数据库名，接下来就是表名
-payload：
-1&#39; or updatexml(1,concat(0x7e,(SELECT concat(table...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/24</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Pikachu">Pikachu</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "SQL注入">SQL注入</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
         <a class="abstract-title" href = "/article/58c90f3a.html" >
             
                 <span>Pikachu-SQL注入(二)</span>
@@ -650,13 +611,20 @@ payload：
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/article/2adb6775.html" >
+        <a class="abstract-title" href = "/article/263a2f11.html" >
             
-                <span>Pikachu-SSRF</span>
+                <span>Pikachu-SQL注入(三)</span>
         </a>
         <div class="abstract-content">
-            Pikachu-SSRFcurl线上环境坏了，我们先通过file_get_content来把curl型的源码读取出来
-1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374&lt;?php/** * Created by runner.han * There is nothing new under the sun */$SELF_PAGE = substr($_SE...
+            Pikachu-SQL注入(三)http-header注入先抓包，测试是否存在注入点用给的账号密码进行登录我们用user-agent进行测试，将内容删去，用单引号进行测试。
+
+单引号测试报错，证明这里存在SQL注入漏洞后台应该是用insert语句进行的拼接，所以我们直接拿insert注入的payload进行测试
+1&#39; or updatexml(1,concat(0x7e,database()),0) or &#39;
+
+
+成功爆出数据库名，接下来就是表名
+payload：
+1&#39; or updatexml(1,concat(0x7e,(SELECT concat(table...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -669,7 +637,39 @@ payload：
     
         <a class="post-tag" href="javascript:void(0);" data-tags = "Pikachu">Pikachu</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "SSRF">SSRF</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "SQL注入">SQL注入</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/article/dfaf6dc5.html" >
+            
+                <span>Pikachu-jsonp</span>
+        </a>
+        <div class="abstract-content">
+            Pikachu-jsonpjsonp劫持进来就发现了我们的json信息参照昨天CSRF的经验，我们也可以构造恶意网页去获得受害者的json信息
+12345678910111213141516&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;meta charset="utf-8"&gt;&lt;title&gt;JSONP劫持测试&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;script type="text/javascript"&gt;function test(result)        &#...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/24</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Pikachu">Pikachu</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "JSONP">JSONP</a>
     
 </div>
             
@@ -817,6 +817,8 @@ XSS之htmlspecialchars从题目可以看出应该是htmlspecialchars($name)的�
     <div class="sidebar-content sidebar-content-show-archive">
           <div class="sidebar-panel-archives">
     <!-- 在ejs中将archive按照时间排序 -->
+    
+    
     
     
     
@@ -1592,11 +1594,6 @@ XSS之htmlspecialchars从题目可以看出应该是htmlspecialchars($name)的�
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/263a2f11.html" >Pikachu-SQL注入(三)</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/58c90f3a.html" >Pikachu-SQL注入(二)</a>
         </li>
     
@@ -1607,12 +1604,7 @@ XSS之htmlspecialchars从题目可以看出应该是htmlspecialchars($name)的�
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/2adb6775.html" >Pikachu-SSRF</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/c0744eec.html" >Pikachu-XSS</a>
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/263a2f11.html" >Pikachu-SQL注入(三)</a>
         </li>
     
     
@@ -1622,7 +1614,17 @@ XSS之htmlspecialchars从题目可以看出应该是htmlspecialchars($name)的�
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/c0744eec.html" >Pikachu-XSS</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/8682ffc9.html" >Pikachu-upload</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/2adb6775.html" >Pikachu-SSRF</a>
         </li>
     
     
@@ -1642,17 +1644,17 @@ XSS之htmlspecialchars从题目可以看出应该是htmlspecialchars($name)的�
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/10024edb.html" >Pikachu-文件泄露</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/e8b040f8.html" >Pikachu-读取</a>
         </li>
     
     
         <li class="archive-post-item">
             <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/dab800ae.html" >Pikachu-越权</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/10024edb.html" >Pikachu-文件泄露</a>
         </li>
     
     
@@ -1667,12 +1669,12 @@ XSS之htmlspecialchars从题目可以看出应该是htmlspecialchars($name)的�
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/197506f.html" >代码审计 | 变量覆盖</a>
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/d18324d7.html" >代码审计 | 序列化与反序列化漏洞</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/d18324d7.html" >代码审计 | 序列化与反序列化漏洞</a>
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/197506f.html" >代码审计 | 变量覆盖</a>
         </li>
     
     
@@ -1697,9 +1699,9 @@ XSS之htmlspecialchars从题目可以看出应该是htmlspecialchars($name)的�
     
         <span class="sidebar-tag-name" data-tags="WriteUP"><span class="iconfont-archer">&#xe606;</span>WriteUP</span>
     
-        <span class="sidebar-tag-name" data-tags="密码学"><span class="iconfont-archer">&#xe606;</span>密码学</span>
-    
         <span class="sidebar-tag-name" data-tags="课程总结"><span class="iconfont-archer">&#xe606;</span>课程总结</span>
+    
+        <span class="sidebar-tag-name" data-tags="密码学"><span class="iconfont-archer">&#xe606;</span>密码学</span>
     
         <span class="sidebar-tag-name" data-tags="CSRF"><span class="iconfont-archer">&#xe606;</span>CSRF</span>
     
@@ -1707,13 +1709,13 @@ XSS之htmlspecialchars从题目可以看出应该是htmlspecialchars($name)的�
     
         <span class="sidebar-tag-name" data-tags="SQL注入"><span class="iconfont-archer">&#xe606;</span>SQL注入</span>
     
-        <span class="sidebar-tag-name" data-tags="SSRF"><span class="iconfont-archer">&#xe606;</span>SSRF</span>
+        <span class="sidebar-tag-name" data-tags="JSONP"><span class="iconfont-archer">&#xe606;</span>JSONP</span>
     
         <span class="sidebar-tag-name" data-tags="XSS"><span class="iconfont-archer">&#xe606;</span>XSS</span>
     
-        <span class="sidebar-tag-name" data-tags="JSONP"><span class="iconfont-archer">&#xe606;</span>JSONP</span>
-    
         <span class="sidebar-tag-name" data-tags="upload"><span class="iconfont-archer">&#xe606;</span>upload</span>
+    
+        <span class="sidebar-tag-name" data-tags="SSRF"><span class="iconfont-archer">&#xe606;</span>SSRF</span>
     
         <span class="sidebar-tag-name" data-tags="xxe"><span class="iconfont-archer">&#xe606;</span>xxe</span>
     
@@ -1721,15 +1723,13 @@ XSS之htmlspecialchars从题目可以看出应该是htmlspecialchars($name)的�
     
         <span class="sidebar-tag-name" data-tags="文件包含"><span class="iconfont-archer">&#xe606;</span>文件包含</span>
     
-        <span class="sidebar-tag-name" data-tags="文件泄露"><span class="iconfont-archer">&#xe606;</span>文件泄露</span>
-    
         <span class="sidebar-tag-name" data-tags="文件读取"><span class="iconfont-archer">&#xe606;</span>文件读取</span>
     
         <span class="sidebar-tag-name" data-tags="越权"><span class="iconfont-archer">&#xe606;</span>越权</span>
     
-        <span class="sidebar-tag-name" data-tags="日语"><span class="iconfont-archer">&#xe606;</span>日语</span>
+        <span class="sidebar-tag-name" data-tags="文件泄露"><span class="iconfont-archer">&#xe606;</span>文件泄露</span>
     
-        <span class="sidebar-tag-name" data-tags="日语学习"><span class="iconfont-archer">&#xe606;</span>日语学习</span>
+        <span class="sidebar-tag-name" data-tags="日语"><span class="iconfont-archer">&#xe606;</span>日语</span>
     
         <span class="sidebar-tag-name" data-tags="代码审计"><span class="iconfont-archer">&#xe606;</span>代码审计</span>
     
@@ -1738,6 +1738,8 @@ XSS之htmlspecialchars从题目可以看出应该是htmlspecialchars($name)的�
         <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
     
         <span class="sidebar-tag-name" data-tags="微信小程序"><span class="iconfont-archer">&#xe606;</span>微信小程序</span>
+    
+        <span class="sidebar-tag-name" data-tags="日语学习"><span class="iconfont-archer">&#xe606;</span>日语学习</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>

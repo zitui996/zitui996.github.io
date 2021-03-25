@@ -354,21 +354,18 @@
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/article/dab800ae.html" >
+        <a class="abstract-title" href = "/article/10024edb.html" >
             
-                <span>Pikachu-越权</span>
+                <span>Pikachu-文件泄露</span>
         </a>
         <div class="abstract-content">
-            Pikachu-越权水平越权
-登陆进来发现URL的关键点
-1username&#x3D;xxx
-现在kobe账户是已登陆状态,lili是未登录,我们直接就该kobe为lili,成功读取到lili的信息,造成越权.
-垂直越权先分别用普通账户和admin账户登陆,看看有什么不同普通
-admin
-可以看到admin账户新增对用户的修改,先创建个用户,截获数据包
-然后更换为普通用户,重新发包.将cookie更换为pikachu的cookie,发包可以看到我们添加的用户已经显示出来了
-条件竞争到底还是没搞懂咋回事不过找到了作者的poc
-1234567891011121314151617181920...
+            Pikachu-文件泄露敏感文件泄漏尝试登陆但是登陆失败直接访问上一个文件目录
+直接爆出文件,访问abc.php我们没有登录也获取到了abd.php的内容.
+PHP反序列化存在接收序列化数据的api,我们输入普通的序列化数据没有用,考虑输入命令序列化之后的数据,看会不会被执行
+1O:1:"S":1:&#123;s:4:"test";s:33:"&lt;script&gt;alert(/pikachu/)&lt;/script&gt;";&#125;
+
+成功弹窗
+
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -379,9 +376,7 @@ admin
             
             <div class= abstract-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Pikachu">Pikachu</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "越权">越权</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "文件泄露">文件泄露</a>
     
 </div>
             
@@ -1263,6 +1258,8 @@ Old-HackThinkPHP的洞稍微测试一下,连版本号都出来了
     
     
     
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
         Total : 46
@@ -1420,11 +1417,6 @@ Old-HackThinkPHP的洞稍微测试一下,连版本号都出来了
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/263a2f11.html" >Pikachu-SQL注入(三)</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/58c90f3a.html" >Pikachu-SQL注入(二)</a>
         </li>
     
@@ -1435,12 +1427,7 @@ Old-HackThinkPHP的洞稍微测试一下,连版本号都出来了
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/2adb6775.html" >Pikachu-SSRF</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/c0744eec.html" >Pikachu-XSS</a>
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/263a2f11.html" >Pikachu-SQL注入(三)</a>
         </li>
     
     
@@ -1450,7 +1437,17 @@ Old-HackThinkPHP的洞稍微测试一下,连版本号都出来了
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/c0744eec.html" >Pikachu-XSS</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/8682ffc9.html" >Pikachu-upload</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/2adb6775.html" >Pikachu-SSRF</a>
         </li>
     
     
@@ -1470,17 +1467,17 @@ Old-HackThinkPHP的洞稍微测试一下,连版本号都出来了
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/10024edb.html" >Pikachu-文件泄露</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/e8b040f8.html" >Pikachu-读取</a>
         </li>
     
     
         <li class="archive-post-item">
             <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/dab800ae.html" >Pikachu-越权</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/10024edb.html" >Pikachu-文件泄露</a>
         </li>
     
     
@@ -1495,12 +1492,12 @@ Old-HackThinkPHP的洞稍微测试一下,连版本号都出来了
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/197506f.html" >代码审计 | 变量覆盖</a>
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/d18324d7.html" >代码审计 | 序列化与反序列化漏洞</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/d18324d7.html" >代码审计 | 序列化与反序列化漏洞</a>
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/197506f.html" >代码审计 | 变量覆盖</a>
         </li>
     
     
@@ -1525,9 +1522,9 @@ Old-HackThinkPHP的洞稍微测试一下,连版本号都出来了
     
         <span class="sidebar-tag-name" data-tags="WriteUP"><span class="iconfont-archer">&#xe606;</span>WriteUP</span>
     
-        <span class="sidebar-tag-name" data-tags="密码学"><span class="iconfont-archer">&#xe606;</span>密码学</span>
-    
         <span class="sidebar-tag-name" data-tags="课程总结"><span class="iconfont-archer">&#xe606;</span>课程总结</span>
+    
+        <span class="sidebar-tag-name" data-tags="密码学"><span class="iconfont-archer">&#xe606;</span>密码学</span>
     
         <span class="sidebar-tag-name" data-tags="CSRF"><span class="iconfont-archer">&#xe606;</span>CSRF</span>
     
@@ -1535,13 +1532,13 @@ Old-HackThinkPHP的洞稍微测试一下,连版本号都出来了
     
         <span class="sidebar-tag-name" data-tags="SQL注入"><span class="iconfont-archer">&#xe606;</span>SQL注入</span>
     
-        <span class="sidebar-tag-name" data-tags="SSRF"><span class="iconfont-archer">&#xe606;</span>SSRF</span>
+        <span class="sidebar-tag-name" data-tags="JSONP"><span class="iconfont-archer">&#xe606;</span>JSONP</span>
     
         <span class="sidebar-tag-name" data-tags="XSS"><span class="iconfont-archer">&#xe606;</span>XSS</span>
     
-        <span class="sidebar-tag-name" data-tags="JSONP"><span class="iconfont-archer">&#xe606;</span>JSONP</span>
-    
         <span class="sidebar-tag-name" data-tags="upload"><span class="iconfont-archer">&#xe606;</span>upload</span>
+    
+        <span class="sidebar-tag-name" data-tags="SSRF"><span class="iconfont-archer">&#xe606;</span>SSRF</span>
     
         <span class="sidebar-tag-name" data-tags="xxe"><span class="iconfont-archer">&#xe606;</span>xxe</span>
     
@@ -1549,15 +1546,13 @@ Old-HackThinkPHP的洞稍微测试一下,连版本号都出来了
     
         <span class="sidebar-tag-name" data-tags="文件包含"><span class="iconfont-archer">&#xe606;</span>文件包含</span>
     
-        <span class="sidebar-tag-name" data-tags="文件泄露"><span class="iconfont-archer">&#xe606;</span>文件泄露</span>
-    
         <span class="sidebar-tag-name" data-tags="文件读取"><span class="iconfont-archer">&#xe606;</span>文件读取</span>
     
         <span class="sidebar-tag-name" data-tags="越权"><span class="iconfont-archer">&#xe606;</span>越权</span>
     
-        <span class="sidebar-tag-name" data-tags="日语"><span class="iconfont-archer">&#xe606;</span>日语</span>
+        <span class="sidebar-tag-name" data-tags="文件泄露"><span class="iconfont-archer">&#xe606;</span>文件泄露</span>
     
-        <span class="sidebar-tag-name" data-tags="日语学习"><span class="iconfont-archer">&#xe606;</span>日语学习</span>
+        <span class="sidebar-tag-name" data-tags="日语"><span class="iconfont-archer">&#xe606;</span>日语</span>
     
         <span class="sidebar-tag-name" data-tags="代码审计"><span class="iconfont-archer">&#xe606;</span>代码审计</span>
     
@@ -1566,6 +1561,8 @@ Old-HackThinkPHP的洞稍微测试一下,连版本号都出来了
         <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
     
         <span class="sidebar-tag-name" data-tags="微信小程序"><span class="iconfont-archer">&#xe606;</span>微信小程序</span>
+    
+        <span class="sidebar-tag-name" data-tags="日语学习"><span class="iconfont-archer">&#xe606;</span>日语学习</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
